@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Términos y Condiciones - La Mandrágora Restobar">
+  <div class="relative min-h-screen pt-32 pb-24 text-gray-300 overflow-hidden">
+    <!-- Efecto de iluminación de fondo -->
+    <div class="absolute top-20 right-10 w-96 h-96 bg-amber-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 bg-amber-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+    <div class="container mx-auto px-6 max-w-4xl relative z-10">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-serif text-white tracking-wide mb-4">Términos y Condiciones</h1>
+        <p class="text-amber-500 tracking-widest text-xs uppercase">Última actualización: Junio 2026</p>
+        <div class="w-24 h-1 bg-amber-600 mx-auto mt-6"></div>
+      </div>
+
+      <div class="space-y-8 text-sm sm:text-base leading-relaxed bg-[#070708]/40 border border-amber-950/10 p-8 sm:p-12 rounded-sm backdrop-blur-md">
+        
+        <section class="space-y-3">
+          <h2 class="text-xl text-white font-serif tracking-wide">1. Aceptación de los Términos</h2>
+          <p>
+            Al acceder y utilizar este sitio web, y al realizar reservas de mesa o coordinar servicios con <strong>La Mandrágora Restobar</strong>, aceptas de manera expresa cumplir con los términos y condiciones aquí detallados. Si no estás de acuerdo con alguna de estas normas, te solicitamos abstenerte de utilizar nuestros servicios.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl text-white font-serif tracking-wide">2. Políticas de Reserva</h2>
+          <p>
+            Para garantizar una gran experiencia a todos nuestros comensales y el correcto flujo del restobar, aplicamos las siguientes políticas de reserva:
+          </p>
+          <ul class="list-disc pl-6 space-y-1.5 text-gray-400">
+            <li><strong>Tolerancia horaria:</strong> Las mesas reservadas se mantendrán por un máximo de <strong>15 minutos</strong> de tolerancia. Pasado ese tiempo, la reserva quedará cancelada automáticamente y la mesa se liberará para clientes en espera.</li>
+            <li><strong>Capacidad y ubicación:</strong> Las reservas están sujetas a la disponibilidad de aforo en cada nivel (Piso 1 o Piso 2). Aunque intentamos respetar tu preferencia de piso seleccionada, la asignación final dependerá del flujo de mesas y la logística del local.</li>
+            <li><strong>Modificaciones y cancelaciones:</strong> Agradecemos que nos avises con al menos 2 horas de anticipación si necesitas cambiar la cantidad de personas o cancelar tu reserva definitiva.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl text-white font-serif tracking-wide">3. Acceso al Local e Ingreso de Menores</h2>
+          <p>
+            La Mandrágora Restobar es un establecimiento que expende bebidas alcohólicas y ofrece shows con música alta, por lo que rigen las siguientes normas:
+          </p>
+          <ul class="list-disc pl-6 space-y-1.5 text-gray-400">
+            <li>El consumo y la compra de bebidas alcohólicas está estrictamente reservado a personas mayores de 18 años (se requerirá documento de identidad válido en barra y al ingreso).</li>
+            <li><strong>Shows en vivo y horario nocturno (segundo piso):</strong> El ingreso a los eventos nocturnos de fin de semana en el segundo piso es exclusivo para mayores de edad.</li>
+            <li>Nos reservamos el derecho de admisión y permanencia dentro del establecimiento para resguardar la seguridad y tranquilidad de todos nuestros comensales.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl text-white font-serif tracking-wide">4. Eventos Especiales y Presentaciones en Vivo</h2>
+          <p>
+            Las fechas y artistas programados para presentaciones en vivo (bandas, DJ sets) están sujetos a cambios sin previo aviso por razones de fuerza mayor o coordinaciones técnicas. Haremos el mayor esfuerzo por mantener la cartelera actualizada en nuestras redes sociales y sitio web.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl text-white font-serif tracking-wide">5. Limitación de Responsabilidad</h2>
+          <p>
+            La información expuesta en este sitio web (menús, precios, descripciones e imágenes) es referencial. Los ingredientes y la disponibilidad de los platos y cócteles pueden variar según la temporada y stock del local. Hacemos lo posible por mantener la carta actualizada, pero te recomendamos confirmar la oferta del día con tu mesero al ordenar.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl text-white font-serif tracking-wide">6. Modificaciones de los Términos</h2>
+          <p>
+            Nos reservamos el derecho de modificar o actualizar estos términos en cualquier momento. El uso continuado de nuestros canales de reserva tras la publicación de cambios implicará la aceptación de los mismos.
+          </p>
+        </section>
+
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/" class="inline-flex items-center justify-center px-6 py-3 border border-amber-600 text-white hover:bg-amber-600/10 transition-all duration-300 rounded-sm text-sm tracking-wider uppercase">
+          Volver al Inicio
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
