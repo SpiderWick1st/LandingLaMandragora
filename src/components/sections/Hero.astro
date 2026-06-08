@@ -1,0 +1,115 @@
+<section
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwZGFyayUyMGFtYmllbnR8ZW58MXx8fHwxNzc5NDkyNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      alt="Elegant restaurant interior"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 md:to-black/90"></div>
+  </div>
+
+  <div class="text-center z-10">
+    <div>
+      <div
+        id="logo"
+        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-gradient-to-br from-amber-600 to-amber-900 rounded-full flex items-center justify-center mb-6 shadow-2xl shadow-amber-900/50"
+      >
+        <span class="font-serif text-4xl text-white sm:text-5xl md:text-6xl">LM</span>
+      </div>
+    </div>
+    <h2
+      id="la-mandragora-titulo"
+      class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-4 tracking-wide text-white px-4 text-center"
+    >
+      LA MANDRÁGORA
+    </h2>
+
+    <div id="contenido-secundario">
+      <p
+        class="text-amber-500 text-base sm:text-xl md:text-2xl tracking-widest mb-4 text-center"
+      >
+        RESTOBAR RETRO
+      </p>
+      <p
+        class="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed text-center px-2"
+      >
+        2 Pisos • Banda en Vivo • DJ • Cocteles de Autor • Ambiente Retro
+      </p>
+    </div>
+
+    <div
+      id="botones-secundarios"
+      class="flex flex-col sm:flex-row gap-4 justify-center mt-8 px-4 w-full sm:w-auto"
+    >
+      <a
+        href="#reservas"
+        class="px-6 sm:px-8 py-3 sm:py-4 bg-amber-600 hover:bg-amber-700 transition-all duration-300 rounded-sm tracking-wider shadow-lg hover:shadow-amber-900/50 text-white text-center text-sm sm:text-base"
+      >
+        Reserva Mesa
+      </a>
+      <a
+        href="#retro"
+        class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-amber-600 text-white hover:bg-amber-600/10 transition-all duration-300 rounded-sm tracking-wider text-amber-500 text-center text-sm sm:text-base"
+      >
+        Descubre mas
+      </a>
+    </div>
+
+    <div
+      id="icon-siguiente"
+      class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block"
+    >
+      <div
+        class="w-5 h-8 sm:w-6 sm:h-10 border-2 border-amber-500 rounded-full flex justify-center"
+      >
+        <div id="icon-punto" class="w-1 h-2 bg-amber-500 rounded-full mt-2">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate } from "motion";
+
+  const titulo = document.getElementById("la-mandragora-titulo");
+  const contenido = document.getElementById("contenido-secundario");
+  const boton = document.getElementById("botones-secundarios");
+  const logo = document.getElementById("logo");
+  const iconSiguiente = document.getElementById("icon-siguiente");
+  const iconPunto = document.getElementById("icon-punto");
+
+  animate(
+    logo,
+    { scale: [0.8, 1], opacity: [0, 1] },
+    { delay: 0.1, duration: 0.6 },
+  );
+
+  animate(
+    titulo,
+    { y: [50, 0], opacity: [0, 1] },
+    { delay: 0.3, duration: 0.8 },
+  );
+
+  animate(
+    contenido,
+    { y: [50, 0], opacity: [0, 1] },
+    { delay: 0.5, duration: 0.8 },
+  );
+
+  animate(
+    boton,
+    { y: [50, 0], opacity: [0, 1] },
+    { delay: 0.7, duration: 0.8 },
+  );
+
+  animate(iconSiguiente, { opacity: [0, 1] }, { delay: 1, duration: 1 });
+
+  animate(
+    iconPunto,
+    { y: [0, 10, 0], opacity: [1, 0.3, 1] },
+    { delay: 0, duration: 2, repeat: Infinity },
+  );
+</script>
