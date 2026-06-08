@@ -1,13 +1,22 @@
 ---
-import { Star, Sparkles, Wine } from "lucide-astro";
+import { Star, Sparkles, Wine } from 'lucide-astro';
 ---
 
 <section
   id="barra"
   class="relative min-h-screen flex items-center justify-center overflow-hidden py-24"
 >
-  <div class="absolute top-[300px] left-20 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[10px] pointer-events-none z-0"></div>
-  <div class="absolute top-12 -right-30 w-[500px] h-[500px] bg-amber-700/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+  <!-- Elementos de fondo -->
+  <div
+    id="fondo-1"
+    class="absolute bottom-50 left-20 w-125 h-125 bg-amber-600/10 rounded-full blur-[80px] pointer-events-none z-0"
+  >
+  </div>
+  <div
+    id="fondo-2"
+    class="absolute top-12 -right-30 w-125 h-125 bg-amber-600/10 rounded-full blur-[80px] pointer-events-none z-0"
+  >
+  </div>
 
   <div class="container mx-auto px-6 max-w-6xl z-10 text-center">
     <Star
@@ -37,10 +46,10 @@ import { Star, Sparkles, Wine } from "lucide-astro";
     </div>
 
     <div class="grid md:grid-cols-[1.2fr_1fr] gap-12 items-center">
-      <div class="relative w-full max-w-[600px] mx-auto">
+      <div class="relative w-full max-w-150 mx-auto">
         <div
           id="barra-badge"
-          class="absolute -top-6 -right-6 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full p-4 shadow-2xl z-20 opacity-0 cursor-pointer"
+          class="absolute -top-6 -right-6 bg-linear-to-br from-amber-500 to-amber-700 rounded-full p-4 shadow-2xl z-20 opacity-0 cursor-pointer"
         >
           <Wine class="w-8 h-8 text-white" />
         </div>
@@ -52,10 +61,10 @@ import { Star, Sparkles, Wine } from "lucide-astro";
           <img
             src="https://images.unsplash.com/photo-1574879948818-1cfda7aa5b1a?auto=format&fit=crop&w=800&q=80"
             alt="Dember preparando cócteles"
-            class="w-full h-[600px] object-cover"
+            class="w-full h-150 object-cover"
           />
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+            class="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"
           >
           </div>
           <div
@@ -111,7 +120,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         <div id="boton-cocteles" class="mt-8 opacity-0">
           <a
             href="#reservations"
-            class="inline-block px-8 py-4 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 transition-all duration-300 rounded-sm tracking-wider shadow-lg shadow-amber-900/50 hover:scale-105"
+            class="inline-block w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-center text-sm sm:text-base bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 transition-all duration-300 rounded-sm tracking-wider shadow-lg shadow-amber-900/50 hover:scale-105 active:scale-95"
           >
             Prueba Nuestros Cocteles
           </a>
@@ -122,16 +131,21 @@ import { Star, Sparkles, Wine } from "lucide-astro";
 </section>
 
 <script>
-  import { animate, inView } from "motion";
+  import { animate, inView } from 'motion';
 
-  const star = document.getElementById("barra-star");
-  const titulo = document.getElementById("barra-titulo");
-  const imagen = document.getElementById("barra-imagen");
-  const card = document.getElementById("barra-card");
-  const badge = document.getElementById("barra-badge");
-  const contenido = document.getElementById("cocteles-autor");
-  const beneficios = document.getElementById("beneficios");
-  const boton = document.getElementById("boton-cocteles");
+  const star = document.getElementById('barra-star');
+  const titulo = document.getElementById('barra-titulo');
+  const imagen = document.getElementById('barra-imagen');
+  const card = document.getElementById('barra-card');
+  const badge = document.getElementById('barra-badge');
+  const contenido = document.getElementById('cocteles-autor');
+  const beneficios = document.getElementById('beneficios');
+  const boton = document.getElementById('boton-cocteles');
+  const fondo1 = document.getElementById('fondo-1');
+  const fondo2 = document.getElementById('fondo-2');
+
+  animate(fondo1, { opacity: [1, 0.3, 1] }, { duration: 8, repeat: Infinity });
+  animate(fondo2, { opacity: [1, 0.3, 1] }, { duration: 8, repeat: Infinity });
 
   if (star) {
     animate(
@@ -142,7 +156,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
       {
         duration: 3,
         repeat: Infinity,
-      },
+      }
     );
   }
 
@@ -151,15 +165,15 @@ import { Star, Sparkles, Wine } from "lucide-astro";
       card,
       {
         boxShadow: [
-          "0 0 20px rgba(217,119,6,0.3)",
-          "0 0 40px rgba(217,119,6,0.6)",
-          "0 0 20px rgba(217,119,6,0.3)",
+          '0 0 20px rgba(217,119,6,0.3)',
+          '0 0 40px rgba(217,119,6,0.6)',
+          '0 0 20px rgba(217,119,6,0.3)',
         ],
       },
       {
         duration: 2,
         repeat: Infinity,
-      },
+      }
     );
   }
 
@@ -173,12 +187,12 @@ import { Star, Sparkles, Wine } from "lucide-astro";
       {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut",
-      },
+        ease: 'easeInOut',
+      }
     );
   }
 
-  const stopInView = inView("#barra", () => {
+  const stopInView = inView('#barra', () => {
     if (titulo) {
       animate(
         titulo,
@@ -188,7 +202,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         },
         {
           duration: 0.8,
-        },
+        }
       );
     }
 
@@ -202,7 +216,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         {
           delay: 0.2,
           duration: 0.8,
-        },
+        }
       );
     }
 
@@ -216,7 +230,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         {
           delay: 0.4,
           duration: 0.6,
-        },
+        }
       );
     }
 
@@ -230,7 +244,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         {
           delay: 0.4,
           duration: 0.8,
-        },
+        }
       );
     }
 
@@ -244,7 +258,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         {
           delay: 0.6,
           duration: 0.6,
-        },
+        }
       );
     }
 
@@ -258,7 +272,7 @@ import { Star, Sparkles, Wine } from "lucide-astro";
         {
           delay: 0.8,
           duration: 0.6,
-        },
+        }
       );
     }
 

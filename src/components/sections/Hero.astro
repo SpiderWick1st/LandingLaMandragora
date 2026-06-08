@@ -7,7 +7,10 @@
       alt="Elegant restaurant interior"
       class="w-full h-full object-cover"
     />
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 md:to-black/90"></div>
+    <div
+      class="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80 md:to-black/90"
+    >
+    </div>
   </div>
 
   <div class="text-center z-10">
@@ -16,7 +19,9 @@
         id="logo"
         class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-gradient-to-br from-amber-600 to-amber-900 rounded-full flex items-center justify-center mb-6 shadow-2xl shadow-amber-900/50"
       >
-        <span class="font-serif text-4xl text-white sm:text-5xl md:text-6xl">LM</span>
+        <span class="font-serif text-4xl text-white sm:text-5xl md:text-6xl"
+          >LM</span
+        >
       </div>
     </div>
     <h2
@@ -72,37 +77,37 @@
 </section>
 
 <script>
-  import { animate } from "motion";
+  import { animate } from 'motion';
 
-  const titulo = document.getElementById("la-mandragora-titulo");
-  const contenido = document.getElementById("contenido-secundario");
-  const boton = document.getElementById("botones-secundarios");
-  const logo = document.getElementById("logo");
-  const iconSiguiente = document.getElementById("icon-siguiente");
-  const iconPunto = document.getElementById("icon-punto");
+  const titulo = document.getElementById('la-mandragora-titulo');
+  const contenido = document.getElementById('contenido-secundario');
+  const boton = document.getElementById('botones-secundarios');
+  const logo = document.getElementById('logo');
+  const iconSiguiente = document.getElementById('icon-siguiente');
+  const iconPunto = document.getElementById('icon-punto');
 
   animate(
     logo,
     { scale: [0.8, 1], opacity: [0, 1] },
-    { delay: 0.1, duration: 0.6 },
+    { delay: 0.1, duration: 0.6 }
   );
 
   animate(
     titulo,
     { y: [50, 0], opacity: [0, 1] },
-    { delay: 0.3, duration: 0.8 },
+    { delay: 0.3, duration: 0.8 }
   );
 
   animate(
     contenido,
     { y: [50, 0], opacity: [0, 1] },
-    { delay: 0.5, duration: 0.8 },
+    { delay: 0.5, duration: 0.8 }
   );
 
   animate(
     boton,
     { y: [50, 0], opacity: [0, 1] },
-    { delay: 0.7, duration: 0.8 },
+    { delay: 0.7, duration: 0.8 }
   );
 
   animate(iconSiguiente, { opacity: [0, 1] }, { delay: 1, duration: 1 });
@@ -110,6 +115,6 @@
   animate(
     iconPunto,
     { y: [0, 10, 0], opacity: [1, 0.3, 1] },
-    { delay: 0, duration: 2, repeat: Infinity },
+    { delay: 0, duration: 2, repeat: Infinity }
   );
 </script>
