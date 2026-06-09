@@ -9,19 +9,19 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
   <!-- Elementos de fondo -->
   <div
     id="fondo-1"
-    class="absolute bottom-50 left-20 w-125 h-125 bg-amber-600/10 rounded-full blur-[80px] pointer-events-none z-0"
+    class="absolute bottom-50 left-20 w-125 h-125 bg-brand-900/40 rounded-full blur-[130px] pointer-events-none z-0"
   >
   </div>
   <div
     id="fondo-2"
-    class="absolute top-12 -right-30 w-125 h-125 bg-amber-600/10 rounded-full blur-[80px] pointer-events-none z-0"
+    class="absolute top-12 -right-30 w-125 h-125 bg-brand-900/40 rounded-full blur-[130px] pointer-events-none z-0"
   >
   </div>
 
   <div class="container mx-auto px-6 max-w-6xl z-10 text-center">
     <Star
       id="barra-star"
-      class="w-12 h-12 text-amber-500 mx-auto mb-4"
+      class="w-12 h-12 text-brand-500 mx-auto mb-4"
       fill="currentColor"
     />
     <h2
@@ -30,11 +30,11 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
     >
       Conoce a nuestros Bartenders Expertos
     </h2>
-    <div class="w-24 h-1 bg-amber-600 mx-auto mb-8"></div>
+    <div class="w-24 h-1 bg-brand-600 mx-auto mb-8"></div>
 
     <div id="contenido-secundario" class="mb-12">
       <p
-        class="text-amber-500 text-base sm:text-lg md:text-xl tracking-widest mb-3 text-center"
+        class="text-brand-500 text-base sm:text-lg md:text-xl tracking-widest mb-3 text-center"
       >
         Nuestro Bartender Estrella
       </p>
@@ -49,14 +49,14 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
       <div class="relative w-full max-w-150 mx-auto">
         <div
           id="barra-badge"
-          class="absolute -top-6 -right-6 bg-linear-to-br from-amber-500 to-amber-700 rounded-full p-4 shadow-2xl z-20 opacity-0 cursor-pointer"
+          class="absolute -top-6 -right-6 bg-linear-to-br from-brand-500 to-brand-700 rounded-full p-4 shadow-2xl z-20 opacity-0 cursor-pointer"
         >
           <Wine class="w-8 h-8 text-white" />
         </div>
 
         <div
           id="barra-imagen"
-          class="relative rounded-sm overflow-hidden shadow-2xl border border-amber-950/20 opacity-0 transition-transform duration-300 ease-out hover:scale-105 cursor-pointer"
+          class="relative rounded-sm overflow-hidden shadow-2xl border border-brand-950/20 opacity-0 transition-transform duration-300 ease-out hover:scale-105 cursor-pointer"
         >
           <img
             src="https://images.unsplash.com/photo-1574879948818-1cfda7aa5b1a?auto=format&fit=crop&w=800&q=80"
@@ -69,7 +69,7 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
           </div>
           <div
             id="barra-card"
-            class="absolute bottom-6 left-6 right-6 bg-black/85 backdrop-blur-md p-6 rounded-sm border border-amber-600/30"
+            class="absolute bottom-6 left-6 right-6 bg-black/85 backdrop-blur-md p-6 rounded-sm border border-brand-600/30"
           >
             <h4 class="text-xl text-white font-serif mb-1">Maestro Mixólogo</h4>
             <p class="text-xs text-gray-300">
@@ -99,17 +99,17 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
           región.
         </p>
         <div id="beneficios" class="space-y-4 opacity-0">
-          <div class="flex items-center gap-4 text-amber-500">
+          <div class="flex items-center gap-4 text-brand-500">
             <Star class="w-6 h-6" />
             <span class="text-white">Cocteles únicos e irrepetibles</span>
           </div>
 
-          <div class="flex items-center gap-4 text-amber-500">
+          <div class="flex items-center gap-4 text-brand-500">
             <Sparkles class="w-6 h-6" />
             <span class="text-white">Ingredientes 100% locales</span>
           </div>
 
-          <div class="flex items-center gap-4 text-amber-500">
+          <div class="flex items-center gap-4 text-brand-500">
             <Wine class="w-6 h-6" />
             <span class="text-white"
               >Carta signature en constante evolución</span
@@ -120,7 +120,7 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
         <div id="boton-cocteles" class="mt-8 opacity-0">
           <a
             href="#reservations"
-            class="inline-block w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-center text-sm sm:text-base bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 transition-all duration-300 rounded-sm tracking-wider shadow-lg shadow-amber-900/50 hover:scale-105 active:scale-95"
+            class="inline-block w-full text-white sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-center text-sm sm:text-base bg-linear-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 transition-all duration-300 rounded-sm tracking-wider shadow-lg shadow-brand-900/50 hover:scale-105 active:scale-95"
           >
             Prueba Nuestros Cocteles
           </a>
@@ -165,9 +165,9 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
       card,
       {
         boxShadow: [
-          '0 0 20px rgba(217,119,6,0.3)',
-          '0 0 40px rgba(217,119,6,0.6)',
-          '0 0 20px rgba(217,119,6,0.3)',
+          '0 0 20px rgba(9,106,95,0.3)',
+          '0 0 40px rgba(9,106,95,0.6)',
+          '0 0 20px rgba(9,106,95,0.3)',
         ],
       },
       {
