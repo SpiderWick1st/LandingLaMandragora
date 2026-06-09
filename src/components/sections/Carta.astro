@@ -12,12 +12,14 @@ import {
 
 <section
   id="carta"
-  class="relative py-24 bg-black overflow-hidden border-t border-brand-950/25"
+  class="relative py-24 bg-black border-t border-brand-950/25"
 >
   <!-- Elementos decorativos de fondo -->
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px] pointer-events-none z-0"
-  >
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px] pointer-events-none z-0"
+    >
+    </div>
   </div>
 
   <div class="container mx-auto px-6 max-w-6xl z-10 relative">
@@ -36,42 +38,44 @@ import {
       </p>
     </div>
 
-    <!-- Pestañas de Categorías (Tabs) -->
-    <div class="flex justify-center gap-4 mb-12 flex-wrap">
+    <!-- Pestañas de Categorías -->
+    <div
+      class="-mx-6 px-6 md:mx-0 md:px-0 overflow-x-auto scrollbar-none mb-12 snap-x snap-mandatory flex md:justify-center gap-3 pb-2"
+    >
       <button
         data-tab="cocteles"
-        class="tab-btn active px-6 py-3 border border-brand-700/30 rounded-sm text-sm sm:text-base font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        class="tab-btn active shrink-0 snap-center px-5 py-2.5 border border-brand-700/30 rounded-full text-sm font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
         <GlassWater class="w-4 h-4 text-brand-500" />
-        Cócteles de Autor
+        Cócteles
       </button>
       <button
         data-tab="entradas"
-        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
-        <Utensils class="w-4 h-4 text-gray-500" />
-        Entradas & Ensaladas
+        <Utensils class="w-4 h-4 text-brand-500" />
+        Entradas
       </button>
       <button
         data-tab="fuertes"
-        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
-        <ChefHat class="w-4 h-4 text-gray-500" />
-        Platos de Fondo
+        <ChefHat class="w-4 h-4 text-brand-500" />
+        Platos
       </button>
       <button
         data-tab="hamburguesas"
-        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
-        <Flame class="w-4 h-4 text-gray-500" />
+        <Flame class="w-4 h-4 text-brand-500" />
         Hamburguesas
       </button>
       <button
         data-tab="alitas"
-        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
-        <Sparkles class="w-4 h-4 text-gray-500" />
-        Alitas & Combos
+        <Sparkles class="w-4 h-4 text-brand-500" />
+        Alitas
       </button>
     </div>
 
@@ -110,7 +114,7 @@ import {
       <!-- ENTRADAS -->
       <div
         id="menu-entradas"
-        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           entradas.map((item, index) => (
@@ -140,7 +144,7 @@ import {
       <!-- PLATOS FUERTES -->
       <div
         id="menu-fuertes"
-        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           fuertes.map((item, index) => (
@@ -170,7 +174,7 @@ import {
       <!-- HAMBURGUESAS -->
       <div
         id="menu-hamburguesas"
-        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           hamburguesas.map((item, index) => (
@@ -200,7 +204,7 @@ import {
       <!-- ALITAS & COMBOS -->
       <div
         id="menu-alitas"
-        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           alitas_y_combos.map((item, index) => (
@@ -260,6 +264,12 @@ import {
       width: 100%;
     }
   }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 </style>
 
 <script>
@@ -285,10 +295,11 @@ import {
       button.classList.add('border-brand-700/30');
       button.classList.add('bg-brand-950/20');
 
-      // Ocultar todas las categorías con opacidad y restablecer estado de expansión
+      // Ocultar todas las categorías con opacidad, display: none y restablecer estado de expansión
       categories.forEach((category) => {
         category.classList.remove('opacity-100', 'pointer-events-auto');
         category.classList.add('opacity-0', 'pointer-events-none');
+        category.classList.add('hidden');
         category.classList.remove('is-expanded');
       });
 
@@ -300,8 +311,31 @@ import {
       // Mostrar categoría activa
       const activeCategory = document.getElementById(`menu-${target}`);
       if (activeCategory) {
+        activeCategory.classList.remove('hidden');
+        // Forzar reflow para que el navegador registre el cambio de display
+        void activeCategory.offsetWidth;
         activeCategory.classList.remove('opacity-0', 'pointer-events-none');
         activeCategory.classList.add('opacity-100', 'pointer-events-auto');
+      }
+
+      // 1. Centrar el botón activo horizontalmente en el scroll en móvil
+      button.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+
+      // 2. Hacer scroll vertical hacia el inicio de la sección 'carta' (restando el alto del header fijo)
+      const section = document.getElementById('carta');
+      if (section) {
+        const headerOffset = 90; // Alto aproximado del header con padding
+        const elementPosition = section.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
       }
     });
   });
