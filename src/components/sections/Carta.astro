@@ -1,7 +1,13 @@
 ---
 import { GlassWater, Utensils, ChefHat, Flame, Sparkles } from 'lucide-astro';
 import MenuItem from '../ui/MenuItem.astro';
-import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../../data/menu';
+import {
+  cocteles,
+  entradas,
+  fuertes,
+  hamburguesas,
+  alitas_y_combos,
+} from '../../data/menu';
 ---
 
 <section
@@ -76,22 +82,29 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
         id="menu-cocteles"
         class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-100 pointer-events-auto transition-all duration-300"
       >
-        {cocteles.map((item, index) => (
-          <MenuItem
-            {...item}
-            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
-          />
-        ))}
-        {cocteles.length > 6 && (
-          <div class="col-span-full text-center mt-4 md:hidden">
-            <button
-              data-toggle-grid="menu-cocteles"
-              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
-            >
-              Ver más
-            </button>
-          </div>
-        )}
+        {
+          cocteles.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === cocteles.length - 1 && cocteles.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          cocteles.length > 6 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-cocteles"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
       </div>
 
       <!-- ENTRADAS -->
@@ -99,22 +112,29 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
         id="menu-entradas"
         class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
       >
-        {entradas.map((item, index) => (
-          <MenuItem
-            {...item}
-            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
-          />
-        ))}
-        {entradas.length > 6 && (
-          <div class="col-span-full text-center mt-4 md:hidden">
-            <button
-              data-toggle-grid="menu-entradas"
-              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
-            >
-              Ver más
-            </button>
-          </div>
-        )}
+        {
+          entradas.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === entradas.length - 1 && entradas.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          entradas.length > 6 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-entradas"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
       </div>
 
       <!-- PLATOS FUERTES -->
@@ -122,22 +142,29 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
         id="menu-fuertes"
         class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
       >
-        {fuertes.map((item, index) => (
-          <MenuItem
-            {...item}
-            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
-          />
-        ))}
-        {fuertes.length > 6 && (
-          <div class="col-span-full text-center mt-4 md:hidden">
-            <button
-              data-toggle-grid="menu-fuertes"
-              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
-            >
-              Ver más
-            </button>
-          </div>
-        )}
+        {
+          fuertes.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === fuertes.length - 1 && fuertes.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          fuertes.length > 6 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-fuertes"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
       </div>
 
       <!-- HAMBURGUESAS -->
@@ -145,22 +172,29 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
         id="menu-hamburguesas"
         class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
       >
-        {hamburguesas.map((item, index) => (
-          <MenuItem
-            {...item}
-            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
-          />
-        ))}
-        {hamburguesas.length > 6 && (
-          <div class="col-span-full text-center mt-4 md:hidden">
-            <button
-              data-toggle-grid="menu-hamburguesas"
-              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
-            >
-              Ver más
-            </button>
-          </div>
-        )}
+        {
+          hamburguesas.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === hamburguesas.length - 1 && hamburguesas.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          hamburguesas.length > 6 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-hamburguesas"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
       </div>
 
       <!-- ALITAS & COMBOS -->
@@ -168,22 +202,29 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
         id="menu-alitas"
         class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
       >
-        {alitas_y_combos.map((item, index) => (
-          <MenuItem
-            {...item}
-            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
-          />
-        ))}
-        {alitas_y_combos.length > 6 && (
-          <div class="col-span-full text-center mt-4 md:hidden">
-            <button
-              data-toggle-grid="menu-alitas"
-              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
-            >
-              Ver más
-            </button>
-          </div>
-        )}
+        {
+          alitas_y_combos.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === alitas_y_combos.length - 1 && alitas_y_combos.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          alitas_y_combos.length > 6 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-alitas"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
       </div>
     </div>
   </div>
@@ -210,6 +251,14 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
   .menu-grid.is-expanded :global(.mobile-hidden) {
     display: flex !important;
     animation: fadeIn 0.35s ease-out forwards;
+  }
+  @media (min-width: 768px) {
+    :global(.last-odd) {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 16px);
+      margin: 0 auto;
+      width: 100%;
+    }
   }
 </style>
 
@@ -262,6 +311,8 @@ import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../.
   toggleButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const gridId = btn.getAttribute('data-toggle-grid');
+      if (!gridId) return; // 👈 guard aquí
+
       const grid = document.getElementById(gridId);
       if (grid) {
         const isExpanded = grid.classList.toggle('is-expanded');
