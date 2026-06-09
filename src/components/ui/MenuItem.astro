@@ -1,0 +1,39 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  description: string;
+  tag?: string;
+  class?: string;
+}
+
+const { name, price, description, tag, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "bg-neutral-900/20 border border-brand-950/30 p-6 rounded-sm hover:border-brand-600/30 transition-all duration-300 flex flex-col justify-between group",
+    className
+  ]}
+>
+  <div>
+    <div class="flex justify-between items-baseline mb-2">
+      <h3
+        class="text-xl font-serif text-white group-hover:text-brand-400 transition-colors"
+      >
+        {name}
+      </h3>
+      <span class="text-brand-500 font-sans font-bold">{price}</span>
+    </div>
+    <p class="text-gray-400 text-sm leading-relaxed">
+      {description}
+    </p>
+  </div>
+  {
+    tag && (
+      <span class="text-[10px] text-brand-500 uppercase tracking-widest mt-4 font-mono">
+        {tag}
+      </span>
+    )
+  }
+</div>

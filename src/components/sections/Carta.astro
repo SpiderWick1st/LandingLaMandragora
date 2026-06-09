@@ -1,0 +1,272 @@
+---
+import { GlassWater, Utensils, ChefHat, Flame, Sparkles } from 'lucide-astro';
+import MenuItem from '../ui/MenuItem.astro';
+import { cocteles, entradas, fuertes, hamburguesas, alitas_y_combos } from '../../data/menu';
+---
+
+<section
+  id="carta"
+  class="relative py-24 bg-black overflow-hidden border-t border-brand-950/25"
+>
+  <!-- Elementos decorativos de fondo -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px] pointer-events-none z-0"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 max-w-6xl z-10 relative">
+    <!-- Encabezado de la Sección -->
+    <div class="text-center mb-16">
+      <Sparkles class="w-10 h-10 text-brand-500 mx-auto mb-4 animate-pulse" />
+      <h2 class="text-4xl sm:text-5xl font-serif tracking-wide text-white mb-4">
+        NUESTRA CARTA
+      </h2>
+      <div class="w-24 h-1 bg-brand-600 mx-auto mb-6"></div>
+      <p
+        class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
+      >
+        Una selección exclusiva de coctelería mística y platos diseñados para
+        complementar una noche perfecta de música y buena compañía.
+      </p>
+    </div>
+
+    <!-- Pestañas de Categorías (Tabs) -->
+    <div class="flex justify-center gap-4 mb-12 flex-wrap">
+      <button
+        data-tab="cocteles"
+        class="tab-btn active px-6 py-3 border border-brand-700/30 rounded-sm text-sm sm:text-base font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
+      >
+        <GlassWater class="w-4 h-4 text-brand-500" />
+        Cócteles de Autor
+      </button>
+      <button
+        data-tab="entradas"
+        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+      >
+        <Utensils class="w-4 h-4 text-gray-500" />
+        Entradas & Ensaladas
+      </button>
+      <button
+        data-tab="fuertes"
+        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+      >
+        <ChefHat class="w-4 h-4 text-gray-500" />
+        Platos de Fondo
+      </button>
+      <button
+        data-tab="hamburguesas"
+        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+      >
+        <Flame class="w-4 h-4 text-gray-500" />
+        Hamburguesas
+      </button>
+      <button
+        data-tab="alitas"
+        class="tab-btn px-6 py-3 border border-neutral-800 rounded-sm text-sm sm:text-base font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+      >
+        <Sparkles class="w-4 h-4 text-gray-500" />
+        Alitas & Combos
+      </button>
+    </div>
+
+    <!-- Contenido de la Carta -->
+    <div class="relative grid grid-cols-1 items-start">
+      <!-- CÓCTELES -->
+      <div
+        id="menu-cocteles"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-100 pointer-events-auto transition-all duration-300"
+      >
+        {cocteles.map((item, index) => (
+          <MenuItem
+            {...item}
+            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
+          />
+        ))}
+        {cocteles.length > 6 && (
+          <div class="col-span-full text-center mt-4 md:hidden">
+            <button
+              data-toggle-grid="menu-cocteles"
+              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+            >
+              Ver más
+            </button>
+          </div>
+        )}
+      </div>
+
+      <!-- ENTRADAS -->
+      <div
+        id="menu-entradas"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+      >
+        {entradas.map((item, index) => (
+          <MenuItem
+            {...item}
+            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
+          />
+        ))}
+        {entradas.length > 6 && (
+          <div class="col-span-full text-center mt-4 md:hidden">
+            <button
+              data-toggle-grid="menu-entradas"
+              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+            >
+              Ver más
+            </button>
+          </div>
+        )}
+      </div>
+
+      <!-- PLATOS FUERTES -->
+      <div
+        id="menu-fuertes"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+      >
+        {fuertes.map((item, index) => (
+          <MenuItem
+            {...item}
+            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
+          />
+        ))}
+        {fuertes.length > 6 && (
+          <div class="col-span-full text-center mt-4 md:hidden">
+            <button
+              data-toggle-grid="menu-fuertes"
+              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+            >
+              Ver más
+            </button>
+          </div>
+        )}
+      </div>
+
+      <!-- HAMBURGUESAS -->
+      <div
+        id="menu-hamburguesas"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+      >
+        {hamburguesas.map((item, index) => (
+          <MenuItem
+            {...item}
+            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
+          />
+        ))}
+        {hamburguesas.length > 6 && (
+          <div class="col-span-full text-center mt-4 md:hidden">
+            <button
+              data-toggle-grid="menu-hamburguesas"
+              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+            >
+              Ver más
+            </button>
+          </div>
+        )}
+      </div>
+
+      <!-- ALITAS & COMBOS -->
+      <div
+        id="menu-alitas"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300"
+      >
+        {alitas_y_combos.map((item, index) => (
+          <MenuItem
+            {...item}
+            class={index >= 6 ? "mobile-hidden hidden md:flex" : ""}
+          />
+        ))}
+        {alitas_y_combos.length > 6 && (
+          <div class="col-span-full text-center mt-4 md:hidden">
+            <button
+              data-toggle-grid="menu-alitas"
+              class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+            >
+              Ver más
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tab-btn.active {
+    border-color: var(--color-brand-600);
+    background-color: rgba(9, 106, 95, 0.15);
+    color: #ffffff;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menu-grid.is-expanded :global(.mobile-hidden) {
+    display: flex !important;
+    animation: fadeIn 0.35s ease-out forwards;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const categories = document.querySelectorAll('.menu-category');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.getAttribute('data-tab');
+
+      // Actualizar botón activo
+      buttons.forEach((btn) => {
+        btn.classList.remove('active');
+        btn.classList.remove('border-brand-700/30');
+        btn.classList.remove('bg-brand-950/20');
+        btn.classList.add('border-neutral-800');
+        btn.classList.add('text-gray-400');
+      });
+
+      button.classList.add('active');
+      button.classList.remove('border-neutral-800');
+      button.classList.remove('text-gray-400');
+      button.classList.add('border-brand-700/30');
+      button.classList.add('bg-brand-950/20');
+
+      // Ocultar todas las categorías con opacidad y restablecer estado de expansión
+      categories.forEach((category) => {
+        category.classList.remove('opacity-100', 'pointer-events-auto');
+        category.classList.add('opacity-0', 'pointer-events-none');
+        category.classList.remove('is-expanded');
+      });
+
+      // Restablecer texto de todos los botones de "Ver más"
+      document.querySelectorAll('[data-toggle-grid]').forEach((btn) => {
+        btn.textContent = 'Ver más';
+      });
+
+      // Mostrar categoría activa
+      const activeCategory = document.getElementById(`menu-${target}`);
+      if (activeCategory) {
+        activeCategory.classList.remove('opacity-0', 'pointer-events-none');
+        activeCategory.classList.add('opacity-100', 'pointer-events-auto');
+      }
+    });
+  });
+
+  // Manejar botones de expandir/contraer
+  const toggleButtons = document.querySelectorAll('[data-toggle-grid]');
+  toggleButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const gridId = btn.getAttribute('data-toggle-grid');
+      const grid = document.getElementById(gridId);
+      if (grid) {
+        const isExpanded = grid.classList.toggle('is-expanded');
+        btn.textContent = isExpanded ? 'Ver menos' : 'Ver más';
+      }
+    });
+  });
+</script>

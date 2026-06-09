@@ -144,138 +144,96 @@ import { Star, Sparkles, Wine } from 'lucide-astro';
   const fondo1 = document.getElementById('fondo-1');
   const fondo2 = document.getElementById('fondo-2');
 
-  animate(fondo1, { opacity: [1, 0.3, 1] }, { duration: 8, repeat: Infinity });
-  animate(fondo2, { opacity: [1, 0.3, 1] }, { duration: 8, repeat: Infinity });
+  const stopInView = inView(
+    '#barra',
+    () => {
+      animate(
+        fondo1,
+        { opacity: [1, 0.3, 1] },
+        { duration: 8, repeat: Infinity }
+      );
+      animate(
+        fondo2,
+        { opacity: [1, 0.3, 1] },
+        { duration: 8, repeat: Infinity }
+      );
 
-  if (star) {
-    animate(
-      star,
-      {
-        rotate: [0, 5, -5, 0],
-      },
-      {
-        duration: 3,
-        repeat: Infinity,
+      if (star) {
+        animate(
+          star,
+          { rotate: [0, 5, -5, 0] },
+          { duration: 3, repeat: Infinity }
+        );
       }
-    );
-  }
 
-  if (card) {
-    animate(
-      card,
-      {
-        boxShadow: [
-          '0 0 20px rgba(9,106,95,0.3)',
-          '0 0 40px rgba(9,106,95,0.6)',
-          '0 0 20px rgba(9,106,95,0.3)',
-        ],
-      },
-      {
-        duration: 2,
-        repeat: Infinity,
+      if (card) {
+        animate(
+          card,
+          {
+            boxShadow: [
+              '0 0 20px rgba(9,106,95,0.3)',
+              '0 0 40px rgba(9,106,95,0.6)',
+              '0 0 20px rgba(9,106,95,0.3)',
+            ],
+          },
+          { duration: 2, repeat: Infinity }
+        );
       }
-    );
-  }
 
-  if (badge) {
-    animate(
-      badge,
-      {
-        y: [0, -10, 0],
-        rotate: [0, 5, -5, 0],
-      },
-      {
-        duration: 4,
-        repeat: Infinity,
-        ease: 'easeInOut',
+      if (badge) {
+        animate(
+          badge,
+          { y: [0, -10, 0], rotate: [0, 5, -5, 0] },
+          { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+        );
       }
-    );
-  }
 
-  const stopInView = inView('#barra', () => {
-    if (titulo) {
-      animate(
-        titulo,
-        {
-          y: [50, 0],
-          opacity: [0, 1],
-        },
-        {
-          duration: 0.8,
-        }
-      );
-    }
+      if (titulo) {
+        animate(titulo, { y: [50, 0], opacity: [0, 1] }, { duration: 0.8 });
+      }
 
-    if (imagen) {
-      animate(
-        imagen,
-        {
-          x: [-50, 0],
-          opacity: [0, 1],
-        },
-        {
-          delay: 0.2,
-          duration: 0.8,
-        }
-      );
-    }
+      if (imagen) {
+        animate(
+          imagen,
+          { x: [-50, 0], opacity: [0, 1] },
+          { delay: 0.2, duration: 0.8 }
+        );
+      }
 
-    if (badge) {
-      animate(
-        badge,
-        {
-          scale: [0.5, 1],
-          opacity: [0, 1],
-        },
-        {
-          delay: 0.4,
-          duration: 0.6,
-        }
-      );
-    }
+      if (badge) {
+        animate(
+          badge,
+          { scale: [0.5, 1], opacity: [0, 1] },
+          { delay: 0.4, duration: 1 }
+        );
+      }
 
-    if (contenido) {
-      animate(
-        contenido,
-        {
-          x: [50, 0],
-          opacity: [0, 1],
-        },
-        {
-          delay: 0.4,
-          duration: 0.8,
-        }
-      );
-    }
+      if (contenido) {
+        animate(
+          contenido,
+          { x: [50, 0], opacity: [0, 1] },
+          { delay: 0.4, duration: 1 }
+        );
+      }
 
-    if (beneficios) {
-      animate(
-        beneficios,
-        {
-          y: [30, 0],
-          opacity: [0, 1],
-        },
-        {
-          delay: 0.6,
-          duration: 0.6,
-        }
-      );
-    }
+      if (beneficios) {
+        animate(
+          beneficios,
+          { y: [30, 0], opacity: [0, 1] },
+          { delay: 0.6, duration: 0.6 }
+        );
+      }
 
-    if (boton) {
-      animate(
-        boton,
-        {
-          y: [20, 0],
-          opacity: [0, 1],
-        },
-        {
-          delay: 0.8,
-          duration: 0.6,
-        }
-      );
-    }
+      if (boton) {
+        animate(
+          boton,
+          { y: [20, 0], opacity: [0, 1] },
+          { delay: 0.8, duration: 0.6 }
+        );
+      }
 
-    stopInView();
-  });
+      stopInView();
+    },
+    { amount: 0.3 }
+  );
 </script>
