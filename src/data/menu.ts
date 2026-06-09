@@ -131,10 +131,10 @@ export const fuertes: MenuItemData[] = [
     tag: 'El Favorito de Siempre',
   },
   {
-    name: 'Lomo Stroganoff',
+    name: 'Lomo Strogonoff',
     price: 'S/35.00',
     description:
-      'Lomo de res y champiñones envueltos en una cremosa salsa stroganoff, acompañado de papas crujientes y ensalada fresca.',
+      'Lomo de res y champiñones envueltos en una cremosa salsa strogonoff, acompañado de papas crujientes y ensalada fresca.',
     tag: 'Suave & Reconfortante',
   },
   {
