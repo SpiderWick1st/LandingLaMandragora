@@ -1,20 +1,33 @@
 ---
+import { Eye } from 'lucide-astro';
+
 interface Props {
   name: string;
   price: string;
   description: string;
   tag?: string;
+  image?: string;
+  category?: string;
   class?: string;
 }
 
-const { name, price, description, tag, class: className } = Astro.props;
+const { name, price, description, tag, image, category, class: className } = Astro.props;
 ---
 
 <div
   class:list={[
-    "bg-neutral-900/20 border border-brand-950/30 p-6 rounded-sm hover:border-brand-600/30 transition-all duration-300 flex flex-col justify-between group",
-    className
+    'menu-item-card bg-neutral-900/20 border border-brand-950/30 p-6 rounded-sm hover:border-brand-600/40 hover:bg-neutral-900/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative',
+    className,
   ]}
+  data-name={name}
+  data-price={price}
+  data-description={description}
+  data-tag={tag || ''}
+  data-image={image || ''}
+  data-category={category || ''}
+  role="button"
+  tabindex="0"
+  aria-label={`Ver detalles de ${name}`}
 >
   <div>
     <div class="flex justify-between items-baseline mb-2">
@@ -29,11 +42,20 @@ const { name, price, description, tag, class: className } = Astro.props;
       {description}
     </p>
   </div>
-  {
-    tag && (
-      <span class="text-[10px] text-brand-500 uppercase tracking-widest mt-4 font-mono">
-        {tag}
-      </span>
-    )
-  }
+
+  <div class="flex items-center justify-between mt-4 pt-2 border-t border-white/5">
+    {
+      tag ? (
+        <span class="text-[10px] text-brand-500 uppercase tracking-widest font-mono">
+          {tag}
+        </span>
+      ) : (
+        <span></span>
+      )
+    }
+    <span class="text-[11px] text-brand-400/80 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+      <Eye class="w-3.5 h-3.5" />
+      <span>Ver foto</span>
+    </span>
+  </div>
 </div>

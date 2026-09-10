@@ -5,7 +5,6 @@ import { Star, MapPin, Phone, Mail } from 'lucide-astro';
 <footer
   class="relative bg-black border-t border-brand-950/20 text-gray-400 py-16 overflow-hidden"
 >
-  <!-- Elemento de fondo difuminado -->
   <div
     class="absolute -bottom-20 -left-20 w-80 h-80 bg-brand-600/5 rounded-full blur-[60px] pointer-events-none z-0"
   >
@@ -13,7 +12,6 @@ import { Star, MapPin, Phone, Mail } from 'lucide-astro';
 
   <div class="container mx-auto px-6 max-w-6xl relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-      <!-- Columna 1: Brand & Bio -->
       <div class="space-y-4">
         <a href="/" class="flex items-center gap-3 group">
           <div
@@ -78,7 +76,6 @@ import { Star, MapPin, Phone, Mail } from 'lucide-astro';
         </div>
       </div>
 
-      <!-- Columna 2: Enlaces Rápidos -->
       <div class="space-y-4">
         <h4
           class="text-white font-serif font-semibold text-sm tracking-widest uppercase"
@@ -131,26 +128,28 @@ import { Star, MapPin, Phone, Mail } from 'lucide-astro';
         </ul>
       </div>
 
-      <!-- Columna 3: Horarios de Atención -->
       <div class="space-y-4">
         <h4
           class="text-white font-serif font-semibold text-sm tracking-widest uppercase"
         >
-          Horario de Atención
+          Happy Hour & Comida
         </h4>
         <ul class="space-y-3 text-sm">
-          <li class="flex justify-between border-b border-neutral-900 pb-2">
-            <span>Domingo a Jueves</span>
-            <span class="text-brand-500">16:00 - 12:00</span>
+          <li
+            class="flex justify-between items-center border-b border-neutral-900 pb-2"
+          >
+            <span>Happy Hour</span>
+            <span class="text-brand-500 font-medium">Hasta las 9:00 PM</span>
           </li>
-          <li class="flex justify-between border-b border-neutral-900 pb-2">
-            <span>Viernes a Sábado</span>
-            <span class="text-brand-500">16:00 - 01:00</span>
+          <li
+            class="flex justify-between items-center border-b border-neutral-900 pb-2"
+          >
+            <span>Cocina</span>
+            <span class="text-brand-500 font-medium">Hasta las 12:00 AM</span>
           </li>
         </ul>
       </div>
 
-      <!-- Columna 4: Contacto & Reservas -->
       <div class="space-y-4">
         <h4
           class="text-white font-serif font-semibold text-sm tracking-widest uppercase"
@@ -176,8 +175,6 @@ import { Star, MapPin, Phone, Mail } from 'lucide-astro';
         </ul>
       </div>
     </div>
-
-    <!-- Barra de derechos reservados -->
     <div
       class="border-t border-neutral-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600"
     >

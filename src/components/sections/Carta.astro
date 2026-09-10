@@ -1,5 +1,13 @@
 ---
-import { GlassWater, Utensils, ChefHat, Flame, Sparkles } from 'lucide-astro';
+import {
+  GlassWater,
+  Utensils,
+  ChefHat,
+  Hamburger,
+  Drumstick,
+  X,
+  MessageCircle,
+} from 'lucide-astro';
 import MenuItem from '../ui/MenuItem.astro';
 import {
   cocteles,
@@ -14,7 +22,6 @@ import {
   id="carta"
   class="relative py-24 bg-black border-t border-brand-950/25"
 >
-  <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px] pointer-events-none z-0"
@@ -23,9 +30,7 @@ import {
   </div>
 
   <div class="container mx-auto px-6 max-w-6xl z-10 relative">
-    <!-- Encabezado de la Sección -->
     <div class="text-center mb-16">
-      <Sparkles class="w-10 h-10 text-brand-500 mx-auto mb-4 animate-pulse" />
       <h2 class="text-4xl sm:text-5xl font-serif tracking-wide text-white mb-4">
         NUESTRA CARTA
       </h2>
@@ -67,14 +72,14 @@ import {
         data-tab="hamburguesas"
         class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
-        <Flame class="w-4 h-4 text-brand-500" />
+        <Hamburger class="w-4 h-4 text-brand-500" />
         Hamburguesas
       </button>
       <button
         data-tab="alitas"
         class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
       >
-        <Sparkles class="w-4 h-4 text-brand-500" />
+        <Drumstick class="w-4 h-4 text-brand-500" />
         Alitas
       </button>
     </div>
@@ -90,6 +95,7 @@ import {
           cocteles.map((item, index) => (
             <MenuItem
               {...item}
+              category="Cócteles"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === cocteles.length - 1 && cocteles.length % 2 !== 0 ? 'last-odd' : ''}
@@ -120,6 +126,7 @@ import {
           entradas.map((item, index) => (
             <MenuItem
               {...item}
+              category="Entradas"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === entradas.length - 1 && entradas.length % 2 !== 0 ? 'last-odd' : ''}
@@ -150,6 +157,7 @@ import {
           fuertes.map((item, index) => (
             <MenuItem
               {...item}
+              category="Platos"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === fuertes.length - 1 && fuertes.length % 2 !== 0 ? 'last-odd' : ''}
@@ -180,6 +188,7 @@ import {
           hamburguesas.map((item, index) => (
             <MenuItem
               {...item}
+              category="Hamburguesas"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === hamburguesas.length - 1 && hamburguesas.length % 2 !== 0 ? 'last-odd' : ''}
@@ -210,6 +219,7 @@ import {
           alitas_y_combos.map((item, index) => (
             <MenuItem
               {...item}
+              category="Alitas & Combos"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === alitas_y_combos.length - 1 && alitas_y_combos.length % 2 !== 0 ? 'last-odd' : ''}
@@ -229,6 +239,103 @@ import {
             </div>
           )
         }
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal  -->
+  <div
+    id="dish-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+  >
+    <div
+      id="dish-modal-card"
+      class="relative w-full max-w-lg bg-[#0a0f0b] border border-brand-500/30 rounded-3xl overflow-hidden shadow-2xl shadow-black/95 transform scale-95 transition-all duration-300 flex flex-col max-h-[90vh]"
+    >
+      <button
+        id="close-dish-modal"
+        type="button"
+        class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/75 hover:bg-brand-950 border border-white/20 hover:border-brand-400 text-white flex items-center justify-center transition-all cursor-pointer shadow-lg group"
+        aria-label="Cerrar vista previa"
+      >
+        <X
+          class="w-5 h-5 text-gray-300 group-hover:text-white group-hover:rotate-90 transition-transform duration-200"
+        />
+      </button>
+
+      <!-- Imagen referencial -->
+      <div
+        class="relative w-full h-64 sm:h-72 bg-neutral-950 overflow-hidden shrink-0"
+      >
+        <img
+          id="modal-dish-img"
+          src=""
+          alt=""
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-[#0a0f0b] via-transparent to-black/20 pointer-events-none"
+        >
+        </div>
+
+        <div class="absolute bottom-4 left-5 flex flex-wrap gap-2 z-10">
+          <span
+            id="modal-dish-category"
+            class="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-brand-500/40 text-brand-300 text-[11px] font-mono tracking-wider uppercase"
+          >
+          </span>
+          <span
+            id="modal-dish-tag"
+            class="px-3 py-1 rounded-full bg-brand-950/90 backdrop-blur-md border border-brand-600/40 text-brand-400 text-[11px] font-mono tracking-wider uppercase"
+          >
+          </span>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-7 overflow-y-auto">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <h3
+            id="modal-dish-name"
+            class="text-2xl sm:text-3xl font-serif text-white tracking-wide"
+          >
+          </h3>
+          <span
+            id="modal-dish-price"
+            class="text-xl sm:text-2xl font-sans font-bold text-brand-400 shrink-0"
+          >
+          </span>
+        </div>
+
+        <p
+          id="modal-dish-description"
+          class="text-gray-300 text-sm leading-relaxed mb-6"
+        >
+        </p>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-brand-950/80"
+        >
+          <a
+            id="modal-whatsapp-btn"
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3 px-4 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-sans tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg shadow-brand-900/30 font-medium"
+          >
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>Pedir por WhatsApp</span>
+          </a>
+          <button
+            id="modal-close-btn"
+            type="button"
+            class="w-full py-3 px-4 bg-brand-950/40 hover:bg-brand-900/40 border border-brand-800/40 text-gray-300 hover:text-white rounded-xl text-xs font-sans tracking-wider transition-all cursor-pointer text-center"
+          >
+            Volver a la carta
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -280,7 +387,6 @@ import {
     button.addEventListener('click', () => {
       const target = button.getAttribute('data-tab');
 
-      // Actualizar botón activo
       buttons.forEach((btn) => {
         btn.classList.remove('active');
         btn.classList.remove('border-brand-700/30');
@@ -295,7 +401,6 @@ import {
       button.classList.add('border-brand-700/30');
       button.classList.add('bg-brand-950/20');
 
-      // Ocultar todas las categorías con opacidad, display: none y restablecer estado de expansión
       categories.forEach((category) => {
         category.classList.remove('opacity-100', 'pointer-events-auto');
         category.classList.add('opacity-0', 'pointer-events-none');
@@ -303,32 +408,26 @@ import {
         category.classList.remove('is-expanded');
       });
 
-      // Restablecer texto de todos los botones de "Ver más"
       document.querySelectorAll('[data-toggle-grid]').forEach((btn) => {
         btn.textContent = 'Ver más';
       });
 
-      // Mostrar categoría activa
       const activeCategory = document.getElementById(`menu-${target}`);
       if (activeCategory) {
         activeCategory.classList.remove('hidden');
-        // Forzar reflow para que el navegador registre el cambio de display
         void activeCategory.offsetWidth;
         activeCategory.classList.remove('opacity-0', 'pointer-events-none');
         activeCategory.classList.add('opacity-100', 'pointer-events-auto');
       }
-
-      // 1. Centrar el botón activo horizontalmente en el scroll en móvil
       button.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
         inline: 'center',
       });
 
-      // 2. Hacer scroll vertical hacia el inicio de la sección 'carta' (restando el alto del header fijo)
       const section = document.getElementById('carta');
       if (section) {
-        const headerOffset = 90; // Alto aproximado del header con padding
+        const headerOffset = 90;
         const elementPosition = section.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -340,12 +439,11 @@ import {
     });
   });
 
-  // Manejar botones de expandir/contraer
   const toggleButtons = document.querySelectorAll('[data-toggle-grid]');
   toggleButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const gridId = btn.getAttribute('data-toggle-grid');
-      if (!gridId) return; // 👈 guard aquí
+      if (!gridId) return;
 
       const grid = document.getElementById(gridId);
       if (grid) {
@@ -353,5 +451,196 @@ import {
         btn.textContent = isExpanded ? 'Ver menos' : 'Ver más';
       }
     });
+  });
+
+  // Lógica del Modal de Vista Previa de Platos / Cócteles
+  const modal = document.getElementById('dish-modal');
+  const modalCard = document.getElementById('dish-modal-card');
+  const closeBtn = document.getElementById('close-dish-modal');
+  const closeBottomBtn = document.getElementById('modal-close-btn');
+  const modalImg = document.getElementById(
+    'modal-dish-img'
+  ) as HTMLImageElement | null;
+  const modalName = document.getElementById('modal-dish-name');
+  const modalPrice = document.getElementById('modal-dish-price');
+  const modalDesc = document.getElementById('modal-dish-description');
+  const modalCategory = document.getElementById('modal-dish-category');
+  const modalTag = document.getElementById('modal-dish-tag');
+  const modalWhatsapp = document.getElementById(
+    'modal-whatsapp-btn'
+  ) as HTMLAnchorElement | null;
+
+  const ITEM_IMAGES: Record<string, string> = {
+    // Cócteles Insignia
+    'Sinatra Forever':
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80',
+    'Gimme The Power':
+      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+    'Marley Punch':
+      'https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=800&q=80',
+    'La Mula de X Dinero':
+      'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80',
+    'Charly Charly':
+      'https://images.unsplash.com/photo-1587223081156-610f4439c2c6?auto=format&fit=crop&w=800&q=80',
+    'Amy Blake':
+      'https://images.unsplash.com/photo-1560512823-829485b8bf24?auto=format&fit=crop&w=800&q=80',
+    'Orishas Fashioned':
+      'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80',
+    Magdalena:
+      'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80',
+    'Tropico Oscuro':
+      'https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=800&q=80',
+    'Smoke & Strings':
+      'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80',
+    'Jungle Fire Zombie':
+      'https://images.unsplash.com/photo-1541546339599-ecdbfcf77378?auto=format&fit=crop&w=800&q=80',
+
+    // Entradas
+    'Tequeños de Jamón y Queso':
+      'https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80',
+    'Tequeños Chicken Thai Roll':
+      'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80',
+    'Papas Parrilleras':
+      'https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=800&q=80',
+    'Papas Bravas Carretilleras':
+      'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80',
+    'Ensalada César':
+      'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80',
+
+    // Platos Fuertes
+    'Lomo Saltado':
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+    'Lomo Strogonoff':
+      'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=800&q=80',
+    'Enrollado Cordon Bleu':
+      'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80',
+    'Fettuccini a la Huancaína con Lomo Saltado':
+      'https://images.unsplash.com/photo-1621996346565-e3d5d6281696?auto=format&fit=crop&w=800&q=80',
+    'Crispi de Pollo':
+      'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80',
+    'Costillas de Cerdo BBQ':
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+    'Costillas de Cerdo Búfalo':
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+
+    // Hamburguesas
+    'Hamburguesa Montada Mandrágora':
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80',
+    'Hamburguesa a lo Pobre':
+      'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=80',
+    'Hamburguesa BBQ Tocino':
+      'https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=800&q=80',
+    'Hamburguesa Mandrágora':
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80',
+
+    // Alitas & Combos
+    'Alitas BBQ':
+      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80',
+    'Alitas BBQ Maracuyá':
+      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=800&q=80',
+    'Alitas BBQ Tocino':
+      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80',
+    'Alitas Acevichadas':
+      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=800&q=80',
+    'Alitas Búfalo':
+      'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=800&q=80',
+    'Alitas Teriyaki':
+      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80',
+    'Alitas Frutos del Bosque':
+      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=800&q=80',
+    'Combo La Mandrágora':
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+    'Combo Especial LM':
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+  };
+
+  const CATEGORY_FALLBACKS: Record<string, string> = {
+    Cócteles:
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80',
+    Entradas:
+      'https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80',
+    Platos:
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+    Hamburguesas:
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80',
+    'Alitas & Combos':
+      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80',
+  };
+
+  function openDishModal(card: HTMLElement) {
+    const name = card.getAttribute('data-name') || '';
+    const price = card.getAttribute('data-price') || '';
+    const desc = card.getAttribute('data-description') || '';
+    const tag = card.getAttribute('data-tag') || '';
+    const category = card.getAttribute('data-category') || '';
+    const customImg = card.getAttribute('data-image') || '';
+
+    const imgSrc =
+      customImg ||
+      ITEM_IMAGES[name] ||
+      CATEGORY_FALLBACKS[category] ||
+      CATEGORY_FALLBACKS['Cócteles'];
+
+    if (modalImg) {
+      modalImg.src = imgSrc;
+      modalImg.alt = name;
+    }
+    if (modalName) modalName.textContent = name;
+    if (modalPrice) modalPrice.textContent = price;
+    if (modalDesc) modalDesc.textContent = desc;
+    if (modalCategory) modalCategory.textContent = category || 'Especialidad';
+
+    if (modalTag) {
+      if (tag) {
+        modalTag.textContent = tag;
+        modalTag.classList.remove('hidden');
+      } else {
+        modalTag.classList.add('hidden');
+      }
+    }
+
+    if (modalWhatsapp) {
+      modalWhatsapp.href = `https://wa.me/51999999999?text=${encodeURIComponent(`Hola La Mandrágora, deseo consultar o pedir: ${name} (${price})`)}`;
+    }
+
+    if (modal && modalCard) {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      modalCard.classList.remove('scale-95');
+      modalCard.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDishModal() {
+    if (modal && modalCard) {
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.querySelectorAll('.menu-item-card').forEach((card) => {
+    card.addEventListener('click', () => openDishModal(card as HTMLElement));
+    card.addEventListener('keydown', (e) => {
+      if (
+        (e as KeyboardEvent).key === 'Enter' ||
+        (e as KeyboardEvent).key === ' '
+      ) {
+        e.preventDefault();
+        openDishModal(card as HTMLElement);
+      }
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeDishModal);
+  closeBottomBtn?.addEventListener('click', closeDishModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeDishModal();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDishModal();
   });
 </script>

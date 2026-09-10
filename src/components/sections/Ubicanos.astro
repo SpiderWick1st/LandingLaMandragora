@@ -1,56 +1,206 @@
 ---
-import { MapPin, ExternalLink } from 'lucide-astro';
+import { Navigation, ExternalLink, MapPin, Clock } from 'lucide-astro';
+import '../../styles/map.css';
 ---
 
 <section
-  id="Ubicanos"
-  class="relative py-24 bg-black border-t border-brand-950/25"
+  id="ubicanos"
+  class="relative py-20 bg-black border-t border-brand-950/25 overflow-hidden"
 >
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px]"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-brand-950/20 rounded-full blur-[160px]"
     >
     </div>
   </div>
 
   <div class="container mx-auto px-6 max-w-6xl relative z-10">
-    <div class="text-center mb-16">
-      <MapPin class="w-10 h-10 text-brand-500 mx-auto mb-4" />
-      <h2 class="text-4xl sm:text-5xl font-serif tracking-wide text-white mb-4">
+    <div class="text-center mb-12">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-400 text-xs tracking-widest uppercase mb-4"
+      >
+        <span>Centro Histórico • Arequipa</span>
+      </div>
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-serif tracking-wide text-white mb-3"
+      >
         ENCUÉNTRANOS
       </h2>
-      <div class="w-24 h-1 bg-brand-600 mx-auto mb-6"></div>
-      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
-        Calle San Francisco 300-A, Arequipa, Perú
-      </p>
+      <div class="w-16 h-0.5 bg-brand-500 mx-auto mb-4"></div>
     </div>
 
-    <div
-      class="rounded-sm overflow-hidden border border-brand-950/30 h-96 w-full mb-6"
-    >
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239.2224586552962!2d-71.5351857130956!3d-16.39639511952254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424b969dae1eaf%3A0x264b48a8ab6dd333!2sLa%20mandragora%20restaurante!5e0!3m2!1ses-419!2spe!4v1781038090073!5m2!1ses-419!2spe"
-        width="100%"
-        height="100%"
-        style="border:0;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+        <div
+          class="p-6 rounded-2xl bg-[#090f0a]/90 border border-brand-500/20 backdrop-blur-md shadow-xl shadow-black/60"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-brand-950/80 border border-brand-700/40 flex items-center justify-center shrink-0 text-brand-400"
+            >
+              <MapPin class="w-5 h-5" />
+            </div>
+            <div>
+              <span
+                class="text-[11px] font-mono uppercase tracking-widest text-brand-400"
+                >Ubicación</span
+              >
+              <h3 class="text-lg font-serif text-white font-semibold mt-0.5">
+                Calle San Francisco 300-A
+              </h3>
+              <p class="text-xs text-gray-400 mt-1">Cercado, Arequipa, Perú</p>
+              <div
+                class="mt-3 pt-3 border-t border-brand-950/80 flex items-center gap-2 text-xs text-brand-300/90"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <div class="text-center">
-      <a
-        href="https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3
-        border border-brand-600 rounded-sm text-sm font-sans tracking-wider
-        text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all
-        duration-300"
-      >
-        <ExternalLink class="w-4 h-4 text-brand-500" />
-        Abrir en Google Maps
-      </a>
+        <div
+          class="p-6 rounded-2xl bg-[#090f0a]/90 border border-brand-500/20 backdrop-blur-md shadow-xl shadow-black/60"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-brand-950/80 border border-brand-700/40 flex items-center justify-center shrink-0 text-brand-400"
+            >
+              <Clock class="w-5 h-5" />
+            </div>
+            <div class="flex-1">
+              <span
+                class="text-[11px] font-mono uppercase tracking-widest text-brand-400"
+                >Horario de Atención</span
+              >
+              <h3 class="text-lg font-serif text-white font-semibold mt-0.5">
+                Atención al Público
+              </h3>
+
+              <div
+                class="mt-3 pt-3 border-t border-brand-950/80 flex justify-between items-center text-sm"
+              >
+                <span class="text-gray-300">Lunes a Domingo</span>
+                <span
+                  class="font-mono text-brand-400 font-semibold text-xs sm:text-sm bg-brand-950/60 px-2.5 py-1 rounded-md border border-brand-800/40"
+                >
+                  3:00 PM - 11:30 PM
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full py-3.5 px-5 bg-brand-950/60 hover:bg-brand-600 border border-brand-600/60 hover:border-brand-500 rounded-xl text-xs font-sans tracking-wider text-white transition-all duration-300 shadow-lg shadow-black/50 flex items-center justify-center gap-2.5 group cursor-pointer"
+        >
+          <Navigation
+            class="w-4 h-4 text-brand-400 group-hover:text-white transition-colors"
+          />
+          <span>Abrir ruta en Google Maps</span>
+          <ExternalLink
+            class="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors"
+          />
+        </a>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div
+          class="relative h-full min-h-[440px] rounded-3xl overflow-hidden border border-brand-500/20 shadow-2xl shadow-black/90 bg-[#070b08] p-1 group"
+        >
+          <div
+            id="map"
+            class="w-full h-full min-h-[440px] rounded-[22px] overflow-hidden relative z-0"
+          >
+          </div>
+
+          <div
+            class="absolute inset-0 pointer-events-none rounded-[22px] ring-1 ring-inset ring-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]"
+          >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const LAT = -16.396349694412603;
+  const LNG = -71.5353123583828;
+  const STADIA_KEY = import.meta.env.PUBLIC_STADIA_API_KEY;
+
+  const mapContainer = document.getElementById('map');
+  if (mapContainer) {
+    const map = L.map('map', {
+      center: [LAT, LNG],
+      zoom: 18,
+      minZoom: 15,
+      maxZoom: 20,
+      zoomControl: false,
+      scrollWheelZoom: false,
+    });
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    const tileUrl = STADIA_KEY
+      ? `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${STADIA_KEY}`
+      : `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png`;
+
+    L.tileLayer(tileUrl, {
+      attribution:
+        '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener noreferrer">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>',
+      maxZoom: 20,
+    }).addTo(map);
+
+    map.whenReady(() => {
+      requestAnimationFrame(() => {
+        map.invalidateSize();
+        map.setView([LAT, LNG], 18);
+      });
+    });
+
+    const lmIcon = L.divIcon({
+      className: 'custom-leaflet-pin',
+      html: `
+        <div class="relative flex flex-col items-center -translate-x-1/2 -translate-y-full cursor-pointer group select-none">
+          <!-- Etiqueta superior permanente -->
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/90 backdrop-blur-md border border-brand-400/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
+
+            <span class="font-serif text-[11px] tracking-wider text-brand-200">La Mandrágora</span>
+          </div>
+
+          <!-- Pin principal estilizado con copa retro -->
+          <div class="relative flex items-center justify-center">
+            <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-400/50 opacity-75"></span>
+            <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-500 via-brand-700 to-brand-900 border-2 border-brand-200/90 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 3h16l-7 8.5V19h3a1 1 0 010 2H8a1 1 0 010-2h3v-7.5L4 3z"/>
+                <circle cx="16.5" cy="4.5" r="1" fill="#F2C94C"/>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Sombra proyectada en el suelo -->
+          <div class="w-5 h-1.5 bg-black/70 rounded-full blur-[2px] mt-1"></div>
+        </div>
+      `,
+      iconSize: [0, 0],
+    });
+
+    const marker = L.marker([LAT, LNG], { icon: lmIcon }).addTo(map);
+    marker.bindPopup(
+      `
+      <div class="p-2 text-center min-w-[180px]">
+        <span class="text-[10px] font-mono tracking-widest text-brand-400 uppercase">Restaurante</span>
+        <p class="font-serif text-sm font-bold text-white mt-1 mb-0.5">La Mandrágora</p>
+        <p class="text-xs text-gray-300 m-0">San Francisco 300-A</p>
+      </div>
+    `,
+      { className: 'lm-popup' }
+    );
+  }
+</script>

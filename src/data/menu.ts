@@ -3,6 +3,7 @@ export interface MenuItemData {
   price: string;
   description: string;
   tag?: string;
+  image?: string;
 }
 
 export const cocteles: MenuItemData[] = [
