@@ -5,94 +5,98 @@ import '../../styles/map.css';
 
 <section
   id="ubicanos"
-  class="relative py-20 bg-black border-t border-brand-950/25 overflow-hidden"
+  class="relative py-24 bg-black border-t border-brand-950/25 overflow-hidden"
 >
+  <!-- Fondo con imagen y degradado estilo Hero -->
   <div class="absolute inset-0 pointer-events-none z-0">
     <img
       src="https://images.unsplash.com/photo-1701722952679-beffce26d77a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxlbGVnYW50JTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwZGFyayUyMGFtYmllbnR8ZW58MXx8fHwxNzc5NDkyNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080"
       alt="Interior de La Mandrágora"
-      class="w-full h-full object-cover opacity-40"
+      class="w-full h-full object-cover opacity-30"
     />
     <div
-      class="absolute inset-0 bg-linear-to-b from-black via-black/75 to-black"
+      class="absolute inset-0 bg-linear-to-b from-black via-black/80 to-black"
     >
     </div>
   </div>
 
   <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-brand-950/20 rounded-full blur-[160px]"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/20 rounded-full blur-[140px]"
     >
     </div>
   </div>
 
   <div class="container mx-auto px-6 max-w-6xl relative z-10">
-    <div class="text-center mb-12">
-      <div
-        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-400 text-xs tracking-widest uppercase mb-4"
-      >
-        <span>Centro Histórico • Arequipa</span>
-      </div>
+    <div class="text-center mb-16">
       <h2
-        class="text-3xl sm:text-4xl md:text-5xl font-serif tracking-wide text-white mb-3"
+        class="text-4xl sm:text-5xl font-serif tracking-wide text-white mb-4"
       >
-        ENCUÉNTRANOS
+        Ubícanos
       </h2>
-      <div class="w-16 h-0.5 bg-brand-500 mx-auto mb-4"></div>
+      <div class="w-24 h-1 bg-brand-600 mx-auto mb-6"></div>
+      <p
+        class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
+      >
+        Ven a vivir la experiencia mística y retro en el corazón del Centro Histórico de Arequipa.
+      </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-      <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+        <!-- Tarjeta Ubicación -->
         <div
-          class="p-6 rounded-2xl bg-[#090f0a]/90 border border-brand-500/20 backdrop-blur-md shadow-xl shadow-black/60"
+          class="p-6 rounded-sm bg-neutral-900/20 border border-brand-950/40 hover:border-brand-600/40 backdrop-blur-md shadow-2xl transition-all duration-300"
         >
           <div class="flex items-start gap-4">
             <div
-              class="w-11 h-11 rounded-xl bg-brand-950/80 border border-brand-700/40 flex items-center justify-center shrink-0 text-brand-400"
+              class="w-12 h-12 rounded-sm bg-brand-950/40 border border-brand-800/30 flex items-center justify-center shrink-0 text-brand-500"
             >
               <MapPin class="w-5 h-5" />
             </div>
             <div>
               <span
-                class="text-[11px] font-mono uppercase tracking-widest text-brand-400"
+                class="text-[10px] font-mono uppercase tracking-widest text-brand-500 block mb-1"
                 >Ubicación</span
               >
-              <h3 class="text-lg font-serif text-white font-semibold mt-0.5">
+              <h3 class="text-xl font-serif text-white font-semibold">
                 Calle San Francisco 300-A
               </h3>
-              <p class="text-xs text-gray-400 mt-1">Cercado, Arequipa, Perú</p>
-              <div
-                class="mt-3 pt-3 border-t border-brand-950/80 flex items-center gap-2 text-xs text-brand-300/90"
-              >
-              </div>
+              <p class="text-sm text-gray-400 mt-1 leading-relaxed">
+                Cercado, Arequipa, Perú
+              </p>
+              <p class="text-xs text-brand-400 mt-2 font-mono">
+                A media cuadra de la Plaza de Armas
+              </p>
             </div>
           </div>
         </div>
 
+        <!-- Tarjeta Horario -->
         <div
-          class="p-6 rounded-2xl bg-[#090f0a]/90 border border-brand-500/20 backdrop-blur-md shadow-xl shadow-black/60"
+          class="p-6 rounded-sm bg-neutral-900/20 border border-brand-950/40 hover:border-brand-600/40 backdrop-blur-md shadow-2xl transition-all duration-300"
         >
           <div class="flex items-start gap-4">
             <div
-              class="w-11 h-11 rounded-xl bg-brand-950/80 border border-brand-700/40 flex items-center justify-center shrink-0 text-brand-400"
+              class="w-12 h-12 rounded-sm bg-brand-950/40 border border-brand-800/30 flex items-center justify-center shrink-0 text-brand-500"
             >
               <Clock class="w-5 h-5" />
             </div>
             <div class="flex-1">
               <span
-                class="text-[11px] font-mono uppercase tracking-widest text-brand-400"
+                class="text-[10px] font-mono uppercase tracking-widest text-brand-500 block mb-1"
                 >Horario de Atención</span
               >
-              <h3 class="text-lg font-serif text-white font-semibold mt-0.5">
+              <h3 class="text-xl font-serif text-white font-semibold">
                 Atención al Público
               </h3>
 
               <div
-                class="mt-3 pt-3 border-t border-brand-950/80 flex justify-between items-center text-sm"
+                class="mt-4 pt-4 border-t border-brand-950/50 flex justify-between items-center text-sm"
               >
                 <span class="text-gray-300">Lunes a Domingo</span>
                 <span
-                  class="font-mono text-brand-400 font-semibold text-xs sm:text-sm bg-brand-950/60 px-2.5 py-1 rounded-md border border-brand-800/40"
+                  class="font-mono text-brand-400 font-semibold text-xs sm:text-sm bg-brand-950/40 px-3 py-1 rounded-sm border border-brand-700/30"
                 >
                   3:00 PM - 11:30 PM
                 </span>
@@ -101,34 +105,36 @@ import '../../styles/map.css';
           </div>
         </div>
 
+        <!-- Botón Google Maps -->
         <a
           href="https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8"
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full py-3.5 px-5 bg-brand-950/60 hover:bg-brand-600 border border-brand-600/60 hover:border-brand-500 rounded-xl text-xs font-sans tracking-wider text-white transition-all duration-300 shadow-lg shadow-black/50 flex items-center justify-center gap-2.5 group cursor-pointer"
+          class="w-full py-4 px-6 bg-brand-600 hover:bg-brand-700 text-white rounded-sm text-sm font-sans tracking-wider transition-all duration-300 shadow-lg hover:shadow-brand-900/50 flex items-center justify-center gap-2.5 group cursor-pointer"
         >
           <Navigation
-            class="w-4 h-4 text-brand-400 group-hover:text-white transition-colors"
+            class="w-4 h-4 text-white/90 group-hover:text-white transition-colors"
           />
           <span>Abrir ruta en Google Maps</span>
           <ExternalLink
-            class="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors"
+            class="w-3.5 h-3.5 text-white/70 group-hover:text-white transition-colors"
           />
         </a>
       </div>
 
+      <!-- Contenedor del Mapa -->
       <div class="lg:col-span-7">
         <div
-          class="relative h-full `min-h-[440px]` rounded-3xl overflow-hidden border border-brand-500/20 shadow-2xl shadow-black/90 bg-[#070b08] p-1 group"
+          class="relative h-full min-h-[440px] rounded-sm overflow-hidden border border-brand-950/40 shadow-2xl bg-neutral-900/20 p-1 group hover:border-brand-600/40 transition-colors duration-300"
         >
           <div
             id="map"
-            class="w-full h-full `min-h-[440px]` rounded-[22px] overflow-hidden relative z-0"
+            class="w-full h-full min-h-[440px] rounded-sm overflow-hidden relative z-0"
           >
           </div>
 
           <div
-            class="absolute inset-0 pointer-events-none rounded-[22px] ring-1 ring-inset ring-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]"
+            class="absolute inset-0 pointer-events-none rounded-sm ring-1 ring-inset ring-white/5 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]"
           >
           </div>
         </div>
@@ -180,18 +186,16 @@ import '../../styles/map.css';
       html: `
         <div class="relative flex flex-col items-center -translate-x-1/2 -translate-y-full cursor-pointer group select-none">
           <!-- Etiqueta superior permanente -->
-          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/90 backdrop-blur-md border border-brand-400/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
-
-            <span class="font-serif text-[11px] tracking-wider text-brand-200">La Mandrágora</span>
+          <div class="flex items-center gap-1.5 px-3 py-1 rounded-sm bg-black/90 backdrop-blur-md border border-brand-600/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
+            <span class="font-serif text-[11px] tracking-wider text-brand-300">La Mandrágora</span>
           </div>
 
-          <!-- Pin principal estilizado con copa retro -->
+          <!-- Pin principal estilizado acorde a la marca -->
           <div class="relative flex items-center justify-center">
-            <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-400/50 opacity-75"></span>
-            <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-500 via-brand-700 to-brand-900 border-2 border-brand-200/90 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
+            <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-500/40 opacity-75"></span>
+            <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-600 to-brand-800 border-2 border-brand-400/80 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M4 3h16l-7 8.5V19h3a1 1 0 010 2H8a1 1 0 010-2h3v-7.5L4 3z"/>
-                <circle cx="16.5" cy="4.5" r="1" fill="#F2C94C"/>
               </svg>
             </div>
           </div>
@@ -206,10 +210,11 @@ import '../../styles/map.css';
     const marker = L.marker([LAT, LNG], { icon: lmIcon }).addTo(map);
     marker.bindPopup(
       `
-      <div class="p-2 text-center min-w-[180px]">
-        <span class="text-[10px] font-mono tracking-widest text-brand-400 uppercase">Restaurante</span>
-        <p class="font-serif text-sm font-bold text-white mt-1 mb-0.5">La Mandrágora</p>
+      <div class="p-3 text-center min-w-[190px]">
+        <span class="text-[10px] font-mono tracking-widest text-brand-400 uppercase block mb-1">Restobar Retro</span>
+        <p class="font-serif text-base font-bold text-white mb-0.5">La Mandrágora</p>
         <p class="text-xs text-gray-300 m-0">San Francisco 300-A</p>
+        <p class="text-[11px] text-brand-400 mt-2 font-mono">3:00 PM - 11:30 PM</p>
       </div>
     `,
       { className: 'lm-popup' }
