@@ -3,13 +3,14 @@
 >
   <div class="absolute inset-0">
     <video
+      id="hero-video"
       autoplay
       muted
       loop
       playsinline
       class="absolute inset-0 w-full h-full object-cover"
     >
-      <source src="/videos/cocktail.mp4" type="video/mp4" />
+      <!-- <source src="/videos/cocktail.mp4" type="video/mp4" /> -->
     </video>
     <div
       class="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black"
@@ -72,6 +73,23 @@
   const logo = document.getElementById('logo');
   const iconSiguiente = document.getElementById('icon-siguiente');
   const iconPunto = document.getElementById('icon-punto');
+
+  function setRandomVideo() {
+    const videos = ['/videos/cocktail.mp4', '/videos/dish.mp4'];
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    if (!video) return;
+
+    video.innerHTML = '';
+    const chosen = videos[Math.floor(Math.random() * videos.length)];
+    const source = document.createElement('source');
+    source.src = chosen;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    video.load();
+  }
+
+  setRandomVideo();
+  document.addEventListener('astro:page-load', setRandomVideo);
 
   iconSiguiente?.addEventListener('click', () => {
     document.getElementById('ambientes')?.scrollIntoView({
