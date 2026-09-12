@@ -12,7 +12,7 @@
       <source src="/videos/cocktail.mp4" type="video/mp4" />
     </video>
     <div
-      class="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80 md:to-black/90"
+      class="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black"
     >
     </div>
   </div>
@@ -39,36 +39,19 @@
       <p
         class="text-brand-500 text-base sm:text-xl md:text-2xl tracking-widest mb-4 text-center"
       >
-        RESTOBAR RETRO
+        RESTAURANTE
       </p>
       <p
         class="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed text-center px-2"
       >
-        2 Pisos • Banda en Vivo • DJ • Cocteles de Autor • Ambiente Retro
+        Una noche para recordar. <br />
+        Terraza y Salón: dos experiencias en el corazón de Arequipa.
       </p>
     </div>
 
     <div
-      id="botones-secundarios"
-      class="flex flex-col sm:flex-row gap-4 justify-center mt-8 px-4 w-full sm:w-auto"
-    >
-      <a
-        href="#reservas"
-        class="px-6 sm:px-8 py-3 sm:py-4 bg-brand-600 hover:bg-brand-700 transition-all duration-300 rounded-sm tracking-wider shadow-lg hover:shadow-brand-900/50 text-white text-center text-sm sm:text-base"
-      >
-        Reserva Mesa
-      </a>
-      <a
-        href="#retro"
-        class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-brand-600 text-white hover:bg-brand-600/10 transition-all duration-300 rounded-sm tracking-wider text-center text-sm sm:text-base"
-      >
-        Descubre mas
-      </a>
-    </div>
-
-    <div
       id="icon-siguiente"
-      class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block"
+      class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block cursor-pointer"
     >
       <div
         class="w-5 h-8 sm:w-6 sm:h-10 border-2 border-brand-500 rounded-full flex justify-center"
@@ -89,6 +72,13 @@
   const logo = document.getElementById('logo');
   const iconSiguiente = document.getElementById('icon-siguiente');
   const iconPunto = document.getElementById('icon-punto');
+
+  iconSiguiente?.addEventListener('click', () => {
+    document.getElementById('ambientes')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  });
 
   animate(
     logo,
