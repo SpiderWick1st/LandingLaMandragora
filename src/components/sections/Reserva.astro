@@ -352,7 +352,10 @@ import {
   ) as HTMLButtonElement | null;
   const submitLabel = document.getElementById('reserva-submit-label');
 
-  const API_BASE = (import.meta.env.RESERVA_API_URL ?? '').replace(/\/+$/, '');
+  const API_BASE = (import.meta.env.PUBLIC_RESERVA_API_URL ?? '').replace(
+    /\/+$/,
+    ''
+  );
   const RESERVAS_URL = API_BASE ? `${API_BASE}/reservas` : '';
 
   function getLocalDateString() {
