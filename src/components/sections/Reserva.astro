@@ -214,7 +214,11 @@ import {
                 <option value="6">6 personas</option>
                 <option value="7">7 personas</option>
                 <option value="8">8 personas</option>
-                <option value="9+">9 o más</option>
+                <option value="9">9 personas</option>
+                <option value="10">10 personas</option>
+                <option value="12">12 personas</option>
+                <option value="15">15 personas</option>
+                <option value="20">20 personas</option>
               </select>
               <Users
                 class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-400"
@@ -250,10 +254,11 @@ import {
 
         <div class="mt-7">
           <button
+            id="reserva-submit"
             type="submit"
-            class="group flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-sm font-semibold tracking-wide text-white shadow-lg shadow-brand-950/40 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-brand-900/50 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black"
+            class="group flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-sm font-semibold tracking-wide text-white shadow-lg shadow-brand-950/40 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-brand-900/50 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
           >
-            Solicitar reserva
+            <span id="reserva-submit-label">Solicitar reserva</span>
             <ArrowRight
               class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
             />
@@ -261,7 +266,7 @@ import {
 
           <p
             id="reserva-feedback"
-            class="mt-4 hidden rounded-xl border border-brand-700/40 bg-brand-950/50 px-4 py-3 text-sm leading-relaxed text-brand-200"
+            class="mt-4 hidden rounded-xl border px-4 py-3 text-sm leading-relaxed"
             role="status"
             aria-live="polite"
           >
@@ -302,6 +307,24 @@ import {
     color: white;
   }
 
+  #reserva-feedback.is-success {
+    border-color: rgba(74, 124, 80, 0.5);
+    background: rgba(74, 124, 80, 0.12);
+    color: rgb(187 220 190);
+  }
+
+  #reserva-feedback.is-error {
+    border-color: rgba(220, 38, 38, 0.45);
+    background: rgba(220, 38, 38, 0.1);
+    color: rgb(253 186 186);
+  }
+
+  #reserva-feedback.is-loading {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgb(209 213 219);
+  }
+
   .reveal-reserva {
     opacity: 0;
     transform: translateY(32px);
@@ -324,6 +347,13 @@ import {
     'fecha-reserva'
   ) as HTMLInputElement | null;
   const feedback = document.getElementById('reserva-feedback');
+  const submitButton = document.getElementById(
+    'reserva-submit'
+  ) as HTMLButtonElement | null;
+  const submitLabel = document.getElementById('reserva-submit-label');
+
+  const API_BASE = (import.meta.env.PUBLIC_API_URL ?? '').replace(/\/+$/, '');
+  const RESERVAS_URL = API_BASE ? `${API_BASE}/reservas` : '';
 
   function getLocalDateString() {
     const today = new Date();
@@ -333,56 +363,109 @@ import {
     return `${year}-${month}-${day}`;
   }
 
+  function showFeedback(
+    message: string,
+    state: 'success' | 'error' | 'loading'
+  ) {
+    if (!feedback) return;
+
+    feedback.textContent = message;
+    feedback.classList.remove('hidden');
+    feedback.classList.remove('is-success', 'is-error', 'is-loading');
+    feedback.classList.add(`is-${state}`);
+  }
+
+  function setLoading(isLoading: boolean) {
+    if (submitButton) submitButton.disabled = isLoading;
+    if (submitLabel)
+      submitLabel.textContent = isLoading ? 'Enviando…' : 'Solicitar reserva';
+  }
+
+  function formatFieldErrors(payload: {
+    errors?: Record<string, string[]>;
+  }): string | null {
+    if (!payload.errors) return null;
+
+    const mensajes = Object.values(payload.errors).flat();
+
+    return mensajes.length > 0 ? mensajes.join(' ') : null;
+  }
+
   if (fechaReserva) {
     fechaReserva.min = getLocalDateString();
   }
 
-  reservaForm?.addEventListener('submit', (event) => {
+  reservaForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     if (!reservaForm.reportValidity()) return;
 
-    const formData = new FormData(reservaForm);
-    const nombre = String(formData.get('nombre') ?? '');
-    const telefono = String(formData.get('telefono') ?? '');
-    const correo = String(formData.get('correo') ?? '');
-    const fecha = String(formData.get('fecha') ?? '');
-    const hora = String(formData.get('hora') ?? '');
-    const personas = String(formData.get('personas') ?? '');
-    const ambiente = String(formData.get('ambiente') ?? '');
-    const comentario = String(formData.get('comentario') ?? '').trim();
-
-    const asunto = `Solicitud de reserva - ${nombre}`;
-    const cuerpo = [
-      'Hola, quisiera solicitar una reserva en La Mandrágora.',
-      '',
-      `Nombre: ${nombre}`,
-      `Teléfono: ${telefono}`,
-      `Correo: ${correo}`,
-      `Fecha: ${fecha}`,
-      `Hora: ${hora}`,
-      `Personas: ${personas}`,
-      `Ambiente: ${ambiente}`,
-      comentario ? `Comentario: ${comentario}` : '',
-      '',
-      'Quedo atento(a) a la confirmación. Gracias.',
-    ]
-      .filter(Boolean)
-      .join('\n');
-
-    if (feedback) {
-      feedback.textContent =
-        'Abriremos Gmail con tu solicitud preparada. Revisa los datos y envía el correo para solicitar tu reserva.';
-      feedback.classList.remove('hidden');
+    if (!RESERVAS_URL) {
+      showFeedback(
+        'La reserva en línea no está disponible por el momento. Escríbenos por redes sociales.',
+        'error'
+      );
+      return;
     }
 
-    const gmailUrl =
-      `https://mail.google.com/mail/?view=cm&fs=1` +
-      `&to=${encodeURIComponent('reservas@lamandragora.pe')}` +
-      `&su=${encodeURIComponent(asunto)}` +
-      `&body=${encodeURIComponent(cuerpo)}`;
+    const formData = new FormData(reservaForm);
+    const comentario = String(formData.get('comentario') ?? '').trim();
 
-    window.open(gmailUrl, '_blank');
+    const payload = {
+      nombre: String(formData.get('nombre') ?? '').trim(),
+      telefono: String(formData.get('telefono') ?? '').trim(),
+      correo: String(formData.get('correo') ?? '').trim(),
+      fecha: String(formData.get('fecha') ?? ''),
+      hora: String(formData.get('hora') ?? ''),
+      personas: Number(formData.get('personas') ?? 0),
+      ambiente: String(formData.get('ambiente') ?? '').trim(),
+      comentario: comentario === '' ? null : comentario,
+    };
+
+    setLoading(true);
+    showFeedback('Enviando tu solicitud de reserva…', 'loading');
+
+    try {
+      const response = await fetch(RESERVAS_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const body = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const detalle =
+          body.code === 'RESERVA_CONFLICTO'
+            ? body.message
+            : (formatFieldErrors(body) ?? body.message);
+
+        throw new Error(
+          detalle ??
+            'No pudimos registrar tu reserva. Inténtalo nuevamente en unos minutos.'
+        );
+      }
+
+      showFeedback(
+        '¡Reserva registrada! Te contactaremos para confirmar tu mesa.',
+        'success'
+      );
+      reservaForm.reset();
+    } catch (error) {
+      const mensaje =
+        error instanceof TypeError
+          ? 'No pudimos conectar con el servidor. Revisa tu conexión a internet e inténtalo nuevamente.'
+          : error instanceof Error
+            ? error.message
+            : 'No pudimos registrar tu reserva. Inténtalo nuevamente en unos minutos.';
+
+      showFeedback(mensaje, 'error');
+    } finally {
+      setLoading(false);
+    }
   });
 
   const reservaReveals = document.querySelectorAll('.reveal-reserva');
