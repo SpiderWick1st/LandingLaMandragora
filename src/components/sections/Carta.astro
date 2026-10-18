@@ -96,64 +96,75 @@ import {
     <div
       class="sticky top-20 z-30 -mx-6 mb-10 border-y border-brand-950/40 bg-black/90 px-6 py-3 backdrop-blur-xl md:mx-0 md:rounded-sm md:border"
     >
-      <div
-        class="-mx-1 flex items-center gap-2 overflow-x-auto scrollbar-none px-1 snap-x snap-mandatory md:justify-center"
-      >
-        <span
-          class="shrink-0 pl-1 pr-1 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500"
+      <div class="md:overflow-x-auto md:scrollbar-none">
+        <div
+          class="flex flex-col gap-2 md:mx-auto md:w-max md:flex-row md:items-center md:gap-2"
         >
-          Para beber
-        </span>
-        <button
-          data-tab="cocteles"
-          class="tab-btn active shrink-0 snap-center px-5 py-2.5 border border-brand-700/30 rounded-full text-sm font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
-        >
-          <GlassWater class="w-4 h-4 text-brand-500" />
-          Cócteles
-        </button>
-        <button
-          data-tab="mocktails"
-          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-        >
-          <CupSoda class="w-4 h-4 text-brand-500" />
-          Mocktails
-        </button>
+          <div
+            class="-mx-1 flex items-center gap-2 overflow-x-auto scrollbar-none px-1 snap-x snap-mandatory md:mx-0 md:overflow-visible md:px-0"
+          >
+            <span
+              class="shrink-0 pl-1 pr-1 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500"
+            >
+              Para beber
+            </span>
+            <button
+              data-tab="cocteles"
+              class="tab-btn active shrink-0 snap-center px-5 py-2.5 border border-brand-700/30 rounded-full text-sm font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <GlassWater class="w-4 h-4 text-brand-500" />
+              Cócteles
+            </button>
+            <button
+              data-tab="mocktails"
+              class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <CupSoda class="w-4 h-4 text-brand-500" />
+              Mocktails
+            </button>
+          </div>
 
-        <span class="mx-2 h-5 w-px shrink-0 bg-white/10"></span>
+          <span class="mx-2 hidden h-5 w-px shrink-0 bg-white/10 md:block"
+          ></span>
 
-        <span
-          class="shrink-0 pl-1 pr-1 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500"
-        >
-          Para comer
-        </span>
-        <button
-          data-tab="entradas"
-          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-        >
-          <Utensils class="w-4 h-4 text-brand-500" />
-          Entradas
-        </button>
-        <button
-          data-tab="fuertes"
-          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-        >
-          <ChefHat class="w-4 h-4 text-brand-500" />
-          Platos
-        </button>
-        <button
-          data-tab="hamburguesas"
-          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-        >
-          <Hamburger class="w-4 h-4 text-brand-500" />
-          Hamburguesas
-        </button>
-        <button
-          data-tab="alitas"
-          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-        >
-          <Drumstick class="w-4 h-4 text-brand-500" />
-          Alitas
-        </button>
+          <div
+            class="-mx-1 flex items-center gap-2 overflow-x-auto scrollbar-none px-1 snap-x snap-mandatory md:mx-0 md:overflow-visible md:px-0"
+          >
+            <span
+              class="shrink-0 pl-1 pr-1 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500"
+            >
+              Para comer
+            </span>
+            <button
+              data-tab="entradas"
+              class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <Utensils class="w-4 h-4 text-brand-500" />
+              Entradas
+            </button>
+            <button
+              data-tab="fuertes"
+              class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <ChefHat class="w-4 h-4 text-brand-500" />
+              Platos
+            </button>
+            <button
+              data-tab="hamburguesas"
+              class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <Hamburger class="w-4 h-4 text-brand-500" />
+              Hamburguesas
+            </button>
+            <button
+              data-tab="alitas"
+              class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <Drumstick class="w-4 h-4 text-brand-500" />
+              Alitas
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
