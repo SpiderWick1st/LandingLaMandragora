@@ -8,6 +8,8 @@
       muted
       loop
       playsinline
+      poster="/videos/cocktail-poster.webp"
+      aria-hidden="true"
       class="absolute inset-0 w-full h-full object-cover"
     >
       <!-- <source src="/videos/cocktail.mp4" type="video/mp4" /> -->
@@ -111,6 +113,7 @@
 
     video.innerHTML = '';
     const chosen = videos[Math.floor(Math.random() * videos.length)];
+    video.poster = chosen.replace('.mp4', '-poster.webp');
     const source = document.createElement('source');
     source.src = chosen;
     source.type = 'video/mp4';
