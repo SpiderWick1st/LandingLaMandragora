@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { Camera } from 'lucide-astro';
 
 import banda from '../../assets/galeria/banda.webp';
-import salon from '../../assets/galeria/salon.webp';
+import musico from '../../assets/galeria/Musico.webp';
 import barra from '../../assets/galeria/barra.webp';
 import bartender from '../../assets/galeria/bartender.webp';
 import clientes from '../../assets/galeria/clientes.webp';
@@ -11,12 +11,13 @@ import terrazaLamparas from '../../assets/galeria/terraza-lamparas.webp';
 import terrazaAtardecer from '../../assets/galeria/terraza-atardecer.webp';
 import comida from '../../assets/galeria/comida.webp';
 import bbq from '../../assets/galeria/bbq.webp';
+import dj from '../../assets/galeria/Dj.webp';
 
 const destacadas = [
   {
-    src: salon,
-    alt: 'Salón principal de La Mandrágora con luces de escenario',
-    caption: 'Salón',
+    src: musico,
+    alt: 'Músico tocando la guitarra en vivo en La Mandrágora',
+    caption: 'Música en vivo',
   },
   {
     src: bartender,
@@ -38,6 +39,7 @@ const fotos = [
     caption: 'Barra',
     ratio: 'aspect-[2/3]',
   },
+
   {
     src: comida,
     alt: 'Hamburguesa con papas fritas de La Mandrágora',
@@ -45,9 +47,9 @@ const fotos = [
     ratio: 'aspect-square',
   },
   {
-    src: terrazaLamparas,
-    alt: 'Terraza de La Mandrágora con lámparas de mimbre',
-    caption: 'Terraza',
+    src: dj,
+    alt: 'DJ mezclando música en la zona DJ de La Mandrágora',
+    caption: 'Dj en vivo',
     ratio: 'aspect-[2/3]',
   },
   {
@@ -59,7 +61,7 @@ const fotos = [
   {
     src: bbq,
     alt: 'Costillas y alitas con papas fritas de La Mandrágora',
-    caption: 'Parrilla',
+    caption: 'Alitas y costillas',
     ratio: 'aspect-[4/5]',
   },
   {
@@ -115,7 +117,7 @@ const masonrySizes = '(min-width: 1024px) 400px, 50vw';
         class="reveal-galeria shrink-0 text-xs uppercase tracking-[0.2em] text-gray-500 md:text-right"
       >
         <span class="block">{destacadas.length + fotos.length} momentos</span>
-        <span class="mt-1 block text-gray-600">Salón · Terraza · Barra</span>
+        <span class="mt-1 block text-gray-600">Música · Terraza · Barra</span>
       </p>
     </div>
 
