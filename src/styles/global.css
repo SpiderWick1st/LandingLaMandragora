@@ -17,6 +17,12 @@ html {
   --color-brand-800: #253f29;
   --color-brand-900: #1a2c1d;
   --color-brand-950: #0d160e;
+
+  /* Ámbar (acento retro) */
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
 }
 /*Ambar
 @theme {                                                                                               
