@@ -1,15 +1,19 @@
 ---
 import {
   GlassWater,
+  CupSoda,
   Utensils,
   ChefHat,
   Hamburger,
   Drumstick,
+  Sparkles,
+  Wine,
+  MessageCircle,
 } from 'lucide-astro';
 import MenuItem from '../ui/MenuItem.astro';
-import ModalCarta from '../ui/ModalCarta.astro';
 import {
   cocteles,
+  mocktails,
   entradas,
   fuertes,
   hamburguesas,
@@ -26,9 +30,17 @@ import {
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px] pointer-events-none z-0"
     >
     </div>
+    <div
+      class="absolute -left-40 top-1/4 h-125 w-125 rounded-full bg-brand-800/15 blur-[150px]"
+    >
+    </div>
+    <div
+      class="absolute -right-40 bottom-1/4 h-125 w-125 rounded-full bg-accent-600/8 blur-[150px]"
+    >
+    </div>
   </div>
 
-  <div class="container mx-auto px-6 max-w-6xl z-10 relative">
+  <div class="container mx-auto px-6 max-w-7xl z-10 relative">
     <div class="text-center mb-16">
       <h2 class="text-4xl sm:text-5xl font-serif tracking-wide text-white mb-4">
         NUESTRA CARTA
@@ -42,45 +54,107 @@ import {
       </p>
     </div>
 
-    <!-- Pestañas de Categorías -->
+    <!-- Coctelería de autor (integrada desde la antigua sección Barra) -->
     <div
-      class="-mx-6 px-6 md:mx-0 md:px-0 overflow-x-auto scrollbar-none mb-12 snap-x snap-mandatory flex md:justify-center gap-3 pb-2"
+      class="mb-14 grid items-center gap-8 rounded-sm border border-brand-950/40 bg-neutral-900/20 p-8 md:grid-cols-2 md:p-10"
     >
-      <button
-        data-tab="cocteles"
-        class="tab-btn active shrink-0 snap-center px-5 py-2.5 border border-brand-700/30 rounded-full text-sm font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
+      <div>
+        <span
+          class="mb-3 block text-xs font-medium uppercase tracking-[0.22em] text-accent-400"
+        >
+          Coctelería de autor
+        </span>
+        <h3 class="font-serif text-3xl text-white sm:text-4xl">
+          La barra también es parte del show
+        </h3>
+        <div class="mt-5 h-1 w-16 bg-brand-600"></div>
+      </div>
+      <div class="space-y-5">
+        <p class="leading-relaxed text-gray-400">
+          Nuestro bartender crea cócteles de autor con ingredientes locales y
+          técnicas de vanguardia. Cada bebida es una firma propia, pensada para
+          acompañar la noche.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs tracking-wide text-gray-300"
+          >
+            <Sparkles class="h-3.5 w-3.5 text-accent-400" />
+            Cócteles de autor
+          </span>
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs tracking-wide text-gray-300"
+          >
+            <Wine class="h-3.5 w-3.5 text-accent-400" />
+            Ingredientes locales
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestañas de Categorías (sticky) -->
+    <div
+      class="sticky top-20 z-30 -mx-6 mb-10 border-y border-brand-950/40 bg-black/90 px-6 py-3 backdrop-blur-xl md:mx-0 md:rounded-sm md:border"
+    >
+      <div
+        class="-mx-1 flex items-center gap-2 overflow-x-auto scrollbar-none px-1 snap-x snap-mandatory md:justify-center"
       >
-        <GlassWater class="w-4 h-4 text-brand-500" />
-        Cócteles
-      </button>
-      <button
-        data-tab="entradas"
-        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-      >
-        <Utensils class="w-4 h-4 text-brand-500" />
-        Entradas
-      </button>
-      <button
-        data-tab="fuertes"
-        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-      >
-        <ChefHat class="w-4 h-4 text-brand-500" />
-        Platos
-      </button>
-      <button
-        data-tab="hamburguesas"
-        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-      >
-        <Hamburger class="w-4 h-4 text-brand-500" />
-        Hamburguesas
-      </button>
-      <button
-        data-tab="alitas"
-        class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
-      >
-        <Drumstick class="w-4 h-4 text-brand-500" />
-        Alitas
-      </button>
+        <span
+          class="shrink-0 pl-1 pr-1 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500"
+        >
+          Para beber
+        </span>
+        <button
+          data-tab="cocteles"
+          class="tab-btn active shrink-0 snap-center px-5 py-2.5 border border-brand-700/30 rounded-full text-sm font-sans tracking-wider text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        >
+          <GlassWater class="w-4 h-4 text-brand-500" />
+          Cócteles
+        </button>
+        <button
+          data-tab="mocktails"
+          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        >
+          <CupSoda class="w-4 h-4 text-brand-500" />
+          Mocktails
+        </button>
+
+        <span class="mx-2 h-5 w-px shrink-0 bg-white/10"></span>
+
+        <span
+          class="shrink-0 pl-1 pr-1 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500"
+        >
+          Para comer
+        </span>
+        <button
+          data-tab="entradas"
+          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        >
+          <Utensils class="w-4 h-4 text-brand-500" />
+          Entradas
+        </button>
+        <button
+          data-tab="fuertes"
+          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        >
+          <ChefHat class="w-4 h-4 text-brand-500" />
+          Platos
+        </button>
+        <button
+          data-tab="hamburguesas"
+          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        >
+          <Hamburger class="w-4 h-4 text-brand-500" />
+          Hamburguesas
+        </button>
+        <button
+          data-tab="alitas"
+          class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+        >
+          <Drumstick class="w-4 h-4 text-brand-500" />
+          Alitas
+        </button>
+      </div>
     </div>
 
     <!-- Contenido de la Carta -->
@@ -88,13 +162,12 @@ import {
       <!-- CÓCTELES -->
       <div
         id="menu-cocteles"
-        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-8 opacity-100 pointer-events-auto transition-all duration-300"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-100 pointer-events-auto transition-all duration-300"
       >
         {
           cocteles.map((item, index) => (
             <MenuItem
               {...item}
-              category="Cócteles"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === cocteles.length - 1 && cocteles.length % 2 !== 0 ? 'last-odd' : ''}
@@ -116,16 +189,45 @@ import {
         }
       </div>
 
+      <!-- MOCKTAILS -->
+      <div
+        id="menu-mocktails"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+      >
+        {
+          mocktails.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === mocktails.length - 1 && mocktails.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          mocktails.length > 3 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-mocktails"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
+      </div>
+
       <!-- ENTRADAS -->
       <div
         id="menu-entradas"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           entradas.map((item, index) => (
             <MenuItem
               {...item}
-              category="Entradas"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === entradas.length - 1 && entradas.length % 2 !== 0 ? 'last-odd' : ''}
@@ -150,13 +252,12 @@ import {
       <!-- PLATOS FUERTES -->
       <div
         id="menu-fuertes"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           fuertes.map((item, index) => (
             <MenuItem
               {...item}
-              category="Platos"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === fuertes.length - 1 && fuertes.length % 2 !== 0 ? 'last-odd' : ''}
@@ -181,13 +282,12 @@ import {
       <!-- HAMBURGUESAS -->
       <div
         id="menu-hamburguesas"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           hamburguesas.map((item, index) => (
             <MenuItem
               {...item}
-              category="Hamburguesas"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === hamburguesas.length - 1 && hamburguesas.length % 2 !== 0 ? 'last-odd' : ''}
@@ -212,13 +312,12 @@ import {
       <!-- ALITAS & COMBOS -->
       <div
         id="menu-alitas"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-8 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           alitas_y_combos.map((item, index) => (
             <MenuItem
               {...item}
-              category="Alitas & Combos"
               class={`
               ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
               ${index === alitas_y_combos.length - 1 && alitas_y_combos.length % 2 !== 0 ? 'last-odd' : ''}
@@ -241,9 +340,6 @@ import {
       </div>
     </div>
   </div>
-
-  <!-- Modal Reutilizable -->
-  <ModalCarta />
 </section>
 
 <style>
@@ -271,7 +367,7 @@ import {
   @media (min-width: 768px) {
     :global(.last-odd) {
       grid-column: 1 / -1;
-      max-width: calc(50% - 16px);
+      max-width: calc(50% - 10px);
       margin: 0 auto;
       width: 100%;
     }
@@ -324,20 +420,19 @@ import {
         activeCategory.classList.remove('opacity-0', 'pointer-events-none');
         activeCategory.classList.add('opacity-100', 'pointer-events-auto');
       }
-      button.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
 
-      const section = document.getElementById('carta');
-      if (section) {
-        const headerOffset = 90;
-        const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      // Centra la pestaña activa dentro de su fila, sin mover la página.
+      const tabStrip = button.parentElement;
+      if (tabStrip) {
+        const stripRect = tabStrip.getBoundingClientRect();
+        const buttonRect = button.getBoundingClientRect();
+        const targetLeft =
+          tabStrip.scrollLeft +
+          (buttonRect.left - stripRect.left) -
+          (stripRect.width - buttonRect.width) / 2;
 
-        window.scrollTo({
-          top: offsetPosition,
+        tabStrip.scrollTo({
+          left: targetLeft,
           behavior: 'smooth',
         });
       }

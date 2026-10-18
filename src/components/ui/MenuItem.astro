@@ -1,61 +1,59 @@
 ---
-import { Eye } from 'lucide-astro';
-
 interface Props {
   name: string;
   price: string;
   description: string;
   tag?: string;
   image?: string;
-  category?: string;
   class?: string;
 }
 
-const { name, price, description, tag, image, category, class: className } = Astro.props;
+const { name, price, description, tag, image, class: className } = Astro.props;
 ---
 
-<div
+<article
   class:list={[
-    'menu-item-card bg-neutral-900/20 border border-brand-950/30 p-6 rounded-sm hover:border-brand-600/40 hover:bg-neutral-900/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative',
+    'menu-item-card group flex gap-4 rounded-sm border border-brand-950/40 bg-neutral-900/20 p-3 transition-all duration-300 hover:border-brand-600/40 hover:bg-neutral-900/40 sm:gap-5 sm:p-4',
     className,
   ]}
-  data-name={name}
-  data-price={price}
-  data-description={description}
-  data-tag={tag || ''}
-  data-image={image || ''}
-  data-category={category || ''}
-  role="button"
-  tabindex="0"
-  aria-label={`Ver detalles de ${name}`}
 >
-  <div>
-    <div class="flex justify-between items-baseline mb-2">
-      <h3
-        class="text-xl font-serif text-white group-hover:text-brand-400 transition-colors"
-      >
-        {name}
-      </h3>
-      <span class="text-brand-500 font-sans font-bold">{price}</span>
-    </div>
-    <p class="text-gray-400 text-sm leading-relaxed">
-      {description}
-    </p>
-  </div>
-
-  <div class="flex items-center justify-between mt-4 pt-2 border-t border-white/5">
+  <div
+    class="relative h-24 w-24 shrink-0 overflow-hidden rounded-sm border border-brand-950/50 bg-neutral-900 sm:h-32 sm:w-32"
+  >
     {
-      tag ? (
-        <span class="text-[10px] text-brand-500 uppercase tracking-widest font-mono">
-          {tag}
-        </span>
+      image ? (
+        <img
+          src={image}
+          alt={name}
+          loading="lazy"
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       ) : (
-        <span></span>
+        <div class="flex h-full w-full items-center justify-center bg-linear-to-br from-brand-800 to-brand-950">
+          <span class="font-serif text-2xl text-white/70">LM</span>
+        </div>
       )
     }
-    <span class="text-[11px] text-brand-400/80 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-      <Eye class="w-3.5 h-3.5" />
-      <span>Ver foto</span>
-    </span>
   </div>
-</div>
+
+  <div class="flex min-w-0 flex-1 flex-col">
+    <div class="flex items-baseline justify-between gap-3">
+      <h3 class="font-serif text-lg leading-snug text-white sm:text-xl">
+        {name}
+      </h3>
+      <span class="shrink-0 font-sans font-bold text-brand-400">{price}</span>
+    </div>
+
+    <p class="mt-1.5 text-sm leading-relaxed text-gray-400">
+      {description}
+    </p>
+
+    {
+      tag && (
+        <span class="mt-3 inline-flex w-fit items-center rounded-full border border-brand-800/40 bg-brand-950/40 px-2.5 py-1 text-[10px] uppercase tracking-widest text-brand-300">
+          {tag}
+        </span>
+      )
+    }
+  </div>
+</article>
