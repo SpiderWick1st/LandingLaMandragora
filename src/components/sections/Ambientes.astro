@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import {
   Building2,
   Music,
@@ -9,6 +10,8 @@ import {
   Flame,
   Sparkles,
 } from 'lucide-astro';
+import terrazaLamparas from '../../assets/galeria/terraza-lamparas.webp';
+import salon from '../../assets/galeria/salon.webp';
 ---
 
 <section id="ambientes" class="py-24 px-6 bg-black relative overflow-hidden">
@@ -72,10 +75,15 @@ import {
             </div>
           </div>
         </div>
-        <div class="relative h-96 overflow-hidden rounded-sm group">
-          <img
-            src="https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxsaXZlJTIwYmFuZCUyMG11c2ljJTIwcGVyZm9ybWFuY2UlMjBiYXJ8ZW58MXx8fHwxNzc5NDk1MTEwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Banda tocando en vivo"
+        <div class="relative aspect-[4/5] overflow-hidden rounded-sm group">
+          <Image
+            src={salon}
+            alt="Salón de La Mandrágora con banda en vivo y público"
+            width={1000}
+            widths={[400, 600, 800, 1000]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            format="webp"
+            quality={74}
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             loading="lazy"
           />
@@ -85,11 +93,16 @@ import {
 
       <div class="reveal grid md:grid-cols-2 gap-8 items-center">
         <div
-          class="relative h-96 overflow-hidden rounded-sm group order-2 md:order-1"
+          class="relative aspect-[4/5] overflow-hidden rounded-sm group order-2 md:order-1"
         >
-          <img
-            src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaiUyMG5pZ2h0Y2x1YiUyMHBhcnR5JTIwbXVzaWN8ZW58MXx8fHwxNzc5NDk1MTExfDA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="DJ mezclando música"
+          <Image
+            src={terrazaLamparas}
+            alt="DJ mezclando música en la zona DJ de La Mandrágora"
+            width={1000}
+            widths={[400, 600, 800, 1000]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            format="webp"
+            quality={74}
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             loading="lazy"
           />
