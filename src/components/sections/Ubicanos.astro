@@ -1,56 +1,217 @@
 ---
-import { MapPin, ExternalLink } from 'lucide-astro';
+import { Navigation, ExternalLink, MapPin, Clock } from 'lucide-astro';
+import '../../styles/map.css';
 ---
 
 <section
-  id="Ubicanos"
-  class="relative py-24 bg-black border-t border-brand-950/25"
+  id="ubicanos"
+  class="relative py-24 bg-black border-t border-brand-950/25 overflow-hidden"
 >
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <img
+      src="https://images.unsplash.com/photo-1701722952679-beffce26d77a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxlbGVnYW50JTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwZGFyayUyMGFtYmllbnR8ZW58MXx8fHwxNzc5NDkyNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      alt="Interior de La Mandrágora"
+      class="w-full h-full object-cover opacity-30"
+    />
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/10 rounded-full blur-[120px]"
+      class="absolute inset-0 bg-linear-to-b from-black via-black/80 to-black"
+    >
+    </div>
+  </div>
+
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-950/20 rounded-full blur-[140px]"
     >
     </div>
   </div>
 
   <div class="container mx-auto px-6 max-w-6xl relative z-10">
     <div class="text-center mb-16">
-      <MapPin class="w-10 h-10 text-brand-500 mx-auto mb-4" />
       <h2 class="text-4xl sm:text-5xl font-serif tracking-wide text-white mb-4">
-        ENCUÉNTRANOS
+        Ubícanos
       </h2>
       <div class="w-24 h-1 bg-brand-600 mx-auto mb-6"></div>
-      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
-        Calle San Francisco 300-A, Arequipa, Perú
+      <p
+        class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
+      >
+        Ven a vivir la experiencia mística y retro en el corazón del Centro
+        Histórico de Arequipa.
       </p>
     </div>
 
-    <div
-      class="rounded-sm overflow-hidden border border-brand-950/30 h-96 w-full mb-6"
-    >
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239.2224586552962!2d-71.5351857130956!3d-16.39639511952254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424b969dae1eaf%3A0x264b48a8ab6dd333!2sLa%20mandragora%20restaurante!5e0!3m2!1ses-419!2spe!4v1781038090073!5m2!1ses-419!2spe"
-        width="100%"
-        height="100%"
-        style="border:0;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+        <div
+          class="p-6 rounded-sm bg-neutral-900/20 border border-brand-950/40 hover:border-brand-600/40 backdrop-blur-md shadow-2xl transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-sm bg-brand-950/40 border border-brand-800/30 flex items-center justify-center shrink-0 text-brand-500"
+            >
+              <MapPin class="w-5 h-5" />
+            </div>
+            <div>
+              <span
+                class="text-[10px] font-mono uppercase tracking-widest text-brand-500 block mb-1"
+                >Ubicación</span
+              >
+              <h3 class="text-xl font-serif text-white font-semibold">
+                Calle San Francisco 300-A
+              </h3>
+              <p class="text-sm text-gray-400 mt-1 leading-relaxed">
+                Cercado, Arequipa, Perú
+              </p>
+              <p class="text-xs text-brand-400 mt-2 font-mono">
+                A media cuadra de la Plaza de Armas
+              </p>
+            </div>
+          </div>
+        </div>
 
-    <div class="text-center">
-      <a
-        href="https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3
-        border border-brand-600 rounded-sm text-sm font-sans tracking-wider
-        text-white bg-brand-950/20 hover:bg-brand-900/30 transition-all
-        duration-300"
-      >
-        <ExternalLink class="w-4 h-4 text-brand-500" />
-        Abrir en Google Maps
-      </a>
+        <div
+          class="p-6 rounded-sm bg-neutral-900/20 border border-brand-950/40 hover:border-brand-600/40 backdrop-blur-md shadow-2xl transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-sm bg-brand-950/40 border border-brand-800/30 flex items-center justify-center shrink-0 text-brand-500"
+            >
+              <Clock class="w-5 h-5" />
+            </div>
+            <div class="flex-1">
+              <span
+                class="text-[10px] font-mono uppercase tracking-widest text-brand-500 block mb-1"
+                >Horario de Atención</span
+              >
+              <h3 class="text-xl font-serif text-white font-semibold">
+                Atención al Público
+              </h3>
+
+              <div
+                class="mt-4 pt-4 border-t border-brand-950/50 flex justify-between items-center text-sm"
+              >
+                <span class="text-gray-300">Lunes a Domingo</span>
+                <span
+                  class="font-mono text-brand-400 font-semibold text-xs sm:text-sm bg-brand-950/40 px-3 py-1 rounded-sm border border-brand-700/30"
+                >
+                  3:00 PM - 11:30 PM
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full py-4 px-6 bg-brand-600 hover:bg-brand-700 text-white rounded-sm text-sm font-sans tracking-wider transition-all duration-300 shadow-lg hover:shadow-brand-900/50 flex items-center justify-center gap-2.5 group cursor-pointer"
+        >
+          <Navigation
+            class="w-4 h-4 text-white/90 group-hover:text-white transition-colors"
+          />
+          <span>Abrir ruta en Google Maps</span>
+          <ExternalLink
+            class="w-3.5 h-3.5 text-white/70 group-hover:text-white transition-colors"
+          />
+        </a>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div
+          class="relative h-25 lg:h-full min-h-100 lg:min-h-75 rounded-sm overflow-hidden border border-brand-950/40 shadow-2xl bg-neutral-900/20 p-1 group hover:border-brand-600/40 transition-colors duration-300"
+        >
+          <div
+            id="map"
+            class="w-full h-full rounded-sm overflow-hidden relative z-0"
+          >
+          </div>
+
+          <div
+            class="absolute inset-0 pointer-events-none rounded-sm ring-1 ring-inset ring-white/5 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]"
+          >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const LAT = -16.396349694412603;
+  const LNG = -71.5353123583828;
+  const STADIA_KEY = import.meta.env.STADIA_API_KEY;
+
+  const mapContainer = document.getElementById('map');
+  if (mapContainer) {
+    const map = L.map('map', {
+      center: [LAT, LNG],
+      zoom: 18,
+      minZoom: 15,
+      maxZoom: 20,
+      zoomControl: false,
+      scrollWheelZoom: false,
+    });
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    const tileUrl = STADIA_KEY
+      ? `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${STADIA_KEY}`
+      : `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png`;
+
+    L.tileLayer(tileUrl, {
+      attribution:
+        '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener noreferrer">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>',
+      maxZoom: 20,
+    }).addTo(map);
+
+    map.whenReady(() => {
+      requestAnimationFrame(() => {
+        map.invalidateSize();
+        map.setView([LAT, LNG], 18);
+      });
+    });
+
+    const lmIcon = L.divIcon({
+      className: 'custom-leaflet-pin',
+      html: `
+        <div class="relative flex flex-col items-center -translate-x-1/2 -translate-y-full cursor-pointer group select-none">
+          <!-- Etiqueta superior permanente -->
+          <div class="flex items-center gap-1.5 px-3 py-1 rounded-sm bg-black/90 backdrop-blur-md border border-brand-600/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
+            <span class="font-serif text-[11px] tracking-wider text-brand-300">La Mandrágora</span>
+          </div>
+
+          <!-- Pin principal estilizado acorde a la marca -->
+          <div class="relative flex items-center justify-center">
+            <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-500/40 opacity-75"></span>
+            <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-600 to-brand-800 border-2 border-brand-400/80 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 3h16l-7 8.5V19h3a1 1 0 010 2H8a1 1 0 010-2h3v-7.5L4 3z"/>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Sombra proyectada en el suelo -->
+          <div class="w-5 h-1.5 bg-black/70 rounded-full blur-[2px] mt-1"></div>
+        </div>
+      `,
+      iconSize: [0, 0],
+    });
+
+    const marker = L.marker([LAT, LNG], { icon: lmIcon }).addTo(map);
+    marker.bindPopup(
+      `
+      <div class="p-3 text-center min-w-[190px]">
+        <span class="text-[10px] font-mono tracking-widest text-brand-400 uppercase block mb-1">Restobar Retro</span>
+        <p class="font-serif text-base font-bold text-white mb-0.5">La Mandrágora</p>
+        <p class="text-xs text-gray-300 m-0">San Francisco 300-A</p>
+        <p class="text-[11px] text-brand-400 mt-2 font-mono">3:00 PM - 11:30 PM</p>
+      </div>
+    `,
+      { className: 'lm-popup' }
+    );
+  }
+</script>

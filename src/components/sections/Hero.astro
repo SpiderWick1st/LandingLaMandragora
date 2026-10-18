@@ -2,13 +2,18 @@
   class="relative min-h-screen flex items-center justify-center overflow-hidden"
 >
   <div class="absolute inset-0">
-    <img
-      src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwZGFyayUyMGFtYmllbnR8ZW58MXx8fHwxNzc5NDkyNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      alt="Elegant restaurant interior"
-      class="w-full h-full object-cover"
-    />
+    <video
+      id="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+      <!-- <source src="/videos/cocktail.mp4" type="video/mp4" /> -->
+    </video>
     <div
-      class="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80 md:to-black/90"
+      class="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black"
     >
     </div>
   </div>
@@ -35,36 +40,49 @@
       <p
         class="text-brand-500 text-base sm:text-xl md:text-2xl tracking-widest mb-4 text-center"
       >
-        RESTOBAR RETRO
+        RESTAURANTE
       </p>
       <p
         class="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed text-center px-2"
       >
-        2 Pisos • Banda en Vivo • DJ • Cocteles de Autor • Ambiente Retro
+        Una noche para recordar. <br />
+        Terraza y Salón: dos experiencias en el corazón de Arequipa.
       </p>
     </div>
-
     <div
       id="botones-secundarios"
-      class="flex flex-col sm:flex-row gap-4 justify-center mt-8 px-4 w-full sm:w-auto"
+      class="mt-8 flex flex-col items-center justify-center gap-3 px-6 sm:flex-row"
     >
       <a
-        href="#reservas"
-        class="px-6 sm:px-8 py-3 sm:py-4 bg-brand-600 hover:bg-brand-700 transition-all duration-300 rounded-sm tracking-wider shadow-lg hover:shadow-brand-900/50 text-white text-center text-sm sm:text-base"
+        href="#reserva"
+        class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-brand-900/40 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black sm:w-auto"
       >
-        Reserva Mesa
+        Reserva tu mesa
+        <svg
+          class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 12h14m-6-6 6 6-6 6"></path>
+        </svg>
       </a>
       <a
-        href="#retro"
-        class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-brand-600 text-white hover:bg-brand-600/10 transition-all duration-300 rounded-sm tracking-wider text-center text-sm sm:text-base"
+        href="#carta"
+        class="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-black/20 px-7 py-3.5 text-sm font-medium tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:border-brand-500/60 hover:bg-white/10 sm:w-auto"
       >
-        Descubre mas
+        Ver la carta
       </a>
     </div>
 
     <div
       id="icon-siguiente"
-      class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block"
+      class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block cursor-pointer"
     >
       <div
         class="w-5 h-8 sm:w-6 sm:h-10 border-2 border-brand-500 rounded-full flex justify-center"
@@ -85,6 +103,30 @@
   const logo = document.getElementById('logo');
   const iconSiguiente = document.getElementById('icon-siguiente');
   const iconPunto = document.getElementById('icon-punto');
+
+  function setRandomVideo() {
+    const videos = ['/videos/cocktail.mp4', '/videos/dish.mp4'];
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    if (!video) return;
+
+    video.innerHTML = '';
+    const chosen = videos[Math.floor(Math.random() * videos.length)];
+    const source = document.createElement('source');
+    source.src = chosen;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    video.load();
+  }
+
+  setRandomVideo();
+  document.addEventListener('astro:page-load', setRandomVideo);
+
+  iconSiguiente?.addEventListener('click', () => {
+    document.getElementById('ambientes')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  });
 
   animate(
     logo,

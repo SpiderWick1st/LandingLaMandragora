@@ -1,0 +1,402 @@
+---
+import {
+  CalendarDays,
+  Clock3,
+  Users,
+  MapPin,
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+} from 'lucide-astro';
+---
+
+<section
+  id="reserva"
+  class="relative overflow-hidden bg-black px-6 py-24 sm:py-28"
+>
+  <div
+    class="pointer-events-none absolute -left-32 top-12 h-96 w-96 rounded-full bg-brand-900/30 blur-[120px]"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-brand-600/10 blur-[130px]"
+  >
+  </div>
+
+  <div
+    class="container relative z-10 mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center"
+  >
+    <div class="reveal-reserva">
+      <div
+        class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-600/30 bg-brand-950/60 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-brand-300"
+      >
+        <Sparkles class="h-4 w-4" />
+        Tu noche empieza aquí
+      </div>
+
+      <h3
+        class="max-w-xl font-serif text-4xl leading-tight text-white sm:text-5xl md:text-6xl"
+      >
+        Haz espacio para una
+        <span class="text-brand-400">noche memorable.</span>
+      </h3>
+
+      <p
+        class="mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg"
+      >
+        Reserva tu mesa en La Mandrágora y elige el ambiente que mejor combine
+        con tu noche. Completa tus datos y te ayudaremos a preparar la
+        experiencia.
+      </p>
+
+      <div class="mt-9 grid max-w-xl gap-4 sm:grid-cols-2">
+        <div
+          class="flex items-start gap-3 rounded-2xl border border-white/8 bg-white/[0.03] p-4"
+        >
+          <div
+            class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-900/70 text-brand-300"
+          >
+            <Clock3 class="h-5 w-5" />
+          </div>
+          <div>
+            <p class="text-sm font-medium text-white">Horario</p>
+            <p class="mt-1 text-sm leading-relaxed text-gray-400">
+              Elige la hora que mejor se acomode a tu plan.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-3 rounded-2xl border border-white/8 bg-white/[0.03] p-4"
+        >
+          <div
+            class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-900/70 text-brand-300"
+          >
+            <MapPin class="h-5 w-5" />
+          </div>
+          <div>
+            <p class="text-sm font-medium text-white">Elige tu ambiente</p>
+            <p class="mt-1 text-sm leading-relaxed text-gray-400">
+              Salón para vivir la música o terraza para subir la energía.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-6 flex items-center gap-2 text-sm text-gray-500">
+        <CheckCircle2 class="h-4 w-4 text-brand-500" />
+        La reserva queda sujeta a confirmación del restaurante.
+      </p>
+    </div>
+
+    <div
+      class="reveal-reserva relative rounded-[2rem] border border-white/10 bg-white/[0.045] p-1 shadow-2xl shadow-black/40 backdrop-blur-xl"
+    >
+      <div
+        class="absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-brand-400/70 to-transparent"
+      >
+      </div>
+
+      <form
+        id="reserva-form"
+        class="rounded-[1.8rem] bg-black/35 p-6 sm:p-8 md:p-10"
+      >
+        <div class="mb-8 flex items-end justify-between gap-5">
+          <div>
+            <p
+              class="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-brand-400"
+            >
+              Reservas
+            </p>
+            <h4 class="font-serif text-3xl text-white sm:text-4xl">
+              Reserva tu mesa
+            </h4>
+          </div>
+          <CalendarDays
+            class="hidden h-9 w-9 shrink-0 text-brand-500 sm:block"
+          />
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <label class="sm:col-span-2">
+            <span class="mb-2 block text-sm text-gray-300">Nombre completo</span
+            >
+            <input
+              required
+              name="nombre"
+              type="text"
+              autocomplete="name"
+              placeholder="Ej. Jorge Linares"
+              class="reserva-control"
+            />
+          </label>
+
+          <label>
+            <span class="mb-2 block text-sm text-gray-300">Teléfono</span>
+            <input
+              required
+              name="telefono"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="+51 999 999 999"
+              class="reserva-control"
+            />
+          </label>
+
+          <label>
+            <span class="mb-2 block text-sm text-gray-300">Correo</span>
+            <input
+              required
+              name="correo"
+              type="email"
+              autocomplete="email"
+              placeholder="incog-black@correo.com"
+              class="reserva-control"
+            />
+          </label>
+
+          <label>
+            <span class="mb-2 block text-sm text-gray-300">Fecha</span>
+            <div class="relative">
+              <input
+                required
+                id="fecha-reserva"
+                name="fecha"
+                type="date"
+                class="reserva-control pr-11 scheme-dark"
+              />
+              <CalendarDays
+                class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-400"
+              />
+            </div>
+          </label>
+
+          <label>
+            <span class="mb-2 block text-sm text-gray-300">Hora</span>
+            <div class="relative">
+              <select
+                required
+                name="hora"
+                class="reserva-control appearance-none pr-11"
+              >
+                <option value="" selected disabled>Selecciona</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+              </select>
+              <Clock3
+                class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-400"
+              />
+            </div>
+          </label>
+
+          <label>
+            <span class="mb-2 block text-sm text-gray-300">Personas</span>
+            <div class="relative">
+              <select
+                required
+                name="personas"
+                class="reserva-control appearance-none pr-11"
+              >
+                <option value="" selected disabled>¿Cuántos son?</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="6">6 personas</option>
+                <option value="7">7 personas</option>
+                <option value="8">8 personas</option>
+                <option value="9+">9 o más</option>
+              </select>
+              <Users
+                class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-400"
+              />
+            </div>
+          </label>
+
+          <label>
+            <span class="mb-2 block text-sm text-gray-300">Ambiente</span>
+            <select
+              required
+              name="ambiente"
+              class="reserva-control appearance-none"
+            >
+              <option value="" selected disabled>Elige un ambiente</option>
+              <option>Salón — Música en vivo</option>
+              <option>Terraza — Zona DJ</option>
+              <option>Sin preferencia</option>
+            </select>
+          </label>
+
+          <label class="sm:col-span-2">
+            <span class="mb-2 block text-sm text-gray-300">
+              Comentario <span class="text-gray-600">(opcional)</span>
+            </span>
+            <textarea
+              name="comentario"
+              rows="3"
+              placeholder="Cumpleaños, ocasión especial, alguna indicación..."
+              class="reserva-control resize-none"></textarea>
+          </label>
+        </div>
+
+        <div class="mt-7">
+          <button
+            type="submit"
+            class="group flex w-full items-center justify-center gap-3 rounded-xl bg-brand-600 px-6 py-4 text-sm font-semibold tracking-wide text-white shadow-lg shadow-brand-950/40 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-brand-900/50 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black"
+          >
+            Solicitar reserva
+            <ArrowRight
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </button>
+
+          <p
+            id="reserva-feedback"
+            class="mt-4 hidden rounded-xl border border-brand-700/40 bg-brand-950/50 px-4 py-3 text-sm leading-relaxed text-brand-200"
+            role="status"
+            aria-live="polite"
+          >
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reserva-control {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.045);
+    padding: 0.85rem 1rem;
+    color: white;
+    outline: none;
+    transition:
+      border-color 180ms ease,
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .reserva-control::placeholder {
+    color: rgb(107 114 128);
+  }
+
+  .reserva-control:focus {
+    border-color: var(--color-brand-500);
+    background: rgba(255, 255, 255, 0.065);
+    box-shadow: 0 0 0 3px rgba(74, 124, 80, 0.13);
+  }
+
+  select.reserva-control option {
+    background: #0b0d0c;
+    color: white;
+  }
+
+  .reveal-reserva {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 700ms ease,
+      transform 700ms ease;
+  }
+
+  .reveal-reserva.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const reservaForm = document.getElementById(
+    'reserva-form'
+  ) as HTMLFormElement | null;
+  const fechaReserva = document.getElementById(
+    'fecha-reserva'
+  ) as HTMLInputElement | null;
+  const feedback = document.getElementById('reserva-feedback');
+
+  function getLocalDateString() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  if (fechaReserva) {
+    fechaReserva.min = getLocalDateString();
+  }
+
+  reservaForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!reservaForm.reportValidity()) return;
+
+    const formData = new FormData(reservaForm);
+    const nombre = String(formData.get('nombre') ?? '');
+    const telefono = String(formData.get('telefono') ?? '');
+    const correo = String(formData.get('correo') ?? '');
+    const fecha = String(formData.get('fecha') ?? '');
+    const hora = String(formData.get('hora') ?? '');
+    const personas = String(formData.get('personas') ?? '');
+    const ambiente = String(formData.get('ambiente') ?? '');
+    const comentario = String(formData.get('comentario') ?? '').trim();
+
+    const asunto = `Solicitud de reserva - ${nombre}`;
+    const cuerpo = [
+      'Hola, quisiera solicitar una reserva en La Mandrágora.',
+      '',
+      `Nombre: ${nombre}`,
+      `Teléfono: ${telefono}`,
+      `Correo: ${correo}`,
+      `Fecha: ${fecha}`,
+      `Hora: ${hora}`,
+      `Personas: ${personas}`,
+      `Ambiente: ${ambiente}`,
+      comentario ? `Comentario: ${comentario}` : '',
+      '',
+      'Quedo atento(a) a la confirmación. Gracias.',
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    if (feedback) {
+      feedback.textContent =
+        'Abriremos Gmail con tu solicitud preparada. Revisa los datos y envía el correo para solicitar tu reserva.';
+      feedback.classList.remove('hidden');
+    }
+
+    const gmailUrl =
+      `https://mail.google.com/mail/?view=cm&fs=1` +
+      `&to=${encodeURIComponent('reservas@lamandragora.pe')}` +
+      `&su=${encodeURIComponent(asunto)}` +
+      `&body=${encodeURIComponent(cuerpo)}`;
+
+    window.open(gmailUrl, '_blank');
+  });
+
+  const reservaReveals = document.querySelectorAll('.reveal-reserva');
+  const reservaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          reservaObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  reservaReveals.forEach((element) => reservaObserver.observe(element));
+</script>
