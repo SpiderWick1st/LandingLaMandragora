@@ -86,8 +86,48 @@ No marques una tarea como completada si no has verificado razonablemente su resu
 - No añadas documentación por cambios triviales que no alteren el conocimiento del proyecto.
 - Si falta información indispensable, pregunta antes de asumirla.
 - Si puedes completar la tarea con la información disponible, procede sin preguntas innecesarias.
+## 6. Diseño y experiencia de usuario
 
-## 6. Formato de respuesta
+### Objetivo
+Crear una web visualmente atractiva para La Mandrágora,
+orientada a presentar el restobar y facilitar las visitas y reservas.
+
+### Prioridades de los visitantes
+- Conocer la personalidad del establecimiento.
+- Explorar los ambientes mediante fotografías reales.
+- Consultar la carta de bebidas y comida.
+- Descubrir los eventos y la propuesta musical.
+- Reservar por WhatsApp.
+- Consultar ubicación, horarios y redes sociales.
+
+### Organización del contenido
+- Priorizar la información que ayuda al visitante a decidir si quiere ir.
+- Evaluar este orden inicial: Inicio, Ambientes, Carta, Eventos,
+  Reservas y Ubicación.
+- Adaptar el orden según la oferta real y las necesidades del negocio.
+- No crear una sección independiente de "Quiénes somos"
+  si no aporta suficiente valor al visitante.
+- No eliminar secciones existentes sin evaluar su utilidad.
+
+### Criterios visuales
+- Evitar diseños genéricos de plantillas y composiciones repetitivas.
+- Dar protagonismo a las fotografías y los videos reales del local.
+- Mantener una jerarquía visual clara y una identidad coherente.
+- Utilizar composiciones diferentes según el contenido de cada sección.
+- Priorizar la experiencia móvil y adaptar el diseño a escritorio.
+- Evitar animaciones y efectos que no aporten valor.
+- No inventar información ni utilizar imágenes como si fueran
+  fotografías reales del establecimiento.
+
+### Cambios de diseño
+- Para rediseños importantes, presentar primero una propuesta breve.
+- No modificar código hasta que el usuario apruebe esa propuesta
+  cuando implique decisiones visuales importantes.
+- Implementar únicamente el alcance aprobado.
+- Reutilizar las tecnologías y dependencias existentes.
+- No rediseñar toda la web si la tarea afecta a una sola sección.
+
+## 7. Formato de respuesta
 
 Al terminar una tarea, informa brevemente:
 
