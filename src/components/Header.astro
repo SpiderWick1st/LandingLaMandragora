@@ -1,15 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import logoMark from '../assets/logo-mark.png';
+---
+
 <!--Menu desktop -->
 <header
   class="fixed top-0 left-0 w-full z-50 bg-[#070708]/50 backdrop-blur-xl transition-all duration-300 py-4"
 >
   <div class="container mx-auto px-6 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3 group">
-      <div
-        class="w-12 h-12 bg-linear-to-br from-brand-600 to-brand-800 rounded-full flex items-center justify-center"
-      >
-        <span class="font-serif text-2xl text-white">LM</span>
-      </div>
-      <div>
+    <a
+      href="/"
+      class="flex items-center gap-3 group"
+      aria-label="La Mandrágora — Inicio"
+    >
+      <Image
+        src={logoMark}
+        alt="La Mandrágora"
+        width={192}
+        format="webp"
+        quality={90}
+        loading="eager"
+        fetchpriority="high"
+        class="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+      />
+      <div class="sr-only lg:not-sr-only">
         <h1 class="text-xl text-white tracking-wider">LA MANDRÁGORA</h1>
         <p class="text-xs text-brand-500 tracking-widest">RESTAURANTE</p>
       </div>
@@ -108,11 +122,15 @@
   </button>
 
   <div class="mb-12 text-center select-none">
-    <div
-      class="w-16 h-16 bg-linear-to-br from-brand-600 to-brand-800 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg shadow-brand-900/30"
-    >
-      <span class="font-serif text-xl text-white">LM</span>
-    </div>
+    <Image
+      src={logoMark}
+      alt="La Mandrágora"
+      width={320}
+      format="webp"
+      quality={90}
+      loading="lazy"
+      class="mx-auto mb-3 h-20 w-auto"
+    />
     <h2 class="text-xl text-white tracking-wider font-serif">LA MANDRÁGORA</h2>
     <p class="text-xs text-brand-500 tracking-widest uppercase">Restaurante</p>
   </div>
