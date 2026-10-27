@@ -1,10 +1,48 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Caesar Dressing';
+  src: url('../assets/fonts/caesar-dressing-latin-400.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: url('../assets/fonts/karla-latin-wght-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: url('../assets/fonts/karla-latin-wght-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
 html {
   scrollbar-gutter: stable;
 }
 
+body {
+  font-family: var(--font-sans);
+}
+
 @theme {
+  /* Display libre (OFL): reemplaza a Dalek en títulos y marca */
+  --font-serif:
+    'Caesar Dressing', ui-serif, Georgia, Cambria, 'Times New Roman', Times,
+    serif;
+
+  /* Cuerpo y UI (OFL) */
+  --font-sans:
+    'Karla', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
   /* Verde */
   --color-brand-50: #f2f7f2;
   --color-brand-100: #e1ede2;

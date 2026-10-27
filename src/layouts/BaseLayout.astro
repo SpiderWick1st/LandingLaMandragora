@@ -3,9 +3,11 @@ interface Props {
   title?: string;
 }
 
-const { title = "La Mandrágora Restobar" } = Astro.props;
+const { title = 'La Mandrágora Restobar' } = Astro.props;
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import caesarDressingUrl from '../assets/fonts/caesar-dressing-latin-400.woff2?url';
+import karlaUrl from '../assets/fonts/karla-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 ---
 
@@ -16,10 +18,24 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href={caesarDressingUrl}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href={karlaUrl}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body> 
+  <body>
     <Header />
     <main>
       <slot />
