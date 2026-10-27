@@ -23,6 +23,11 @@ html {
   --color-accent-400: #fbbf24;
   --color-accent-500: #f59e0b;
   --color-accent-600: #d97706;
+
+  /* Verde Halloween (más claro, usado en el modal y el header) */
+  --color-halloween-300: #b7c98a;
+  --color-halloween-400: #93a95f;
+  --color-halloween-500: #7c914d;
 }
 /*Ambar
 @theme {                                                                                               

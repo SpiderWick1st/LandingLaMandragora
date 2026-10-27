@@ -1,0 +1,402 @@
+.halloween-modal {
+  display: none;
+}
+
+.halloween-modal.is-open {
+  display: flex;
+}
+
+/* ───────── Paleta: tierra, hueso, musgo, vino ───────── */
+.halloween-dialog {
+  --soil: #15100b;
+  --soil-2: #1c150e;
+  --bone: #eadfc4;
+  --bone-dim: #b5a98c;
+  --moss: var(--color-halloween-400);
+  --wine: #b8434f;
+  --rule: rgba(234, 223, 196, 0.14);
+
+  max-height: 92vh;
+  max-height: 92dvh;
+  color: var(--bone);
+  background:
+    repeating-linear-gradient(
+      100deg,
+      rgba(234, 223, 196, 0.012) 0 1px,
+      transparent 1px 7px
+    ),
+    radial-gradient(
+      70% 60% at 14% 8%,
+      rgba(184, 67, 79, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      80% 60% at 100% 100%,
+      rgba(147, 169, 95, 0.12),
+      transparent 65%
+    ),
+    linear-gradient(170deg, var(--soil-2), var(--soil));
+  border: 1px solid var(--rule);
+  /* Marco interior, como la lámina de un herbario */
+  outline: 1px solid var(--rule);
+  outline-offset: -9px;
+}
+
+/* ───────── Cabecera ───────── */
+.mdg-header {
+  border-bottom: 1px solid var(--rule);
+}
+
+.mdg-figure-wrap {
+  width: 7.5rem;
+  height: 10.5rem;
+}
+
+.mdg-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mdg-leaves path {
+  fill: #4d6a3a;
+  stroke: #7d9a52;
+  stroke-width: 1;
+}
+
+.mdg-veins path {
+  fill: none;
+  stroke: #a9c274;
+  stroke-width: 0.9;
+  opacity: 0.55;
+}
+
+.mdg-root {
+  fill: #d9ccab;
+  stroke: #8a7a55;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.mdg-rootlets path {
+  fill: none;
+  stroke: #8a7a55;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.mdg-face path {
+  fill: none;
+  stroke: var(--soil);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.mdg-face ellipse {
+  fill: var(--soil);
+}
+
+.mdg-ring {
+  fill: none;
+  stroke: var(--wine);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.mdg-figure {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.mdg-kicker {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--moss);
+}
+
+.mdg-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  color: var(--bone);
+  text-wrap: balance;
+}
+
+.mdg-lede {
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+
+.mdg-close {
+  border: 1px solid var(--rule);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--bone-dim);
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.mdg-close:hover {
+  color: var(--bone);
+  border-color: var(--wine);
+}
+
+.mdg-close:focus-visible,
+.mdg-btn:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 2px;
+}
+
+/* ───────── Carta ───────── */
+.mdg-seal {
+  display: inline-flex;
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(184, 67, 79, 0.55);
+  background: rgba(184, 67, 79, 0.1);
+  color: #e08a93;
+}
+
+.mdg-item-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-top: 0.55rem;
+}
+
+.mdg-thumb {
+  position: relative;
+  width: 4rem;
+  flex: 0 0 4rem;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--soil-2);
+}
+
+.mdg-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(234, 223, 196, 0.16);
+  pointer-events: none;
+}
+
+.mdg-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.2) saturate(0.82) contrast(1.05) brightness(0.84);
+  transition:
+    filter 0.35s ease,
+    transform 0.5s ease;
+}
+
+.mdg-item:hover .mdg-thumb img {
+  filter: sepia(0.08) saturate(0.95) contrast(1.02) brightness(0.94);
+  transform: scale(1.04);
+}
+
+.mdg-item-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.mdg-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--bone);
+}
+
+.mdg-leader {
+  flex: 1;
+  min-width: 0.75rem;
+  height: 0;
+  border-bottom: 1px dotted var(--bone-dim);
+  opacity: 0.4;
+  transform: translateY(4px);
+}
+
+.mdg-price {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--moss);
+}
+
+.mdg-desc {
+  margin-top: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--bone-dim);
+}
+
+.mdg-tag {
+  margin-top: 0.3rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--wine);
+  filter: brightness(1.25);
+}
+
+/* ───────── Pie ───────── */
+.mdg-footer {
+  border-top: 1px solid var(--rule);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.mdg-foot-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--bone-dim);
+}
+
+.mdg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.mdg-btn-primary {
+  background: var(--bone);
+  color: var(--soil);
+}
+
+.mdg-btn-primary:hover {
+  background: var(--moss);
+}
+
+.mdg-btn-ghost {
+  border: 1px solid rgba(234, 223, 196, 0.28);
+  color: var(--bone);
+}
+
+.mdg-btn-ghost:hover {
+  border-color: var(--wine);
+  background: rgba(184, 67, 79, 0.12);
+}
+
+.halloween-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(147, 169, 95, 0.4) transparent;
+}
+
+.halloween-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.halloween-scroll::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgba(147, 169, 95, 0.4);
+}
+
+/* ───────── Un solo momento: la raíz tiembla y grita ───────── */
+.halloween-modal.is-open .halloween-backdrop {
+  animation: halloweenFade 0.35s ease-out both;
+}
+
+.halloween-modal.is-open .halloween-dialog {
+  animation: halloweenRise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.halloween-modal.is-open .mdg-figure {
+  animation: mdgTremble 0.7s ease-in-out 0.5s 2 both;
+}
+
+.halloween-modal.is-open .mdg-ring {
+  animation: mdgScream 2.6s cubic-bezier(0.1, 0.6, 0.3, 1) both;
+}
+
+.halloween-modal.is-open .mdg-ring-1 {
+  animation-delay: 0.7s;
+}
+.halloween-modal.is-open .mdg-ring-2 {
+  animation-delay: 1s;
+}
+.halloween-modal.is-open .mdg-ring-3 {
+  animation-delay: 1.3s;
+}
+
+@keyframes halloweenFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes halloweenRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mdgTremble {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-2px, 0) rotate(-2deg);
+  }
+  40% {
+    transform: translate(2px, 0) rotate(2deg);
+  }
+  60% {
+    transform: translate(-2px, 0) rotate(-1.5deg);
+  }
+  80% {
+    transform: translate(2px, 0) rotate(1.5deg);
+  }
+}
+
+@keyframes mdgScream {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-modal.is-open .halloween-backdrop,
+  .halloween-modal.is-open .halloween-dialog,
+  .halloween-modal.is-open .mdg-figure,
+  .halloween-modal.is-open .mdg-ring {
+    animation: none !important;
+  }
+
+  .mdg-ring {
+    display: none;
+  }
+}

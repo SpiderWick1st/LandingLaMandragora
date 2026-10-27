@@ -17,7 +17,7 @@
 
     <nav aria-label="Navegación principal" class="hidden md:block">
       <ul
-        class="flex items-center gap-8 list-none m-0 p-0 text-sm text-white tracking-wide"
+        class="flex items-center gap-3 lg:gap-8 list-none m-0 p-0 text-[13px] text-white tracking-wide lg:text-sm"
       >
         <li>
           <a href="/" class="hover:text-brand-500 transition-colors py-2"
@@ -35,6 +35,17 @@
           <a href="#carta" class="hover:text-brand-500 transition-colors py-2"
             >Carta</a
           >
+        </li>
+        <li>
+          <button
+            type="button"
+            data-halloween-open
+            aria-haspopup="dialog"
+            aria-controls="halloween-modal"
+            class="inline-flex items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-halloween-400 transition-all duration-200 hover:border-halloween-300/60 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black lg:px-3.5 lg:py-1.5 lg:text-xs lg:tracking-[0.14em]"
+          >
+            Halloween
+          </button>
         </li>
         <li>
           <a href="#galeria" class="hover:text-brand-500 transition-colors py-2"
@@ -133,6 +144,17 @@
         >
           Carta
         </a>
+      </li>
+      <li>
+        <button
+          type="button"
+          data-halloween-open
+          aria-haspopup="dialog"
+          aria-controls="halloween-modal"
+          class="inline-flex w-full items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-6 py-3 text-base text-halloween-400 transition-colors duration-200 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+        >
+          Halloween
+        </button>
       </li>
       <li>
         <a
