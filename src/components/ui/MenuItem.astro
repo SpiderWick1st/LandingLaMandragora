@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { name, price, description, tag, image, class: className } = Astro.props;
+const priceOptions = price.split(' / ');
 ---
 
 <article
@@ -37,11 +38,24 @@ const { name, price, description, tag, image, class: className } = Astro.props;
   </div>
 
   <div class="flex min-w-0 flex-1 flex-col">
-    <div class="flex items-baseline justify-between gap-3">
+    <div class="flex flex-wrap items-baseline gap-3">
       <h3 class="font-serif text-lg leading-snug text-white sm:text-xl">
         {name}
       </h3>
-      <span class="shrink-0 font-sans font-bold text-brand-400">{price}</span>
+      <span
+        class:list={[
+          'ml-auto shrink-0 text-right font-sans font-bold text-brand-400',
+          priceOptions.length > 1
+            ? 'flex flex-col items-end text-xs leading-snug sm:text-sm'
+            : '',
+        ]}
+      >
+        {
+          priceOptions.map((option) => (
+            <span class="block whitespace-nowrap">{option}</span>
+          ))
+        }
+      </span>
     </div>
 
     <p class="mt-1.5 text-sm leading-relaxed text-gray-400">

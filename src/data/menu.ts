@@ -171,6 +171,35 @@ export const mocktails: MenuItemData[] = [
   },
 ];
 
+export const bebidas_calientes: MenuItemData[] = [
+  {
+    name: 'Vino Caliente',
+    price: 'S/20.00 (Normal 330ml) / S/28.00 (Grande 1/2L)',
+    description: 'Deliciosa bebida caliente tradicional a base de vino.',
+    tag: 'Bebida Caliente',
+    image:
+      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Té Pisqueado',
+    price: 'S/20.00 (Normal 330ml) / S/28.00 (Grande 1/2L)',
+    description:
+      'Infusión caliente combinada con el carácter tradicional del pisco.',
+    tag: 'Bebida Caliente',
+    image:
+      'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Té Piteado',
+    price: 'S/20.00 (Normal 330ml) / S/28.00 (Grande 1/2L)',
+    description:
+      'Clásica infusión caliente con un toque generoso de destilado.',
+    tag: 'Bebida Caliente',
+    image:
+      'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=70',
+  },
+];
+
 export const entradas: MenuItemData[] = [
   {
     name: 'Tequeños de Jamón y Queso',

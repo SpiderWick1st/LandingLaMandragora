@@ -2,6 +2,7 @@
 import {
   GlassWater,
   CupSoda,
+  Coffee,
   Utensils,
   ChefHat,
   Hamburger,
@@ -14,6 +15,7 @@ import MenuItem from '../ui/MenuItem.astro';
 import {
   cocteles,
   mocktails,
+  bebidas_calientes,
   entradas,
   fuertes,
   hamburguesas,
@@ -122,6 +124,13 @@ import {
               <CupSoda class="w-4 h-4 text-brand-500" />
               Mocktails
             </button>
+            <button
+              data-tab="calientes"
+              class="tab-btn shrink-0 snap-center px-5 py-2.5 border border-neutral-800 rounded-full text-sm font-sans tracking-wider text-gray-400 hover:text-white hover:border-brand-900/40 hover:bg-neutral-900/40 transition-all duration-300 cursor-pointer flex items-center gap-2"
+            >
+              <Coffee class="w-4 h-4 text-brand-500" />
+              Calientes
+            </button>
           </div>
 
           <span class="mx-2 hidden h-5 w-px shrink-0 bg-white/10 md:block"
@@ -203,7 +212,7 @@ import {
       <!-- MOCKTAILS -->
       <div
         id="menu-mocktails"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           mocktails.map((item, index) => (
@@ -230,10 +239,40 @@ import {
         }
       </div>
 
+      <!-- CALIENTES -->
+      <div
+        id="menu-calientes"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+      >
+        {
+          bebidas_calientes.map((item, index) => (
+            <MenuItem
+              {...item}
+              class={`
+              ${index >= 3 ? 'mobile-hidden hidden md:flex' : ''}
+              ${index === bebidas_calientes.length - 1 && bebidas_calientes.length % 2 !== 0 ? 'last-odd' : ''}
+              `}
+            />
+          ))
+        }
+        {
+          bebidas_calientes.length > 3 && (
+            <div class="col-span-full text-center mt-4 md:hidden">
+              <button
+                data-toggle-grid="menu-calientes"
+                class="toggle-menu-btn px-6 py-3 border border-brand-700/30 rounded-sm text-sm font-sans tracking-wider text-brand-400 hover:text-white hover:bg-brand-950/20 transition-all duration-300 cursor-pointer"
+              >
+                Ver más
+              </button>
+            </div>
+          )
+        }
+      </div>
+
       <!-- ENTRADAS -->
       <div
         id="menu-entradas"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           entradas.map((item, index) => (
@@ -263,7 +302,7 @@ import {
       <!-- PLATOS FUERTES -->
       <div
         id="menu-fuertes"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           fuertes.map((item, index) => (
@@ -293,7 +332,7 @@ import {
       <!-- HAMBURGUESAS -->
       <div
         id="menu-hamburguesas"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           hamburguesas.map((item, index) => (
@@ -323,7 +362,7 @@ import {
       <!-- ALITAS & COMBOS -->
       <div
         id="menu-alitas"
-        class="menu-category menu-grid col-start-1 row-start-1 md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
+        class="menu-category menu-grid col-start-1 row-start-1 grid md:grid-cols-2 gap-4 sm:gap-5 opacity-0 pointer-events-none transition-all duration-300 hidden"
       >
         {
           alitas_y_combos.map((item, index) => (
