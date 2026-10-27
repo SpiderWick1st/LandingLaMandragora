@@ -11,61 +11,77 @@ export const cocteles: MenuItemData[] = [
     name: 'Sinatra Forever',
     price: 'S/28.00',
     description:
-      "La intensidad de Jack Daniel's y Jägermeister se fusiona con zumo de maracuyá y Ginger Ale. Tropical, cítrico y refrescante.",
+      "A base de Jack Daniel's, Jagermeister, Maracuya, Ginger Ale, con notas citricas Coctel super agradable.",
     tag: 'Elixir Insignia',
     image:
       'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Gimme The Power',
-    price: 'S/25.00',
+    price: 'S/28.00',
     description:
-      'Tequila, mezcal, licor de naranja y un balance perfecto de cítricos y notas herbales. Un cóctel intenso, refrescante y con el poder de México en cada sorbo.',
+      'Coctel ultra refrescante a base de tequila, mezcal, licor de naranja, cítricos y jarabe herbal artesanal, cargado de auténtica picardía mexicana.',
     tag: 'Misterioso & Frutal',
     image:
       'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Marley Punch',
-    price: 'S/25.00',
+    name: 'The Voice of Freddie',
+    price: 'S/28.00',
     description:
-      'Una fusión de rones, maracuyá y cítricos frescos, complementada con nuestro jarabe herbal de la casa y bitter de naranja. Un cóctel tropical, relajado y lleno de buena energía.',
+      'Por esa voz poderosa, a base de cachaza, licor de manzana, zumo de piña natural, gajos de limon y azucar granulada.',
+    tag: 'Nuevo',
+    image:
+      'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Marley Punch',
+    price: 'S/28.00',
+    description:
+      'Mezcla de rones, limón, maracuyá, jarabe herbal de la casa y bitter de naranja. Súper fresco como sus canciones.',
     tag: 'Cítrico & Mágico',
     image:
       'https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'La Mula de X Dinero',
-    price: 'S/25.00',
+    price: 'S/28.00',
     description:
-      'En honor a las locas de X Dinero, a base de pisco y vodka, para la locura Ginger, jarabe de Kion, ponche colombiano, algo para los piratas de este mar arequipeño.',
+      'Pisco, vodka, ginger, jarabe de kion y ponche colombiano. En honor a "Las locas de X Dinero", ideal para los piratas del mar arequipeño.',
     tag: 'Fuerte & Especiado',
-    image:
-      '/barra/cocteles/Mula.webp',
+    image: '/barra/cocteles/Mula.webp',
   },
   {
     name: 'Charly Charly',
-    price: 'S/28.00',
+    price: 'S/30.00',
     description:
-      'Inspirado en el espíritu rebelde de Charly García, este cóctel combina rones seleccionados, fernet, mix cítrico y granadina. Audaz, refrescante y con carácter de sobra.',
+      'Por el loco de Charly García, Un coctel super matador, como debe de ser, te pone la fiesta, un blend de rones mas fernet, mix citricos y granadina.',
     tag: 'Fuerte & Especiado',
     image:
       'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=70',
   },
   {
+    name: 'Brisa del Chachani',
+    price: 'S/28.00',
+    description:
+      'Una fresca mezcla tropical Aperol y Gin con notas cítricas, florales y burbujeantes, inspirada en la imponente brisa del Chachani.',
+    tag: 'Fresco & Tropical',
+    image:
+      'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=500&q=70',
+  },
+  {
     name: 'Amy Blake',
     price: 'S/25.00',
     description:
-      'Gin, moras artesanales, limón y notas herbales se unen en un cóctel suave, refrescante y sutilmente dulce, con un final cítrico irresistible.',
+      'Coctel a base de Gin y licor de moras artesanal, jarabe herbal y zumo de limon... Combinacion dulce citrica muy agradable.',
     tag: 'Fuerte & Especiado',
-    image:
-      '/barra/cocteles/Amy.webp',
+    image: '/barra/cocteles/Amy.webp',
   },
   {
     name: 'Orishas Fashioned',
     price: 'S/28.00',
     description:
-      'A base de un blend de rones espaciados, azucar, agua con gas, aroma de naranja y canela.',
+      'A base de un blend de rones espaciados, azúcar, agua con gas, aromas de naranja y canela.',
     tag: 'Fuerte & Especiado',
     image:
       'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=500&q=70',
@@ -74,16 +90,16 @@ export const cocteles: MenuItemData[] = [
     name: 'Magdalena',
     price: 'S/25.00',
     description:
-      'En honor a Cara de Haba. Pisco, hierba luisa, gajos de naranja, maracuyá, jarabe herbal de la casa y agua tónica se unen en una mezcla fresca, cítrica y llena de buena vibra.',
+      'En honor a cara de haba, a base de pisco, hierba luisa, gajos de naranja, jarabe herbal, maracuyá y agua tónica.',
     tag: 'Fuerte & Especiado',
     image:
       'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Tropico Oscuro',
+    name: 'Trópico Oscuro',
     price: 'S/30.00',
     description:
-      'La elegancia ahumada de Johnnie Walker Black Label y el carácter del Havana Club 7 Años se fusionan con cítricos y frutas tropicales, equilibrados por las notas cálidas de la panela. Intenso, exótico y perfectamente armonizado.',
+      'Etiqueta Negra, cihuatán 8, cítricos, frutas tropicales y panela. Un viaje elegante y ahumado del Caribe a la oscuridad.',
     tag: 'Un viaje del Caribe a la oscuridad',
     image:
       'https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=500&q=70',
@@ -92,53 +108,63 @@ export const cocteles: MenuItemData[] = [
     name: 'Smoke & Strings',
     price: 'S/30.00',
     description:
-      'La intensidad de Chivas 13 se entrelaza con vermouth rosso y bitter de naranja, coronada por un sutil toque de tocino ahumado. Un aperitivo elegante y rebelde que despierta los sentidos con cada sorbo.',
+      'Chivas 12, vermouth rosso y bitter de naranja, coronado con tocino ahumado. Un aperitivo elegante y rebelde.',
     tag: 'Un viaje del Caribe a la oscuridad',
-    image:
-      '/barra/cocteles/Smoke.webp',
+    image: '/barra/cocteles/Smoke.webp',
   },
   {
     name: 'Jungle Fire Zombie',
     price: 'S/35.00',
     description:
-      'Una tormenta de rones y mezcal se fusiona con maracuyá, naranja y canela, encendida por un atrevido toque de ají. Un tiki intenso y salvaje que desata la selva en cada sorbo.',
+      'Mezcla explosiva de tequila picante, mezcal, blend de rones, licor de ají, piña, cítricos y jarabe de chancaca, Un cóctel tropical con carácter y fuego.',
     tag: 'Un viaje del Caribe a la oscuridad',
     image:
       'https://images.unsplash.com/photo-1541546339599-ecdbfcf77378?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Bartolita',
+    price: 'S/33.00',
+    description:
+      'Una explosión frutal y cítrica, con el carácter del pisco moscatel y tequila, equilibrada con suaves notas de naranja, limón y granadina.',
+    tag: 'Frutal & Cítrico',
+    image:
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=70',
   },
 ];
 
 export const mocktails: MenuItemData[] = [
   {
-    name: 'Piña Fizz',
+    name: 'Green and Fresh',
     price: 'S/20.00',
     description:
-      'A base de piña, leche, jarabe simple, crema de coco y agua con gas.',
+      'Maracuyá, limón, pepino y albahaca con un toque burbujeante, Fresco, herbal y revitalizante.',
     tag: 'Sin alcohol',
     image:
       'https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'La Capulina',
+    name: 'Fuego Dulce',
     price: 'S/20.00',
     description:
-      'A base de agua miel, zumo de naranja, aguaymanto y agua tónica.',
+      'Piña, naranja, kion y chancaca en una mezcla tropical con un final refrescante y lleno de carácter.',
     tag: 'Sin alcohol',
     image:
       'https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Maracumango',
+    name: 'Andino de Oro',
     price: 'S/20.00',
-    description: 'A base de jarabe simple, maracuyá, mango y Ginger Ale.',
+    description:
+      'Aguaymanto, limón y granadina con un toque de agua tónica, Equilibrado, cítrico y refrescante.',
     tag: 'Sin alcohol',
     image:
       'https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'San Francisco',
+    name: 'Passion Sunset',
     price: 'S/20.00',
-    description: 'Piña, naranja, limón, granadina y Ginger Ale.',
+    description:
+      'Piña y maracuyá con limón y un ligero dulzor. Tropical, burbujeante y perfecto para el verano.',
     tag: 'Sin alcohol',
     image:
       'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=500&q=70',
@@ -150,7 +176,7 @@ export const entradas: MenuItemData[] = [
     name: 'Tequeños de Jamón y Queso',
     price: 'S/20.00',
     description:
-      'Dorados y crocantes por fuera, con un irresistible relleno de jamón y queso fundido. Acompañados de nuestra salsa de guacamole para el toque perfecto.',
+      'Masa de wantan crocante rellena de jamón y queso acompañados con guacamole.',
     tag: 'El Clásico que Nunca Falla',
     image:
       'https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=500&q=70',
@@ -159,101 +185,118 @@ export const entradas: MenuItemData[] = [
     name: 'Tequeños Chicken Thai Roll',
     price: 'S/22.00',
     description:
-      'Crujiente masa de wantán rellena de pollo al wok, cebolla blanca y pimientos, acompañada de salsa de cinco especias inspirada en sabores orientales.',
+      'Masa de wantan crocante rellena de pechuga de pollo al wok, cebolla blanca, pimiento con estilo oriental acompañados de salsa de 5 especias.',
     tag: 'Inspiración Oriental',
     image:
       'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Papas Parrilleras',
-    price: 'S/28.00',
+    name: 'Salchipapa Gaucha Personal',
+    price: 'S/30.00',
     description:
-      'Papas fritas crocantes acompañadas de chorizo de finas hierbas, salchicha arequipeña y chuleta de res, terminadas con salsa chimichurri.',
+      'Crocantes papas fritas acompañada de tropezones de chorizo argentino de finas hierbas al grill, bañado de suave y cremosa salsa de queso cheddar y lluvia crocante de tocino.',
     tag: 'Para Compartir sin Culpa',
     image:
       'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Papas Bravas Carretilleras',
-    price: 'S/28.00',
-    description:
-      'Papas fritas crocantes acompañadas de chorizo de finas hierbas y salchicha arequipeña, coronadas con salsa anticuchera, chalaca y chimichurri.',
+    name: 'Salchipapa Personal Frankfurt',
+    price: 'S/20.00',
+    description: 'Crocantes papas fritas acompañada de salchicha frankfurt.',
     tag: 'Sabor Callejero',
     image:
       'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Ensalada César',
+    name: 'Salchipapa Personal Doble Embutido',
     price: 'S/25.00',
     description:
-      'Lechuga fresca y pechuga de pollo al grill acompañadas de nuestra clásica salsa César, en una combinación ligera, fresca y llena de sabor.',
-    tag: 'La Opción Fresca',
+      'Crocantes papas fritas acompañadas de salchicha arequipeña y chorizo.',
+    tag: 'Sabor Callejero',
     image:
-      'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=500&q=70',
+      'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Salchipapa Parrillera (Para Dos)',
+    price: 'S/55.00',
+    description:
+      'Crocantes papas fritas acompañadas de chorizo de finas hierbas, salchicha Arequipeña coronada con chuleta de bife de res o filete de pollo bañada en salsa chimichurri.',
+    tag: 'Para Compartir',
+    image:
+      'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Salchipapa Carretillera Doble (Para Dos)',
+    price: 'S/49.00',
+    description:
+      'Crocantes papas fritas acompañada de salchicha frankfurt, salchicha Arequipeña coronada con pechuga de pollo crocante.',
+    tag: 'Para Compartir',
+    image:
+      'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=70',
   },
 ];
 
 export const fuertes: MenuItemData[] = [
   {
-    name: 'Lomo Saltado',
-    price: 'S/35.00',
+    name: 'Ensalada César',
+    price: 'S/29.00',
     description:
-      'Jugosos trozos de lomo fino salteados al wok junto a cebolla y tomate, acompañados de crocantes papas fritas y arroz blanco. Un clásico que nunca falla.',
+      'Trozos frescos de lechuga bañados en deliciosa salsa de vinagreta Cesar acompañada de pechuga de pollo al grill.',
+    tag: 'La Opción Fresca',
+    image:
+      'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Lomo Saltado',
+    price: 'S/39.00',
+    description:
+      'Trozos de lomo fino de res salteados al wok con cebolla, tomate, acompañados de crocantes papas fritas y arroz blanco.',
     tag: 'El Favorito de Siempre',
     image:
       'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Lomo Strogonoff',
-    price: 'S/35.00',
+    price: 'S/39.00',
     description:
-      'Lomo de res y champiñones envueltos en una cremosa salsa strogonoff, acompañado de papas crujientes y ensalada fresca.',
+      'Jugosos trozos de lomo fino de res salteados al wok con cebolla, champiñones acompañados de crocantes papas nativas y mix de lechugas.',
     tag: 'Suave & Reconfortante',
     image:
       'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Enrollado Cordon Bleu',
-    price: 'S/25.00',
+    price: 'S/35.00',
     description:
-      'Pechuga de pollo rellena de jamón y queso, dorada hasta alcanzar el punto perfecto y acompañada de salsa de champiñones y mix de lechugas frescas.',
+      'Pechuga de pollo rellena de jamon y queso crocante, bañado en salsa de champiñones acompañado de mix de lechugas.',
     tag: 'Dorado a la Perfección',
     image:
       'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Fettuccini a la Huancaína con Lomo Saltado',
-    price: 'S/38.00',
+    name: 'Fettuccini en Salsa Huancaína con Lomo Saltado',
+    price: 'S/39.00',
     description:
-      'La cremosidad de nuestra salsa huancaína artesanal se combina con un jugoso lomo saltado para crear una de las fusiones más irresistibles de la casa.',
+      'Fetuccini bañados en salsa huancaina artesanal acompañado con nuestro jugoso lomo saltado de res.',
     tag: 'Dos Clásicos, Un Plato',
     image:
       'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Crispi de Pollo',
-    price: 'S/25.00',
+    price: 'S/30.00',
     description:
-      'Crujientes trozos de pollo bañados en miel de maracuyá, acompañados de papas fritas para un contraste perfecto entre dulzor y textura.',
+      'Bastones crocantes de pechuga de pollo bañados en miel de maracuyà con papas fritas crocantes.',
     tag: 'Dulce & Crocante',
     image:
       'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Costillas de Cerdo BBQ',
-    price: 'S/30.00',
+    name: 'Costillas de Cerdo en Salsa BBQ / Búfalo',
+    price: 'S/35.00',
     description:
-      'Tiernas costillas de cerdo bañadas en salsa BBQ, acompañadas de papas fritas crocantes. Un plato lleno de sabor en cada bocado.',
+      'Tiernas costillas de cerdo bañadas en salsa BBQ clásica con papas fritas crocantes.',
     tag: 'Pura Tentación',
-    image:
-      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=70',
-  },
-  {
-    name: 'Costillas de Cerdo Búfalo',
-    price: 'S/30.00',
-    description:
-      'Jugosas costillas de cerdo cubiertas con salsa búfalo de carácter intenso, acompañadas de papas fritas crocantes.',
-    tag: 'Para los Valientes',
     image:
       'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=70',
   },
@@ -261,38 +304,56 @@ export const fuertes: MenuItemData[] = [
 
 export const hamburguesas: MenuItemData[] = [
   {
-    name: 'Hamburguesa Montada Mandrágora',
-    price: 'S/26.00',
+    name: 'Hamburguesa Clásica',
+    price: 'S/29.00',
     description:
-      'Una combinación generosa de asado de tira, queso cheddar, tocino y huevo, realzada por nuestro característico encebollado de la casa en cada bocado.',
+      'Asado de tira hecho hamburguesa, queso cheddar, tocino servido en pan brioche y papas nativas.',
+    tag: 'El Clásico',
+    image:
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Hamburguesa Montada Mandrágora',
+    price: 'S/30.00',
+    description:
+      'Asado de tira hecho hamburguesa, queso cheddar, tocino, huevo frito servido en pan brioche y papas nativas.',
     tag: 'Sin Miedo al Hambre',
     image:
       'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Hamburguesa a lo Pobre',
-    price: 'S/27.00',
+    price: 'S/35.00',
     description:
-      'La unión perfecta entre el sabor de la parrilla y la tradición: asado de tira, queso cheddar, tocino, huevo frito, plátano frito y nuestro encebollado especial.',
+      'Asado de tira hecho hamburguesa, queso cheddar, tocino, huevo frito y plátano servido en pan brioche y papas nativas.',
     tag: 'Tradición que Conquista',
     image:
       'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Hamburguesa BBQ Tocino',
-    price: 'S/27.00',
+    price: 'S/35.00',
     description:
-      'Asado de tira, queso cheddar y tocino bañado en salsa BBQ se encuentran en una combinación intensa, servida en pan brioche con papas nativas.',
+      'Asado de tira hecho hamburguesa, queso cheddar, tocino, bañada en BBQ de tocino servido en pan brioche y papas nativas.',
     tag: 'Ahumada & Poderosa',
     image:
       'https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=500&q=70',
   },
   {
     name: 'Hamburguesa Mandrágora',
-    price: 'S/27.00',
+    price: 'S/35.00',
     description:
-      'La esencia de la casa: asado de tira, queso cheddar, tocino y aros de cebolla crocantes, servidos en pan brioche acompañado de papas nativas.',
+      'Asado de tira hecho hamburguesa, queso cheddar, tocino, aros de cebolla crocantes servido en pan brioche y papas nativas.',
     tag: 'La Favorita de la Casa',
+    image:
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Hamburguesa LM Especial',
+    price: 'S/38.00',
+    description:
+      'Asado de tira hecho hamburguesa, tocino, tomate, lechuga, bañada en salsa de queso de la casa y servido en pan brioche con papas nativas.',
+    tag: 'Especial de la Casa',
     image:
       'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=70',
   },
@@ -300,84 +361,39 @@ export const hamburguesas: MenuItemData[] = [
 
 export const alitas_y_combos: MenuItemData[] = [
   {
-    name: 'Alitas BBQ',
-    price: 'S/25.00',
+    name: 'Alitas Clásicas BBQ / Búfalo / Acevichadas / Teriyaki',
+    price: 'S/30.00',
     description:
-      'Alitas tiernas y jugosas cubiertas con nuestra clásica salsa BBQ, logrando el equilibrio perfecto entre dulzor, intensidad y sabor ahumado.',
+      'Alitas tiernas y jugosas bañadas en salsa BBQ con papas fritas crotantes.',
     tag: 'Las Más Pedidas',
     image:
       'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Alitas BBQ Maracuyá',
-    price: 'S/25.00',
-    description:
-      'La intensidad de la salsa BBQ se encuentra con el toque tropical del maracuyá en una combinación dulce, vibrante y llena de carácter.',
-    tag: 'Toque Tropical',
-    image:
-      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=500&q=70',
-  },
-  {
-    name: 'Alitas BBQ Tocino',
-    price: 'S/25.00',
-    description:
-      'Alitas jugosas bañadas en salsa BBQ con el inconfundible sabor del tocino, una combinación intensa que conquista desde el primer bocado.',
-    tag: 'Sabor Ahumado',
-    image:
-      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=70',
-  },
-  {
-    name: 'Alitas Acevichadas',
-    price: 'S/25.00',
-    description:
-      'Nuestra versión más peruana: alitas bañadas en salsa acevichada con un perfil cítrico y cremoso que realza cada bocado.',
-    tag: 'Fusión Peruana',
-    image:
-      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=500&q=70',
-  },
-  {
-    name: 'Alitas Búfalo',
-    price: 'S/25.00',
-    description:
-      'Alitas bañadas en salsa búfalo de carácter intenso y picante, ideales para quienes buscan emociones fuertes.',
-    tag: 'Nivel Picante',
-    image:
-      'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=500&q=70',
-  },
-  {
-    name: 'Alitas Teriyaki',
-    price: 'S/25.00',
-    description:
-      'Una combinación equilibrada de sabores dulces y salados inspirada en la cocina oriental, con un acabado irresistible.',
-    tag: 'Estilo Oriental',
-    image:
-      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=70',
-  },
-  {
-    name: 'Alitas Frutos del Bosque',
-    price: 'S/27.00',
-    description:
-      'Una propuesta diferente que combina notas dulces y frutales para crear una experiencia única y sorprendente.',
-    tag: 'La Más Original',
-    image:
-      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=500&q=70',
-  },
-  {
     name: 'Combo La Mandrágora',
-    price: 'S/65.00',
+    price: 'S/79.00',
     description:
-      'Costillas BBQ clásicas, alitas acevichadas y alitas BBQ de maracuyá acompañadas de papas fritas crocantes. Ideal para disfrutar sin apuros.',
+      'Costillas de cerdo BBQ clasica, alitas acevichadas, alitas BBQ de maracuyà con sus papas fritas crocantes.',
     tag: 'Para Compartir',
     image:
       'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=70',
   },
   {
-    name: 'Combo Especial LM',
-    price: 'S/65.00',
+    name: 'Combo Especial L.M.',
+    price: 'S/89.00',
     description:
-      'Costillas búfalo, alitas acevichadas, alitas frutos del bosque y crocantes de pollo en miel de maracuyá con papas fritas. Una combinación pensada para probarlo todo.',
+      'Costillas de cerdo búfalo, alitas acevichadas, alitas honey mustard, dedos crocantes de pollo en miel de maracuyá acompañada de crocantes papas fritas.',
     tag: 'Experiencia Completa',
     image:
       'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    name: 'Combo Alitas',
+    price: 'S/85.00',
+    description:
+      'Una gran combinación de nuestras deliciosas Alitas BBQ/ACEVICHADAS/TERIYAKI.',
+    tag: 'Para Compartir',
+    image:
+      'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=70',
   },
 ];
