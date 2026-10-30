@@ -7,9 +7,55 @@ import Galeria from '../components/sections/Galeria.astro';
 import Reserva from '../components/sections/Reserva.astro';
 import Ubicanos from '../components/sections/Ubicanos.astro';
 import CartaHalloweenModal from '../components/ui/CartaHalloweenModal.astro';
+
+const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
+const base = site.href.replace(/\/$/, '');
+
+const restaurantSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  '@id': `${base}/#restaurant`,
+  name: 'La Mandrágora Restobar',
+  url: `${base}/`,
+  description:
+    'Restobar en el corazón de Arequipa. Terraza y salón, coctelería de autor, cocina a la carta y música en vivo.',
+  image: `${base}/og-image.png`,
+  logo: `${base}/icon-512.png`,
+  email: 'reservas@lamandragora.pe',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Calle San Francisco 300-A',
+    addressLocality: 'Arequipa',
+    addressRegion: 'Arequipa',
+    addressCountry: 'PE',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -16.396349694412603,
+    longitude: -71.5353123583828,
+  },
+  hasMap: 'https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8',
+  sameAs: [
+    'https://www.facebook.com/MANDRAAQP',
+    'https://www.instagram.com/mandragora_aqp/',
+    'https://www.tiktok.com/@mandragorarestaurante',
+  ],
+};
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/videos/dish-poster.webp"
+      fetchpriority="high"
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(restaurantSchema)}
+    />
+  </Fragment>
   <CartaHalloweenModal />
   <Hero />
   <Ambientes />

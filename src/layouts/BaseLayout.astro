@@ -1,14 +1,25 @@
 ---
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title = 'La Mandrágora Restobar' } = Astro.props;
+const {
+  title = 'La Mandrágora Restobar | Arequipa',
+  description = 'Restobar en el corazón de Arequipa. Terraza y salón, coctelería de autor, cocina a la carta y música en vivo.',
+  image = '/og-image.png',
+} = Astro.props;
+
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import caesarDressingUrl from '../assets/fonts/caesar-dressing-latin-400.woff2?url';
 import karlaUrl from '../assets/fonts/karla-latin-wght-normal.woff2?url';
 import '../styles/global.css';
+
+const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
+const canonicalURL = new URL(Astro.url.pathname, site);
+const imageURL = new URL(image, site);
 ---
 
 <!doctype html>
@@ -16,8 +27,12 @@ import '../styles/global.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#070708" />
+
     <link
       rel="preload"
       href={caesarDressingUrl}
@@ -34,6 +49,48 @@ import '../styles/global.css';
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="La Mandrágora Restobar" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="La Mandrágora Restobar" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+
+    {
+      import.meta.env.PUBLIC_GSC_VERIFICATION && (
+        <meta
+          name="google-site-verification"
+          content={import.meta.env.PUBLIC_GSC_VERIFICATION}
+        />
+      )
+    }
+    {
+      import.meta.env.PUBLIC_BING_VERIFICATION && (
+        <meta
+          name="msvalidate.01"
+          content={import.meta.env.PUBLIC_BING_VERIFICATION}
+        />
+      )
+    }
+
+    <script>
+      import '../scripts/analytics';
+    </script>
+
+    <slot name="head" />
   </head>
   <body>
     <Header />
