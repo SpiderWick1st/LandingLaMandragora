@@ -6,7 +6,7 @@ interface Props {
 }
 
 const {
-  title = 'La Mandrágora Restobar | Arequipa',
+  title = 'La Mandrágora Restaurant | Arequipa',
   description = 'Restobar en el corazón de Arequipa. Terraza y salón, coctelería de autor, cocina a la carta y música en vivo.',
   image = '/og-image.png',
 } = Astro.props;
@@ -57,7 +57,7 @@ const imageURL = new URL(image, site);
     <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="La Mandrágora Restobar" />
+    <meta property="og:site_name" content="La Mandrágora Restaurante" />
     <meta property="og:locale" content="es_PE" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -65,7 +65,7 @@ const imageURL = new URL(image, site);
     <meta property="og:image" content={imageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="La Mandrágora Restobar" />
+    <meta property="og:image:alt" content="La Mandrágora Restaurante" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
