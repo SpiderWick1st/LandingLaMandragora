@@ -186,27 +186,28 @@ import '../../styles/map.css';
     const lmIcon = L.divIcon({
       className: 'custom-leaflet-pin',
       html: `
-        <div class="relative flex flex-col items-center -translate-x-1/2 -translate-y-full cursor-pointer group select-none">
-          {/* Etiqueta superior permanente */}
-          <div class="flex items-center gap-1.5 px-3 py-1 rounded-sm bg-black/90 backdrop-blur-md border border-brand-600/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
-            <span class="font-serif text-[11px] tracking-wider text-brand-300">La Mandrágora</span>
-          </div>
-
-          {/* Pin principal estilizado acorde a la marca */}
-          <div class="relative flex items-center justify-center">
-            <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-500/40 opacity-75"></span>
-            <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-600 to-brand-800 border-2 border-brand-400/80 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4 3h16l-7 8.5V19h3a1 1 0 010 2H8a1 1 0 010-2h3v-7.5L4 3z"/>
-              </svg>
-            </div>
-          </div>
-          
-          {/* Sombra proyectada en el suelo */}
-          <div class="w-5 h-1.5 bg-black/70 rounded-full blur-[2px] mt-1"></div>
+      <div class="absolute left-0 top-0 w-max flex flex-col items-center -translate-x-1/2 -translate-y-full cursor-pointer group select-none">
+        <!-- Etiqueta superior permanente -->
+        <div class="flex items-center gap-1.5 px-3 py-1 rounded-sm bg-black/90 backdrop-blur-md border border-brand-600/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
+          <span class="font-serif text-[11px] tracking-wider text-brand-300">La Mandrágora</span>
         </div>
-      `,
+
+        <!-- Pin principal estilizado acorde a la marca -->
+        <div class="relative flex items-center justify-center w-11 h-11">
+          <span class="animate-ping absolute inset-0 m-auto h-10 w-10 rounded-full bg-brand-500/40 opacity-75"></span>
+          <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-600 to-brand-800 border-2 border-brand-400/80 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4 3h16l-7 8.5V19h3a1 1 0 010 2H8a1 1 0 010-2h3v-7.5L4 3z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Sombra proyectada en el suelo -->
+        <div class="w-5 h-1.5 bg-black/70 rounded-full blur-[2px] mt-1"></div>
+      </div>
+    `,
       iconSize: [0, 0],
+      iconAnchor: [0, 0],
     });
 
     const marker = L.marker([LAT, LNG], { icon: lmIcon }).addTo(map);
