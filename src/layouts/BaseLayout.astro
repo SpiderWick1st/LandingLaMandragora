@@ -101,5 +101,35 @@ const imageURL = new URL(image, site);
       <slot />
     </main>
     <Footer />
+    <script>
+      // Navegación interna sin mostrar #ancla en la URL
+      document.addEventListener('click', (e) => {
+        const a = (e.target as Element).closest?.(
+          'a[href^="#"]'
+        ) as HTMLAnchorElement | null;
+        if (!a || e.defaultPrevented) return;
+        const id = a.getAttribute('href')!.slice(1);
+        if (!id) return;
+        const el = document.getElementById(id);
+        if (!el && location.pathname === '/') return; // ancla inexistente en el inicio
+        e.preventDefault();
+        if (!el) {
+          // Otra página (p. ej. términos): ir al inicio y desplazarse allí
+          sessionStorage.setItem('scrollTo', id);
+          location.href = '/';
+          return;
+        }
+        el.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', location.pathname + location.search);
+      });
+
+      const pending = sessionStorage.getItem('scrollTo');
+      if (pending) {
+        sessionStorage.removeItem('scrollTo');
+        window.addEventListener('load', () => {
+          document.getElementById(pending)?.scrollIntoView();
+        });
+      }
+    </script>
   </body>
 </html>
