@@ -6,22 +6,75 @@ import Carta from '../components/sections/Carta.astro';
 import Galeria from '../components/sections/Galeria.astro';
 import Reserva from '../components/sections/Reserva.astro';
 import Ubicanos from '../components/sections/Ubicanos.astro';
+import {
+  cocteles,
+  mocktails,
+  bebidas_calientes,
+  entradas,
+  fuertes,
+  hamburguesas,
+  alitas_y_combos,
+  type MenuItemData,
+} from '../data/menu';
+import { RESERVAS_ACTIVAS } from '../data/config';
+import { HALLOWEEN_ACTIVO } from '../data/halloween';
 import CartaHalloweenModal from '../components/ui/CartaHalloweenModal.astro';
 
 const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
 const base = site.href.replace(/\/$/, '');
 
+const menuSection = (name: string, items: MenuItemData[]) => ({
+  '@type': 'MenuSection',
+  name,
+  hasMenuItem: items.map((item) => {
+    const price = item.price.match(/(\d+(?:\.\d+)?)/)?.[1];
+    return {
+      '@type': 'MenuItem',
+      name: item.name,
+      description: item.description,
+      ...(price && {
+        offers: { '@type': 'Offer', price, priceCurrency: 'PEN' },
+      }),
+    };
+  }),
+});
+
 const restaurantSchema = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
   '@id': `${base}/#restaurant`,
-  name: 'La Mandrágora Restobar',
+  name: 'La Mandrágora Restaurante',
   url: `${base}/`,
   description:
-    'Restobar en el corazón de Arequipa. Terraza y salón, coctelería de autor, cocina a la carta y música en vivo.',
+    'Restaurante con coctelería de autor en el corazón de Arequipa. Terraza y salón, cocina a la carta y música en vivo.',
   image: `${base}/og-image.png`,
   logo: `${base}/icon-512.png`,
   email: 'reservas@lamandragora.pe',
+  servesCuisine: [
+    'Platos de fondo',
+    'Lomo saltado',
+    'Cordon bleu',
+    'Salchipapas',
+    'Alitas',
+    'Costillitas',
+    'Combos',
+  ],
+  priceRange: 'S/ 20 - S/ 90',
+  currenciesAccepted: 'PEN',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ],
+    opens: '15:30',
+    closes: '00:00',
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Calle San Francisco 300-A',
@@ -33,6 +86,19 @@ const restaurantSchema = {
     '@type': 'GeoCoordinates',
     latitude: -16.396349694412603,
     longitude: -71.5353123583828,
+  },
+  hasMenu: {
+    '@type': 'Menu',
+    name: 'Carta de La Mandrágora',
+    hasMenuSection: [
+      menuSection('Cócteles', cocteles),
+      menuSection('Mocktails', mocktails),
+      menuSection('Bebidas calientes', bebidas_calientes),
+      menuSection('Entradas', entradas),
+      menuSection('Platos de fondo', fuertes),
+      menuSection('Hamburguesas', hamburguesas),
+      menuSection('Alitas y combos', alitas_y_combos),
+    ],
   },
   hasMap: 'https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8',
   sameAs: [
@@ -56,32 +122,37 @@ const restaurantSchema = {
       set:html={JSON.stringify(restaurantSchema)}
     />
   </Fragment>
-  <CartaHalloweenModal />
+  {HALLOWEEN_ACTIVO && <CartaHalloweenModal />}
   <Hero />
   <Ambientes />
   <Carta />
   <Galeria />
-  <!-- <Reserva /> -->
+  {/* <Reserva /> */}
   <Ubicanos />
 
-  <a
-    href="#reserva"
-    class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3.5 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/40 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black md:hidden"
-    aria-label="Ir a reservar tu mesa"
-  >
-    Reservar
-    <svg
-      class="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M5 12h14m-6-6 6 6-6 6"></path>
-    </svg>
-  </a>
+  {
+    RESERVAS_ACTIVAS && (
+      <a
+        href="#reserva"
+        class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3.5 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/40 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black md:hidden"
+        aria-label="Ir a reservar tu mesa"
+      >
+        Reservar
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 12h14m-6-6 6 6-6 6"
+          />
+        </svg>
+      </a>
+    )
+  }
 </Layout>

@@ -2,6 +2,8 @@ import type { APIRoute } from 'astro';
 
 const FALLBACK_SITE = 'https://www.lamandragora.com.pe';
 
+const NOINDEX_ROUTES = ['/terminos-y-condiciones', '/politica-de-privacidad'];
+
 const pageModules = import.meta.glob('./**/*.astro');
 
 function toRoute(file: string): string | null {
@@ -22,7 +24,10 @@ export const GET: APIRoute = ({ site }) => {
 
   const routes = Object.keys(pageModules)
     .map(toRoute)
-    .filter((route): route is string => route !== null)
+    .filter(
+      (route): route is string =>
+        route !== null && !NOINDEX_ROUTES.includes(route)
+    )
     .sort();
 
   const urls = routes

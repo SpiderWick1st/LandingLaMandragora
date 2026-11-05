@@ -3,12 +3,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'La Mandrágora Restaurant | Arequipa',
-  description = 'Restobar en el corazón de Arequipa. Terraza y salón, coctelería de autor, cocina a la carta y música en vivo.',
+  description = 'Restaurante con coctelería de autor en el corazón de Arequipa. Terraza y salón, cocina a la carta y música en vivo.',
   image = '/og-image.png',
+  noindex = false,
 } = Astro.props;
 
 import Header from '../components/Header.astro';
@@ -53,7 +55,12 @@ const imageURL = new URL(image, site);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, follow'
+        : 'index, follow, max-image-preview:large'}
+    />
     <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:type" content="website" />
