@@ -1,9 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import logoMark from '../assets/logo-mark.png';
+import { RESERVAS_ACTIVAS } from '../data/config';
+import { HALLOWEEN_ACTIVO } from '../data/halloween';
 ---
 
-<!--Menu desktop -->
+{/*Menu desktop */}
 <header
   class="fixed top-0 left-0 w-full z-50 bg-[#070708]/50 backdrop-blur-xl transition-all duration-300 py-4"
 >
@@ -50,17 +52,21 @@ import logoMark from '../assets/logo-mark.png';
             >Carta</a
           >
         </li>
-        <li>
-          <button
-            type="button"
-            data-halloween-open
-            aria-haspopup="dialog"
-            aria-controls="halloween-modal"
-            class="inline-flex items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-halloween-400 transition-all duration-200 hover:border-halloween-300/60 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black lg:px-3.5 lg:py-1.5 lg:text-xs lg:tracking-[0.14em]"
-          >
-            Halloween
-          </button>
-        </li>
+        {
+          HALLOWEEN_ACTIVO && (
+            <li>
+              <button
+                type="button"
+                data-halloween-open
+                aria-haspopup="dialog"
+                aria-controls="halloween-modal"
+                class="inline-flex items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-halloween-400 transition-all duration-200 hover:border-halloween-300/60 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black lg:px-3.5 lg:py-1.5 lg:text-xs lg:tracking-[0.14em]"
+              >
+                Halloween
+              </button>
+            </li>
+          )
+        }
         <li>
           <a href="#galeria" class="hover:text-brand-500 transition-colors py-2"
             >Galería</a
@@ -72,14 +78,18 @@ import logoMark from '../assets/logo-mark.png';
             class="hover:text-brand-500 transition-colors py-2">Ubícanos</a
           >
         </li>
-        <!-- <li>
-          <a
-            href="#reserva"
-            class="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-brand-600 rounded-full hover:bg-brand-500 transition-all duration-200 shadow-sm"
-          >
-            Reservar
-          </a>
-        </li> -->
+        {
+          RESERVAS_ACTIVAS && (
+            <li>
+              <a
+                href="#reserva"
+                class="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-brand-600 rounded-full hover:bg-brand-500 transition-all duration-200 shadow-sm"
+              >
+                Reservar
+              </a>
+            </li>
+          )
+        }
       </ul>
     </nav>
     <button
@@ -103,7 +113,7 @@ import logoMark from '../assets/logo-mark.png';
   </div>
 </header>
 
-<!-- Menu Mobile -->
+{/* Menu Mobile */}
 <div
   id="mobile-menu"
   class="fixed inset-0 w-full h-screen bg-[#070708]/98 backdrop-blur-3xl md:hidden translate-x-full transition-transform duration-300 ease-in-out z-60 flex flex-col items-center justify-center"
@@ -145,6 +155,7 @@ import logoMark from '../assets/logo-mark.png';
           Inicio
         </a>
       </li>
+      ) }
       <li>
         <a
           href="#ambientes"
@@ -161,17 +172,21 @@ import logoMark from '../assets/logo-mark.png';
           Carta
         </a>
       </li>
-      <li>
-        <button
-          type="button"
-          data-halloween-open
-          aria-haspopup="dialog"
-          aria-controls="halloween-modal"
-          class="inline-flex w-full items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-6 py-3 text-base text-halloween-400 transition-colors duration-200 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-        >
-          Halloween
-        </button>
-      </li>
+      {
+        HALLOWEEN_ACTIVO && (
+          <li>
+            <button
+              type="button"
+              data-halloween-open
+              aria-haspopup="dialog"
+              aria-controls="halloween-modal"
+              class="inline-flex w-full items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-6 py-3 text-base text-halloween-400 transition-colors duration-200 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            >
+              Halloween
+            </button>
+          </li>
+        )
+      }
       <li>
         <a
           href="#galeria"
@@ -188,14 +203,18 @@ import logoMark from '../assets/logo-mark.png';
           Ubícanos
         </a>
       </li>
-      <li>
-        <a
-          href="#reserva"
-          class="mobile-link inline-flex items-center justify-center w-full px-6 py-3 text-base text-white bg-brand-700 rounded-full hover:bg-brand-600 transition-all duration-200 shadow-md font-sans mt-4"
-        >
-          Reservar
-        </a>
-      </li>
+      {
+        RESERVAS_ACTIVAS && (
+          <li>
+            <a
+              href="#reserva"
+              class="mobile-link inline-flex items-center justify-center w-full px-6 py-3 text-base text-white bg-brand-700 rounded-full hover:bg-brand-600 transition-all duration-200 shadow-md font-sans mt-4"
+            >
+              Reservar
+            </a>
+          </li>
+        )
+      }
     </ul>
   </nav>
 </div>

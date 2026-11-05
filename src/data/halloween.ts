@@ -1,6 +1,4 @@
 // Carta especial de Halloween.
-// Datos de ejemplo: reemplazar por la propuesta real del cliente antes de publicar.
-// Las imágenes son referenciales (Unsplash); sustituirlas por fotos reales de la carta.
 export interface HalloweenCocktail {
   name: string;
   price: string;
@@ -72,3 +70,6 @@ export const coctelesHalloween: HalloweenCocktail[] = [
       'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=240&h=300&q=70',
   },
 ];
+
+/** Pon en `true` para volver a mostrar la carta de Halloween (botón y modal). */
+export const HALLOWEEN_ACTIVO = false;
