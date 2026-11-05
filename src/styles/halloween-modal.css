@@ -37,7 +37,7 @@
     ),
     linear-gradient(170deg, var(--soil-2), var(--soil));
   border: 1px solid var(--rule);
-  /* Marco interior, como la lámina de un herbario */
+  /* Marco interior */
   outline: 1px solid var(--rule);
   outline-offset: -9px;
 }

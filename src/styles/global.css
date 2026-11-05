@@ -33,10 +33,10 @@ body {
 }
 
 @theme {
-  /* Display libre (OFL): reemplaza a Dalek en títulos y marca */
+  /* Display libre (OFL): 
   --font-serif:
     'Caesar Dressing', ui-serif, Georgia, Cambria, 'Times New Roman', Times,
-    serif;
+    serif;*/
 
   /* Cuerpo y UI (OFL) */
   --font-sans:
