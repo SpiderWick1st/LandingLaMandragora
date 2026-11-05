@@ -102,7 +102,7 @@ import '../../styles/map.css';
                 <span
                   class="font-mono text-brand-400 font-semibold text-xs sm:text-sm bg-brand-950/40 px-3 py-1 rounded-sm border border-brand-700/30"
                 >
-                  3:00 PM - 11:30 PM
+                  3:00 PM - 12:00 AM
                 </span>
               </div>
             </div>
@@ -187,12 +187,12 @@ import '../../styles/map.css';
       className: 'custom-leaflet-pin',
       html: `
         <div class="relative flex flex-col items-center -translate-x-1/2 -translate-y-full cursor-pointer group select-none">
-          <!-- Etiqueta superior permanente -->
+          {/* Etiqueta superior permanente */}
           <div class="flex items-center gap-1.5 px-3 py-1 rounded-sm bg-black/90 backdrop-blur-md border border-brand-600/40 text-white shadow-lg shadow-black/80 mb-2 transition-transform duration-300 group-hover:scale-105 whitespace-nowrap">
             <span class="font-serif text-[11px] tracking-wider text-brand-300">La Mandrágora</span>
           </div>
 
-          <!-- Pin principal estilizado acorde a la marca -->
+          {/* Pin principal estilizado acorde a la marca */}
           <div class="relative flex items-center justify-center">
             <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-500/40 opacity-75"></span>
             <div class="relative w-11 h-11 rounded-full bg-linear-to-br from-brand-600 to-brand-800 border-2 border-brand-400/80 flex items-center justify-center shadow-xl shadow-black/80 ring-4 ring-brand-500/20 group-hover:scale-110 transition-transform">
@@ -202,7 +202,7 @@ import '../../styles/map.css';
             </div>
           </div>
           
-          <!-- Sombra proyectada en el suelo -->
+          {/* Sombra proyectada en el suelo */}
           <div class="w-5 h-1.5 bg-black/70 rounded-full blur-[2px] mt-1"></div>
         </div>
       `,
@@ -213,10 +213,10 @@ import '../../styles/map.css';
     marker.bindPopup(
       `
       <div class="p-3 text-center min-w-[190px]">
-        <span class="text-[10px] font-mono tracking-widest text-brand-400 uppercase block mb-1">Restobar Retro</span>
+        <span class="text-[10px] font-mono tracking-widest text-brand-400 uppercase block mb-1">Restaurante</span>
         <p class="font-serif text-base font-bold text-white mb-0.5">La Mandrágora</p>
         <p class="text-xs text-gray-300 m-0">San Francisco 300-A</p>
-        <p class="text-[11px] text-brand-400 mt-2 font-mono">3:00 PM - 11:30 PM</p>
+        <p class="text-[11px] text-brand-400 mt-2 font-mono">3:00 PM - 12:00 AM</p>
       </div>
     `,
       { className: 'lm-popup' }
