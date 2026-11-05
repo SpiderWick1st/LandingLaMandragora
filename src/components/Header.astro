@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import logoMark from '../assets/logo-mark.png';
+import logoMark from '../assets/logo-lm.svg';
 ---
 
 <!--Menu desktop -->
@@ -17,11 +17,9 @@ import logoMark from '../assets/logo-mark.png';
         src={logoMark}
         alt="La Mandrágora"
         width={192}
-        format="webp"
-        quality={90}
         loading="eager"
         fetchpriority="high"
-        class="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+        class="brightness-0 invert h-12 w-auto transition-transform duration-300 group-hover:scale-105"
       />
       <div class="sr-only lg:not-sr-only">
         <p class="text-xl text-white tracking-wider font-serif">
@@ -128,10 +126,8 @@ import logoMark from '../assets/logo-mark.png';
       src={logoMark}
       alt="La Mandrágora"
       width={320}
-      format="webp"
-      quality={90}
       loading="lazy"
-      class="mx-auto mb-3 h-20 w-auto"
+      class="brightness-0 invert mx-auto mb-3 h-20 w-auto"
     />
     <p class="text-xl text-white tracking-wider font-serif">LA MANDRÁGORA</p>
     <p class="text-xs text-brand-500 tracking-widest uppercase">Restaurante</p>
