@@ -3,6 +3,22 @@ import { Image } from 'astro:assets';
 import logoMark from '../assets/logo-mark.png';
 import { RESERVAS_ACTIVAS } from '../data/config';
 import { HALLOWEEN_ACTIVO } from '../data/halloween';
+import {
+  defaultLang,
+  type Lang,
+  useTranslations,
+  getLocalizedPath,
+} from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = (Astro.currentLocale ?? defaultLang) as Lang } = Astro.props;
+const t = useTranslations(lang);
+const homeUrl = lang === 'en' ? '/en/' : '/';
+const pathEs = getLocalizedPath(Astro.url.pathname, 'es');
+const pathEn = getLocalizedPath(Astro.url.pathname, 'en');
 ---
 
 {/*Menu desktop */}
@@ -11,9 +27,9 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
 >
   <div class="container mx-auto px-6 flex items-center justify-between">
     <a
-      href="/"
+      href={homeUrl}
       class="flex items-center gap-3 group"
-      aria-label="La Mandrágora — Inicio"
+      aria-label={`La Mandrágora — ${t('nav.home')}`}
     >
       <Image
         src={logoMark}
@@ -27,89 +43,170 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
         <p class="text-xl text-white tracking-wider font-serif">
           LA MANDRÁGORA
         </p>
-        <p class="text-xs text-brand-500 tracking-widest">RESTAURANTE</p>
+        <p class="text-xs text-brand-500 tracking-widest">
+          {t('brand.restaurant')}
+        </p>
       </div>
     </a>
 
-    <nav aria-label="Navegación principal" class="hidden md:block">
-      <ul
-        class="flex items-center gap-3 lg:gap-8 list-none m-0 p-0 text-[13px] text-white tracking-wide lg:text-sm"
-      >
-        <li>
-          <a href="/" class="hover:text-brand-500 transition-colors py-2"
-            >Inicio</a
-          >
-        </li>
+    <div class="hidden md:flex items-center gap-4 lg:gap-8">
+      <nav aria-label="Navegación principal">
+        <ul
+          class="flex items-center gap-3 lg:gap-8 list-none m-0 p-0 text-[13px] text-white tracking-wide lg:text-sm"
+        >
+          <li>
+            <a
+              href={homeUrl}
+              class="hover:text-brand-500 transition-colors py-2"
+              >{t('nav.home')}</a
+            >
+          </li>
 
-        <li>
-          <a
-            href="#ambientes"
-            class="hover:text-brand-500 transition-colors py-2">Ambientes</a
-          >
-        </li>
-        <li>
-          <a href="#carta" class="hover:text-brand-500 transition-colors py-2"
-            >Carta</a
-          >
-        </li>
-        {
-          HALLOWEEN_ACTIVO && (
-            <li>
-              <button
-                type="button"
-                data-halloween-open
-                aria-haspopup="dialog"
-                aria-controls="halloween-modal"
-                class="inline-flex items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-halloween-400 transition-all duration-200 hover:border-halloween-300/60 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black lg:px-3.5 lg:py-1.5 lg:text-xs lg:tracking-[0.14em]"
-              >
-                Halloween
-              </button>
-            </li>
-          )
-        }
-        <li>
-          <a href="#galeria" class="hover:text-brand-500 transition-colors py-2"
-            >Galería</a
-          >
-        </li>
-        <li>
-          <a
-            href="#ubicanos"
-            class="hover:text-brand-500 transition-colors py-2">Ubícanos</a
-          >
-        </li>
-        {
-          RESERVAS_ACTIVAS && (
-            <li>
-              <a
-                href="#reserva"
-                class="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-brand-600 rounded-full hover:bg-brand-500 transition-all duration-200 shadow-sm"
-              >
-                Reservar
-              </a>
-            </li>
-          )
-        }
-      </ul>
-    </nav>
-    <button
-      id="mobile-menu-btn"
-      class="block md:hidden p-2 text-white hover:text-brand-500 focus:outline-none"
-      aria-label="Abrir menú"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+          <li>
+            <a
+              href="#ambientes"
+              class="hover:text-brand-500 transition-colors py-2"
+              >{t('nav.ambientes')}</a
+            >
+          </li>
+          <li>
+            <a href="#carta" class="hover:text-brand-500 transition-colors py-2"
+              >{t('nav.carta')}</a
+            >
+          </li>
+          {
+            HALLOWEEN_ACTIVO && (
+              <li>
+                <button
+                  type="button"
+                  data-halloween-open
+                  aria-haspopup="dialog"
+                  aria-controls="halloween-modal"
+                  class="inline-flex items-center justify-center rounded-full border border-halloween-400/40 bg-brand-950/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-halloween-400 transition-all duration-200 hover:border-halloween-300/60 hover:bg-brand-900/40 hover:text-halloween-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-halloween-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black lg:px-3.5 lg:py-1.5 lg:text-xs lg:tracking-[0.14em]"
+                >
+                  Halloween
+                </button>
+              </li>
+            )
+          }
+          <li>
+            <a
+              href="#galeria"
+              class="hover:text-brand-500 transition-colors py-2"
+              >{t('nav.galeria')}</a
+            >
+          </li>
+          <li>
+            <a
+              href="#ubicanos"
+              class="hover:text-brand-500 transition-colors py-2"
+              >{t('nav.ubicanos')}</a
+            >
+          </li>
+          {
+            RESERVAS_ACTIVAS && (
+              <li>
+                <a
+                  href="#reserva"
+                  class="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-brand-600 rounded-full hover:bg-brand-500 transition-all duration-200 shadow-sm"
+                >
+                  {t('nav.reserva')}
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+
+      {/* Selector de idioma Desktop */}
+      <div
+        class="inline-flex items-center rounded-full border border-brand-950/60 bg-neutral-950/80 p-0.5 text-xs font-sans tracking-wider shadow-inner"
+        role="group"
+        aria-label="Selector de idioma / Language selector"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+        <a
+          href={pathEs}
+          class:list={[
+            'rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors',
+            lang === 'es'
+              ? 'bg-brand-600 text-white shadow-sm'
+              : 'text-neutral-400 hover:text-white',
+          ]}
+          aria-current={lang === 'es' ? 'page' : undefined}
+          aria-label="Español"
+        >
+          ES
+        </a>
+        <a
+          href={pathEn}
+          class:list={[
+            'rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors',
+            lang === 'en'
+              ? 'bg-brand-600 text-white shadow-sm'
+              : 'text-neutral-400 hover:text-white',
+          ]}
+          aria-current={lang === 'en' ? 'page' : undefined}
+          aria-label="English"
+        >
+          EN
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 md:hidden">
+      {/* Selector de idioma Mobile compacto */}
+      <div
+        class="inline-flex items-center rounded-full border border-brand-950/60 bg-neutral-950/80 p-0.5 text-xs font-sans tracking-wider"
+        role="group"
+        aria-label="Selector de idioma / Language selector"
+      >
+        <a
+          href={pathEs}
+          class:list={[
+            'rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors',
+            lang === 'es'
+              ? 'bg-brand-600 text-white'
+              : 'text-neutral-400 hover:text-white',
+          ]}
+          aria-current={lang === 'es' ? 'page' : undefined}
+          aria-label="Español"
+        >
+          ES
+        </a>
+        <a
+          href={pathEn}
+          class:list={[
+            'rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors',
+            lang === 'en'
+              ? 'bg-brand-600 text-white'
+              : 'text-neutral-400 hover:text-white',
+          ]}
+          aria-current={lang === 'en' ? 'page' : undefined}
+          aria-label="English"
+        >
+          EN
+        </a>
+      </div>
+
+      <button
+        id="mobile-menu-btn"
+        class="p-2 text-white hover:text-brand-500 focus:outline-none"
+        aria-label={t('nav.open_menu')}
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -120,7 +217,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
 >
   <button
     class="mobile-link absolute top-6 right-6 p-2 text-white hover:text-brand-500 focus:outline-none z-50"
-    aria-label="Cerrar menú"
+    aria-label={t('nav.close_menu')}
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
@@ -131,7 +228,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
     </svg>
   </button>
 
-  <div class="mb-12 text-center select-none">
+  <div class="mb-8 text-center select-none">
     <Image
       src={logoMark}
       alt="La Mandrágora"
@@ -140,7 +237,43 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
       class="brightness-0 invert mx-auto mb-3 h-20 w-auto"
     />
     <p class="text-xl text-white tracking-wider font-serif">LA MANDRÁGORA</p>
-    <p class="text-xs text-brand-500 tracking-widest uppercase">Restaurante</p>
+    <p class="text-xs text-brand-500 tracking-widest uppercase">
+      {t('brand.restaurant')}
+    </p>
+  </div>
+
+  {/* Selector de idioma destacado dentro del Drawer */}
+  <div
+    class="mb-6 inline-flex items-center rounded-full border border-brand-950/60 bg-neutral-950/80 p-1 text-sm font-sans tracking-wider"
+    role="group"
+    aria-label="Selector de idioma / Language selector"
+  >
+    <a
+      href={pathEs}
+      class:list={[
+        'rounded-full px-4 py-1 text-xs font-medium transition-colors',
+        lang === 'es'
+          ? 'bg-brand-600 text-white shadow-sm'
+          : 'text-neutral-400 hover:text-white',
+      ]}
+      aria-current={lang === 'es' ? 'page' : undefined}
+      aria-label="Español"
+    >
+      Español
+    </a>
+    <a
+      href={pathEn}
+      class:list={[
+        'rounded-full px-4 py-1 text-xs font-medium transition-colors',
+        lang === 'en'
+          ? 'bg-brand-600 text-white shadow-sm'
+          : 'text-neutral-400 hover:text-white',
+      ]}
+      aria-current={lang === 'en' ? 'page' : undefined}
+      aria-label="English"
+    >
+      English
+    </a>
   </div>
 
   <nav aria-label="Navegación móvil" class="w-full max-w-xs px-6">
@@ -149,10 +282,10 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
     >
       <li>
         <a
-          href="/"
+          href={homeUrl}
           class="mobile-link block hover:text-brand-500 transition-colors py-2 border-b border-brand-950/20"
         >
-          Inicio
+          {t('nav.home')}
         </a>
       </li>
       <li>
@@ -160,7 +293,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
           href="#ambientes"
           class="mobile-link block hover:text-brand-500 transition-colors py-2 border-b border-brand-950/20"
         >
-          Ambientes
+          {t('nav.ambientes')}
         </a>
       </li>
       <li>
@@ -168,7 +301,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
           href="#carta"
           class="mobile-link block hover:text-brand-500 transition-colors py-2 border-b border-brand-950/20"
         >
-          Carta
+          {t('nav.carta')}
         </a>
       </li>
       {
@@ -191,7 +324,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
           href="#galeria"
           class="mobile-link block hover:text-brand-500 transition-colors py-2 border-b border-brand-950/20"
         >
-          Galería
+          {t('nav.galeria')}
         </a>
       </li>
       <li>
@@ -199,7 +332,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
           href="#ubicanos"
           class="mobile-link block hover:text-brand-500 transition-colors py-2 border-b border-brand-950/20"
         >
-          Ubícanos
+          {t('nav.ubicanos')}
         </a>
       </li>
       {
@@ -209,7 +342,7 @@ import { HALLOWEEN_ACTIVO } from '../data/halloween';
               href="#reserva"
               class="mobile-link inline-flex items-center justify-center w-full px-6 py-3 text-base text-white bg-brand-700 rounded-full hover:bg-brand-600 transition-all duration-200 shadow-md font-sans mt-4"
             >
-              Reservar
+              {t('nav.reserva')}
             </a>
           </li>
         )

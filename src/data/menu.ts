@@ -40,8 +40,7 @@ export const cocteles: MenuItemData[] = [
     description:
       'Mezcla de rones, limón, maracuyá, jarabe herbal de la casa y bitter de naranja. Súper fresco como sus canciones.',
     tag: 'Cítrico & Mágico',
-    image:
-      'https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=500&q=70',
+    image: '/barra/cocteles/Marley.webp',
   },
   {
     name: 'La Mula de X Dinero',
@@ -57,8 +56,7 @@ export const cocteles: MenuItemData[] = [
     description:
       'Por el loco de Charly García, Un coctel super matador, como debe de ser, te pone la fiesta, un blend de rones mas fernet, mix citricos y granadina.',
     tag: 'Fuerte & Especiado',
-    image:
-      'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=70',
+    image: '/barra/cocteles/Charly.webp',
   },
   {
     name: 'Brisa del Chachani',
@@ -426,3 +424,20 @@ export const alitas_y_combos: MenuItemData[] = [
       'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=70',
   },
 ];
+
+import * as menuEn from './menu.en';
+
+export function getMenuData(lang: string = 'es') {
+  if (lang === 'en') {
+    return menuEn;
+  }
+  return {
+    cocteles,
+    mocktails,
+    bebidas_calientes,
+    entradas,
+    fuertes,
+    hamburguesas,
+    alitas_y_combos,
+  };
+}

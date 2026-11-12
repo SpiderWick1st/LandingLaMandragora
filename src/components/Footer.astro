@@ -1,7 +1,16 @@
 ---
 import { Image } from 'astro:assets';
-import { Star, MapPin, Phone, Mail } from 'lucide-astro';
+import { Phone, Mail } from 'lucide-astro';
 import logoMark from '../assets/logo-mark.png';
+import { defaultLang, type Lang, useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = (Astro.currentLocale ?? defaultLang) as Lang } = Astro.props;
+const t = useTranslations(lang);
+const homeUrl = lang === 'en' ? '/en/' : '/';
 ---
 
 <footer
@@ -15,7 +24,11 @@ import logoMark from '../assets/logo-mark.png';
   <div class="container mx-auto px-6 max-w-6xl relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       <div class="space-y-4">
-        <a href="/" class="block group" aria-label="La Mandrágora — Inicio">
+        <a
+          href={homeUrl}
+          class="block group"
+          aria-label={`La Mandrágora — ${t('nav.home')}`}
+        >
           <Image
             src={logoMark}
             alt="La Mandrágora"
@@ -27,7 +40,7 @@ import logoMark from '../assets/logo-mark.png';
             LA MANDRÁGORA
           </h3>
           <p class="text-[10px] text-brand-500 tracking-widest uppercase">
-            Restaurante
+            {t('brand.restaurant')}
           </p>
         </a>
 
@@ -82,42 +95,42 @@ import logoMark from '../assets/logo-mark.png';
         <h4
           class="text-white font-serif font-semibold text-sm tracking-widest uppercase"
         >
-          Enlaces Rápidos
+          {t('footer.quick_links')}
         </h4>
         <ul class="space-y-2.5 text-sm">
           <li>
             <a
-              href="/"
+              href={homeUrl}
               class="hover:text-brand-500 transition-colors duration-200"
-              >Inicio</a
+              >{t('nav.home')}</a
             >
           </li>
           <li>
             <a
               href="#ambientes"
               class="hover:text-brand-500 transition-colors duration-200"
-              >Ambientes</a
+              >{t('nav.ambientes')}</a
             >
           </li>
           <li>
             <a
               href="#carta"
               class="hover:text-brand-500 transition-colors duration-200"
-              >Nuestra Carta</a
+              >{t('nav.carta')}</a
             >
           </li>
           <li>
             <a
               href="#galeria"
               class="hover:text-brand-500 transition-colors duration-200"
-              >Galería</a
+              >{t('nav.galeria')}</a
             >
           </li>
           <li>
             <a
               href="#ubicanos"
               class="hover:text-brand-500 transition-colors duration-200"
-              >Ubícanos</a
+              >{t('nav.ubicanos')}</a
             >
           </li>
         </ul>
@@ -127,20 +140,24 @@ import logoMark from '../assets/logo-mark.png';
         <h4
           class="text-white font-serif font-semibold text-sm tracking-widest uppercase"
         >
-          Happy Hour & Comida
+          {t('footer.happy_hour_food')}
         </h4>
         <ul class="space-y-3 text-sm">
           <li
             class="flex justify-between items-center border-b border-neutral-900 pb-2"
           >
             <span>Happy Hour</span>
-            <span class="text-brand-500 font-medium">Hasta las 9:00 PM</span>
+            <span class="text-brand-500 font-medium"
+              >{t('footer.happy_hour_until')}</span
+            >
           </li>
           <li
             class="flex justify-between items-center border-b border-neutral-900 pb-2"
           >
-            <span>Cocina</span>
-            <span class="text-brand-500 font-medium">Hasta las 12:00 AM</span>
+            <span>{t('footer.kitchen')}</span>
+            <span class="text-brand-500 font-medium"
+              >{t('footer.kitchen_until')}</span
+            >
           </li>
         </ul>
       </div>
@@ -149,7 +166,7 @@ import logoMark from '../assets/logo-mark.png';
         <h4
           class="text-white font-serif font-semibold text-sm tracking-widest uppercase"
         >
-          Contacto
+          {t('footer.contact')}
         </h4>
         <ul class="space-y-3.5 text-sm">
           <li class="flex items-center gap-3">
@@ -174,19 +191,22 @@ import logoMark from '../assets/logo-mark.png';
       class="border-t border-neutral-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600"
     >
       <p>
-        © {new Date().getFullYear()} La Mandrágora Restaurante. Todos los derechos
-        reservados.
+        © {new Date().getFullYear()} La Mandrágora Restaurante. {
+          t('footer.rights')
+        }
       </p>
       <div class="flex gap-6">
         <a
-          href="/politica-de-privacidad/"
-          class="hover:text-gray-400 transition-colors"
-          >Política de Privacidad</a
+          href={lang === 'en'
+            ? '/en/politica-de-privacidad/'
+            : '/politica-de-privacidad/'}
+          class="hover:text-gray-400 transition-colors">{t('footer.privacy')}</a
         >
         <a
-          href="/terminos-y-condiciones/"
-          class="hover:text-gray-400 transition-colors"
-          >Términos y Condiciones</a
+          href={lang === 'en'
+            ? '/en/terminos-y-condiciones/'
+            : '/terminos-y-condiciones/'}
+          class="hover:text-gray-400 transition-colors">{t('footer.terms')}</a
         >
       </div>
     </div>
