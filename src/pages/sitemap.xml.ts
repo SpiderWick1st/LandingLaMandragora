@@ -2,7 +2,12 @@ import type { APIRoute } from 'astro';
 
 const FALLBACK_SITE = 'https://www.lamandragora.com.pe';
 
-const NOINDEX_ROUTES = ['/terminos-y-condiciones', '/politica-de-privacidad'];
+const NOINDEX_ROUTES = [
+  '/terminos-y-condiciones',
+  '/politica-de-privacidad',
+  '/en/terminos-y-condiciones',
+  '/en/politica-de-privacidad',
+];
 
 const pageModules = import.meta.glob('./**/*.astro');
 
