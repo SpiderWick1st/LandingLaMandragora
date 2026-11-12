@@ -12,62 +12,72 @@ import terrazaAtardecer from '../../assets/galeria/terraza-atardecer.webp';
 import comida from '../../assets/galeria/comida.webp';
 import bbq from '../../assets/galeria/bbq.webp';
 import dj from '../../assets/galeria/Dj.webp';
+import { defaultLang, type Lang, useTranslations } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const {
+  lang = (Astro.props.lang ?? Astro.currentLocale ?? defaultLang) as Lang,
+} = Astro.props;
+const t = useTranslations(lang);
 
 const destacadas = [
   {
     src: musico,
-    alt: 'Músico tocando la guitarra en vivo en La Mandrágora',
-    caption: 'Música en vivo',
+    alt: t('galeria.alt.musico'),
+    caption: t('galeria.caption.live_music'),
   },
   {
     src: bartender,
-    alt: 'Bartender de La Mandrágora con coctelera',
-    caption: 'Bartender',
+    alt: t('galeria.alt.bartender'),
+    caption: t('galeria.caption.bartender'),
   },
 ];
 
 const fotos = [
   {
     src: banda,
-    alt: 'Banda tocando en vivo en La Mandrágora',
-    caption: 'Música en vivo',
+    alt: t('galeria.alt.banda'),
+    caption: t('galeria.caption.live_music'),
     ratio: 'aspect-[3/2]',
   },
   {
     src: barra,
-    alt: 'Bartender preparando cócteles en la barra de La Mandrágora',
-    caption: 'Barra',
+    alt: t('galeria.alt.barra'),
+    caption: t('galeria.caption.bar'),
     ratio: 'aspect-[2/3]',
   },
 
   {
     src: comida,
-    alt: 'Hamburguesa con papas fritas de La Mandrágora',
-    caption: 'Cocina',
+    alt: t('galeria.alt.comida'),
+    caption: t('galeria.caption.kitchen'),
     ratio: 'aspect-square',
   },
   {
     src: dj,
-    alt: 'DJ mezclando música en la zona DJ de La Mandrágora',
-    caption: 'Dj en vivo',
+    alt: t('galeria.alt.dj'),
+    caption: t('galeria.caption.live_dj'),
     ratio: 'aspect-[2/3]',
   },
   {
     src: clientes,
-    alt: 'Clientes disfrutando de una cerveza en La Mandrágora',
-    caption: 'Noches LM',
+    alt: t('galeria.alt.clientes'),
+    caption: t('galeria.caption.nights'),
     ratio: 'aspect-[4/5]',
   },
   {
     src: bbq,
-    alt: 'Costillas y alitas con papas fritas de La Mandrágora',
-    caption: 'Alitas y costillas',
+    alt: t('galeria.alt.bbq'),
+    caption: t('galeria.caption.wings_ribs'),
     ratio: 'aspect-[4/5]',
   },
   {
     src: terrazaAtardecer,
-    alt: 'Atardecer sobre Arequipa desde la terraza de La Mandrágora',
-    caption: 'Atardecer',
+    alt: t('galeria.alt.terraza_atardecer'),
+    caption: t('galeria.caption.sunset'),
     ratio: 'aspect-[3/4]',
   },
 ];
@@ -103,21 +113,23 @@ const masonrySizes = '(min-width: 1024px) 400px, 50vw';
           class="mb-3 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-brand-400"
         >
           <Camera class="h-4 w-4" />
-          Galería
+          {t('galeria.tag')}
         </span>
         <h2 class="font-serif text-4xl tracking-wide text-white sm:text-5xl">
           La Mandrágora
         </h2>
         <p class="mt-5 text-base leading-relaxed text-gray-400 sm:text-lg">
-          Un vistazo a los ambientes, la barra y la cocina antes de tu visita.
+          {t('galeria.subtitle')}
         </p>
       </div>
 
       <p
         class="reveal-galeria shrink-0 text-xs uppercase tracking-[0.2em] text-gray-500 md:text-right"
       >
-        <span class="block">{destacadas.length + fotos.length} momentos</span>
-        <span class="mt-1 block text-gray-600">Música · Terraza · Barra</span>
+        <span class="block"
+          >{destacadas.length + fotos.length} {t('galeria.moments')}</span
+        >
+        <span class="mt-1 block text-gray-600">{t('galeria.summary')}</span>
       </p>
     </div>
 

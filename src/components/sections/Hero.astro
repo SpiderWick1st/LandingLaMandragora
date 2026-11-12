@@ -1,6 +1,16 @@
 ---
 import { Image } from 'astro:assets';
 import logoMark from '../../assets/logo-mark.png';
+import { defaultLang, type Lang, useTranslations } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const {
+  lang = (Astro.props.lang ?? Astro.currentLocale ?? defaultLang) as Lang,
+} = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section
@@ -46,58 +56,30 @@ import logoMark from '../../assets/logo-mark.png';
       <p
         class="text-brand-500 text-base sm:text-xl md:text-2xl tracking-widest mb-4 text-center"
       >
-        RESTAURANTE
+        {t('brand.restaurant')}
       </p>
       <p
         class="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed text-center px-2"
       >
-        Una noche para recordar. <br />
-        Terraza y Salón: dos experiencias en el corazón de Arequipa.
+        <Fragment set:html={t('hero.subtitle_html')} />
       </p>
     </div>
     <div
       id="botones-secundarios"
       class="mt-8 flex flex-col items-center justify-center gap-3 px-6 sm:flex-row"
     >
-      {
-        /* <a
-        href="#reserva"
-        class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-brand-900/40 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black sm:w-auto"
-      >
-        Reserva tu mesa
-        <svg
-          class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 12h14m-6-6 6 6-6 6"></path>
-        </svg>
-      </a> */
-      }
-      {
-        /* <a
-        href="#carta"
-        class="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-black/20 px-7 py-3.5 text-sm font-medium tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:border-brand-500/60 hover:bg-white/10 sm:w-auto"
-      > */
-      }
       <a
         href="#carta"
         class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-brand-900/40 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black sm:w-auto"
       >
-        Ver la carta
+        {t('hero.view_menu')}
       </a>
     </div>
 
     <button
       type="button"
       id="icon-siguiente"
-      aria-label="Bajar a la sección Ambientes"
+      aria-label={t('hero.down_aria')}
       class="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:flex cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
     >
       <span

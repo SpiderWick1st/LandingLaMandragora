@@ -1,17 +1,18 @@
 ---
 import { Image } from 'astro:assets';
-import {
-  Building2,
-  Music,
-  Star,
-  Radio,
-  Disc3,
-  Wine,
-  Flame,
-  Sparkles,
-} from 'lucide-astro';
+import { Music, Star, Radio, Disc3 } from 'lucide-astro';
 import terrazaLamparas from '../../assets/galeria/terraza-lamparas.webp';
 import salon from '../../assets/galeria/salon.webp';
+import { defaultLang, type Lang, useTranslations } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const {
+  lang = (Astro.props.lang ?? Astro.currentLocale ?? defaultLang) as Lang,
+} = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="ambientes" class="py-24 px-6 bg-black relative overflow-hidden">
@@ -28,12 +29,11 @@ import salon from '../../assets/galeria/salon.webp';
   <div class="container mx-auto max-w-6xl relative z-10">
     <div class="reveal text-center mb-20">
       <h2 class="text-4xl md:text-6xl font-serif mb-6 text-white">
-        Dos Ambientes
+        {t('ambientes.title')}
       </h2>
       <div class="w-24 h-1 bg-brand-500 mx-auto mb-8"></div>
       <p class="text-gray-300 text-lg max-w-3xl mx-auto">
-        Cada nivel de LA MANDRÁGORA ofrece una experiencia única. Elige tu
-        vibra.
+        {t('ambientes.desc')}
       </p>
     </div>
 
@@ -43,29 +43,33 @@ import salon from '../../assets/galeria/salon.webp';
           <div
             class="hover-scale inline-flex items-center gap-3 mb-6 bg-brand-700 px-6 py-3 rounded-full"
           >
-            <span class="text-2xl text-white">Salón</span>
+            <span class="text-2xl text-white">{t('ambientes.salon.badge')}</span
+            >
           </div>
           <h3 class="text-3xl md:text-4xl font-serif mb-6 text-white">
-            Música en Vivo
+            {t('ambientes.salon.title')}
           </h3>
           <p class="text-gray-300 text-lg leading-relaxed mb-4">
-            Sube al segundo piso y sumérgete en la experiencia de bandas en
-            vivo. Rock, jazz, blues y más géneros se apoderan del escenario cada
-            noche. Siente la vibración de la música en vivo en un ambiente
-            íntimo y retro.
+            {t('ambientes.salon.desc')}
           </p>
           <div class="space-y-3">
             <div class="flex items-center gap-3 text-brand-500">
               <Music class="w-5 h-5" />
-              <span class="text-white">Bandas en Vivo</span>
+              <span class="text-white">{t('ambientes.salon.live_bands')}</span>
             </div>
             <div class="flex items-center gap-3 text-brand-500">
               <Star class="w-5 h-5" />
-              <span class="text-white">Shows Todas las Noches</span>
+              <span class="text-white"
+                >{t('ambientes.salon.shows_nightly')}</span
+              >
             </div>
             <div class="flex flex-wrap gap-2 pt-1">
               {
-                ['Rock', 'Jazz', 'Blues'].map((genero) => (
+                [
+                  t('ambientes.genres.rock'),
+                  t('ambientes.genres.jazz'),
+                  t('ambientes.genres.blues'),
+                ].map((genero) => (
                   <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs tracking-wide text-gray-300">
                     <Radio class="w-3 h-3 text-accent-400" />
                     {genero}
@@ -78,7 +82,7 @@ import salon from '../../assets/galeria/salon.webp';
         <div class="relative aspect-[4/5] overflow-hidden rounded-sm group">
           <Image
             src={salon}
-            alt="Salón de La Mandrágora con banda en vivo y público"
+            alt={t('ambientes.salon.alt')}
             width={1000}
             widths={[400, 600, 800, 1000]}
             sizes="(min-width: 768px) 50vw, 100vw"
@@ -97,7 +101,7 @@ import salon from '../../assets/galeria/salon.webp';
         >
           <Image
             src={terrazaLamparas}
-            alt="DJ mezclando música en la zona DJ de La Mandrágora"
+            alt={t('ambientes.terraza.alt')}
             width={1000}
             widths={[400, 600, 800, 1000]}
             sizes="(min-width: 768px) 50vw, 100vw"
@@ -112,25 +116,30 @@ import salon from '../../assets/galeria/salon.webp';
           <div
             class="hover-scale inline-flex items-center gap-3 mb-6 bg-brand-800 px-6 py-3 rounded-full"
           >
-            <span class="text-2xl text-white">Terraza </span>
+            <span class="text-2xl text-white"
+              >{t('ambientes.terraza.badge')}</span
+            >
           </div>
           <h3 class="text-3xl md:text-4xl font-serif mb-6 text-white">
-            Zona DJ
+            {t('ambientes.terraza.title')}
           </h3>
           <p class="text-gray-300 text-lg leading-relaxed mb-4">
-            La cima de LA MANDRÁGORA es pura energía. Nuestros DJs residentes
-            mezclan lo mejor de la música electrónica, reggaeton, hip-hop y
-            todos los géneros que te hacen mover. La fiesta nunca termina en el
-            tercer piso.
+            {t('ambientes.terraza.desc')}
           </p>
           <div class="space-y-3">
             <div class="flex items-center gap-3 text-brand-500">
               <Disc3 class="w-5 h-5" />
-              <span class="text-white">DJs Residentes</span>
+              <span class="text-white"
+                >{t('ambientes.terraza.resident_djs')}</span
+              >
             </div>
             <div class="flex flex-wrap gap-2 pt-1">
               {
-                ['Electrónica', 'Reguetón', 'Hip-hop'].map((genero) => (
+                [
+                  t('ambientes.genres.electronic'),
+                  t('ambientes.genres.reggaeton'),
+                  t('ambientes.genres.hiphop'),
+                ].map((genero) => (
                   <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs tracking-wide text-gray-300">
                     <Radio class="w-3 h-3 text-accent-400" />
                     {genero}

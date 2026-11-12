@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/sections/Hero.astro';
+import Ambientes from '../../components/sections/Ambientes.astro';
+import Carta from '../../components/sections/Carta.astro';
+import Galeria from '../../components/sections/Galeria.astro';
+import Ubicanos from '../../components/sections/Ubicanos.astro';
+import {
+  cocteles,
+  mocktails,
+  bebidas_calientes,
+  entradas,
+  fuertes,
+  hamburguesas,
+  alitas_y_combos,
+} from '../../data/menu.en';
+import type { MenuItemData } from '../../data/menu';
+import { RESERVAS_ACTIVAS } from '../../data/config';
+import { HALLOWEEN_ACTIVO } from '../../data/halloween';
+import CartaHalloweenModal from '../../components/ui/CartaHalloweenModal.astro';
+
+const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
+const base = site.href.replace(/\/$/, '');
+
+const menuSection = (name: string, items: MenuItemData[]) => ({
+  '@type': 'MenuSection',
+  name,
+  hasMenuItem: items.map((item) => {
+    const price = item.price.match(/(\d+(?:\.\d+)?)/)?.[1];
+    return {
+      '@type': 'MenuItem',
+      name: item.name,
+      description: item.description,
+      ...(price && {
+        offers: { '@type': 'Offer', price, priceCurrency: 'PEN' },
+      }),
+    };
+  }),
+});
+
+const schemaData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${base}/en/#website`,
+      url: `${base}/en/`,
+      name: 'La Mandrágora',
+      alternateName: ['La Mandrágora Restaurant', 'La Mandrágora Restobar'],
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'Restaurant',
+      '@id': `${base}/en/#restaurant`,
+      name: 'La Mandrágora',
+      url: `${base}/en/`,
+      isPartOf: {
+        '@id': `${base}/en/#website`,
+      },
+      description:
+        'Signature cocktail bar and restaurant in the heart of Arequipa. Rooftop terrace & lounge, à la carte dining, and live music.',
+      image: `${base}/og-image.png`,
+      logo: `${base}/icon-512.png`,
+      email: 'reservas@lamandragora.pe',
+      servesCuisine: [
+        'Main dishes',
+        'Lomo saltado',
+        'Cordon bleu',
+        'Salchipapas',
+        'Wings',
+        'Ribs',
+        'Combos',
+      ],
+      priceRange: 'S/ 20 - S/ 90',
+      currenciesAccepted: 'PEN',
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ],
+        opens: '15:30',
+        closes: '23:59',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Calle San Francisco 300-A',
+        addressLocality: 'Arequipa',
+        addressRegion: 'Arequipa',
+        postalCode: '04001',
+        addressCountry: 'PE',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -16.396349694412603,
+        longitude: -71.5353123583828,
+      },
+      hasMenu: {
+        '@type': 'Menu',
+        name: 'La Mandrágora Menu',
+        hasMenuSection: [
+          menuSection('Cocktails', cocteles),
+          menuSection('Mocktails', mocktails),
+          menuSection('Hot Drinks', bebidas_calientes),
+          menuSection('Appetizers', entradas),
+          menuSection('Main Dishes', fuertes),
+          menuSection('Burgers', hamburguesas),
+          menuSection('Wings and Combos', alitas_y_combos),
+        ],
+      },
+      hasMap: 'https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8',
+      sameAs: [
+        'https://www.facebook.com/MANDRAAQP',
+        'https://www.instagram.com/mandragora_aqp/',
+        'https://www.tiktok.com/@mandragorarestaurante',
+      ],
+    },
+  ],
+};
+---
+
+<Layout lang="en">
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/videos/dish-poster.webp"
+      fetchpriority="high"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  </Fragment>
+  {HALLOWEEN_ACTIVO && <CartaHalloweenModal />}
+  <Hero lang="en" />
+  <Ambientes lang="en" />
+  <Carta lang="en" />
+  <Galeria lang="en" />
+  <Ubicanos lang="en" />
+
+  {
+    RESERVAS_ACTIVAS && (
+      <a
+        href="#reserva"
+        class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3.5 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/40 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-black md:hidden"
+        aria-label="Book your table"
+      >
+        Book a Table
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 12h14m-6-6 6 6-6 6"
+          />
+        </svg>
+      </a>
+    )
+  }
+</Layout>
