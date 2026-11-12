@@ -39,73 +39,91 @@ const menuSection = (name: string, items: MenuItemData[]) => ({
   }),
 });
 
-const restaurantSchema = {
+const schemaData = {
   '@context': 'https://schema.org',
-  '@type': 'Restaurant',
-  '@id': `${base}/#restaurant`,
-  name: 'La Mandrágora Restaurante',
-  url: `${base}/`,
-  description:
-    'Restaurante con coctelería de autor en el corazón de Arequipa. Terraza y salón, cocina a la carta y música en vivo.',
-  image: `${base}/og-image.png`,
-  logo: `${base}/icon-512.png`,
-  email: 'reservas@lamandragora.pe',
-  servesCuisine: [
-    'Platos de fondo',
-    'Lomo saltado',
-    'Cordon bleu',
-    'Salchipapas',
-    'Alitas',
-    'Costillitas',
-    'Combos',
-  ],
-  priceRange: 'S/ 20 - S/ 90',
-  currenciesAccepted: 'PEN',
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ],
-    opens: '15:30',
-    closes: '23:59',
-  },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Calle San Francisco 300-A',
-    addressLocality: 'Arequipa',
-    addressRegion: 'Arequipa',
-    postalCode: '04001',
-    addressCountry: 'PE',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -16.396349694412603,
-    longitude: -71.5353123583828,
-  },
-  hasMenu: {
-    '@type': 'Menu',
-    name: 'Carta de La Mandrágora',
-    hasMenuSection: [
-      menuSection('Cócteles', cocteles),
-      menuSection('Mocktails', mocktails),
-      menuSection('Bebidas calientes', bebidas_calientes),
-      menuSection('Entradas', entradas),
-      menuSection('Platos de fondo', fuertes),
-      menuSection('Hamburguesas', hamburguesas),
-      menuSection('Alitas y combos', alitas_y_combos),
-    ],
-  },
-  hasMap: 'https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8',
-  sameAs: [
-    'https://www.facebook.com/MANDRAAQP',
-    'https://www.instagram.com/mandragora_aqp/',
-    'https://www.tiktok.com/@mandragorarestaurante',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${base}/#website`,
+      url: `${base}/`,
+      name: 'La Mandrágora',
+      alternateName: [
+        'La Mandrágora Restaurante',
+        'La Mandrágora Restobar',
+      ],
+      inLanguage: 'es-PE',
+    },
+    {
+      '@type': 'Restaurant',
+      '@id': `${base}/#restaurant`,
+      name: 'La Mandrágora',
+      url: `${base}/`,
+      isPartOf: {
+        '@id': `${base}/#website`,
+      },
+      description:
+        'Restaurante con coctelería de autor en el corazón de Arequipa. Terraza y salón, cocina a la carta y música en vivo.',
+      image: `${base}/og-image.png`,
+      logo: `${base}/icon-512.png`,
+      email: 'reservas@lamandragora.pe',
+      servesCuisine: [
+        'Platos de fondo',
+        'Lomo saltado',
+        'Cordon bleu',
+        'Salchipapas',
+        'Alitas',
+        'Costillitas',
+        'Combos',
+      ],
+      priceRange: 'S/ 20 - S/ 90',
+      currenciesAccepted: 'PEN',
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ],
+        opens: '15:30',
+        closes: '23:59',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Calle San Francisco 300-A',
+        addressLocality: 'Arequipa',
+        addressRegion: 'Arequipa',
+        postalCode: '04001',
+        addressCountry: 'PE',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -16.396349694412603,
+        longitude: -71.5353123583828,
+      },
+      hasMenu: {
+        '@type': 'Menu',
+        name: 'Carta de La Mandrágora',
+        hasMenuSection: [
+          menuSection('Cócteles', cocteles),
+          menuSection('Mocktails', mocktails),
+          menuSection('Bebidas calientes', bebidas_calientes),
+          menuSection('Entradas', entradas),
+          menuSection('Platos de fondo', fuertes),
+          menuSection('Hamburguesas', hamburguesas),
+          menuSection('Alitas y combos', alitas_y_combos),
+        ],
+      },
+      hasMap: 'https://maps.app.goo.gl/o7EyfWAxZEs3tiJJ8',
+      sameAs: [
+        'https://www.facebook.com/MANDRAAQP',
+        'https://www.instagram.com/mandragora_aqp/',
+        'https://www.tiktok.com/@mandragorarestaurante',
+      ],
+    },
   ],
 };
 ---
@@ -120,7 +138,7 @@ const restaurantSchema = {
     />
     <script
       type="application/ld+json"
-      set:html={JSON.stringify(restaurantSchema)}
+      set:html={JSON.stringify(schemaData)}
     />
   </Fragment>
   {HALLOWEEN_ACTIVO && <CartaHalloweenModal />}
