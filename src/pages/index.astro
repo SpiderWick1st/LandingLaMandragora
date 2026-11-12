@@ -20,8 +20,8 @@ import { RESERVAS_ACTIVAS } from '../data/config';
 import { HALLOWEEN_ACTIVO } from '../data/halloween';
 import CartaHalloweenModal from '../components/ui/CartaHalloweenModal.astro';
 
-const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
-const base = site.href.replace(/\/$/, '');
+// const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
+const base = 'https://www.lamandragora.com.pe';
 
 const menuSection = (name: string, items: MenuItemData[]) => ({
   '@type': 'MenuSection',
@@ -47,10 +47,7 @@ const schemaData = {
       '@id': `${base}/#website`,
       url: `${base}/`,
       name: 'La Mandrágora',
-      alternateName: [
-        'La Mandrágora Restaurante',
-        'La Mandrágora Restobar',
-      ],
+      alternateName: ['La Mandrágora Restaurante', 'La Mandrágora Restobar'],
       inLanguage: 'es-PE',
     },
     {
@@ -136,10 +133,7 @@ const schemaData = {
       href="/videos/dish-poster.webp"
       fetchpriority="high"
     />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(schemaData)}
-    />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </Fragment>
   {HALLOWEEN_ACTIVO && <CartaHalloweenModal />}
   <Hero />

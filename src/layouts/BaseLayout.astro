@@ -32,7 +32,7 @@ const {
   lang = currentLang,
 } = Astro.props;
 
-const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
+const site = new URL('https://www.lamandragora.com.pe');
 const canonicalURL = new URL(Astro.url.pathname, site);
 const imageURL = new URL(image, site);
 const esURL = new URL(getLocalizedPath(Astro.url.pathname, 'es'), site);
@@ -43,7 +43,7 @@ const enURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site);
 <html lang={lang} class="scroll-smooth bg-black">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
