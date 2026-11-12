@@ -1,31 +1,46 @@
 ---
-interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
-  noindex?: boolean;
-}
-
-const {
-  title = 'La Mandrágora | Restaurante y Coctelería en Arequipa',
-  description = 'Restaurante con coctelería de autor en el corazón de Arequipa. Terraza y salón, cocina a la carta y música en vivo.',
-  image = '/og-image.png',
-  noindex = false,
-} = Astro.props;
-
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import caesarDressingUrl from '../assets/fonts/caesar-dressing-latin-400.woff2?url';
 import karlaUrl from '../assets/fonts/karla-latin-wght-normal.woff2?url';
 import '../styles/global.css';
+import {
+  defaultLang,
+  type Lang,
+  useTranslations,
+  getLocalizedPath,
+} from '../i18n/ui';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  lang?: Lang;
+}
+
+const currentLang = (Astro.props.lang ??
+  Astro.currentLocale ??
+  defaultLang) as Lang;
+const t = useTranslations(currentLang);
+
+const {
+  title = t('seo.title'),
+  description = t('seo.description'),
+  image = '/og-image.png',
+  noindex = false,
+  lang = currentLang,
+} = Astro.props;
 
 const site = Astro.site ?? new URL('https://www.lamandragora.com.pe');
 const canonicalURL = new URL(Astro.url.pathname, site);
 const imageURL = new URL(image, site);
+const esURL = new URL(getLocalizedPath(Astro.url.pathname, 'es'), site);
+const enURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site);
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth bg-black">
+<html lang={lang} class="scroll-smooth bg-black">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -62,10 +77,17 @@ const imageURL = new URL(image, site);
         : 'index, follow, max-image-preview:large'}
     />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={esURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={esURL} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="La Mandrágora" />
-    <meta property="og:locale" content="es_PE" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_PE'} />
+    <meta
+      property="og:locale:alternate"
+      content={lang === 'en' ? 'es_PE' : 'en_US'}
+    />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
@@ -103,11 +125,11 @@ const imageURL = new URL(image, site);
     <slot name="head" />
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
     <script>
       // Navegación interna sin mostrar #ancla en la URL
       document.addEventListener('click', (e) => {
@@ -118,12 +140,16 @@ const imageURL = new URL(image, site);
         const id = a.getAttribute('href')!.slice(1);
         if (!id) return;
         const el = document.getElementById(id);
-        if (!el && location.pathname === '/') return; // ancla inexistente en el inicio
+        const isHome =
+          location.pathname === '/' ||
+          location.pathname === '/en' ||
+          location.pathname === '/en/';
+        if (!el && isHome) return; // ancla inexistente en el inicio
         e.preventDefault();
         if (!el) {
-          // Otra página (p. ej. términos): ir al inicio y desplazarse allí
+          // Otra página (p. ej. términos): ir al inicio del idioma correspondiente y desplazarse allí
           sessionStorage.setItem('scrollTo', id);
-          location.href = '/';
+          location.href = location.pathname.startsWith('/en') ? '/en/' : '/';
           return;
         }
         el.scrollIntoView({ behavior: 'smooth' });
